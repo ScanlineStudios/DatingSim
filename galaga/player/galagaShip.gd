@@ -40,7 +40,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_right"):
 		direction += RIGHT
 	
-	move_and_slide(direction * speed)
+	move_and_collide(direction * speed * delta)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# put player ship in initial starting position 

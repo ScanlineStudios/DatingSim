@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://galaga/player/placeholderLazer.png" type="Texture" id=1]
+[ext_resource path="res://galaga/player/laser.png" type="Texture" id=1]
+[ext_resource path="res://galaga/player/PlayerBullet.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.38458
@@ -8,12 +9,15 @@ height = 44.1151
 
 [node name="PlayerBullet" type="RigidBody2D"]
 gravity_scale = 0.0
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 2, 5 )
-rotation = 0.0174533
-scale = Vector2( 0.1, 0.1 )
+rotation = 1.5708
+scale = Vector2( 0.04, 0.15 )
 texture = ExtResource( 1 )
+[connection signal="body_entered" from="." to="." method="_on_PlayerBullet_body_entered"]
