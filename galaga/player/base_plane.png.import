@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/placeholderLazer.png-4bc1bbddc589ac9f5ef5ff86afe9805f.stex"
+path="res://.import/base_plane.png-a1139d06c2baf033c12ecd4202c55bd7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://galaga/player/placeholderLazer.png"
-dest_files=[ "res://.import/placeholderLazer.png-4bc1bbddc589ac9f5ef5ff86afe9805f.stex" ]
+source_file="res://galaga/player/base_plane.png"
+dest_files=[ "res://.import/base_plane.png-a1139d06c2baf033c12ecd4202c55bd7.stex" ]
 
 [params]
 
