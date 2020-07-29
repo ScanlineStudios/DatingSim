@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ArcadeGames"
-run/main_scene="res://galaga/galaga.tscn"
+run/main_scene="res://miniGames/galaga/galaga.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -55,6 +55,12 @@ fire={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="walls"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemies"
 
 [rendering]
 

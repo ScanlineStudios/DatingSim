@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/laser2.png-aaab723ebdc437b03703aad427a0cf40.stex"
+path="res://.import/base_plane.png-efcacc058e6069d4f725d3c05b7de18e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://galaga/enemies/laser2.png"
-dest_files=[ "res://.import/laser2.png-aaab723ebdc437b03703aad427a0cf40.stex" ]
+source_file="res://miniGames/galaga/player/base_plane.png"
+dest_files=[ "res://.import/base_plane.png-efcacc058e6069d4f725d3c05b7de18e.stex" ]
 
 [params]
 

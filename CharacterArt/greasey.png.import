@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/plane_4.png-f36a0a601109384b5177e141a1eb5dfd.stex"
+path="res://.import/greasey.png-e5e5736531ec4a8755e7bbedf4937712.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://galaga/player/plane_4.png"
-dest_files=[ "res://.import/plane_4.png-f36a0a601109384b5177e141a1eb5dfd.stex" ]
+source_file="res://CharacterArt/greasey.png"
+dest_files=[ "res://.import/greasey.png-e5e5736531ec4a8755e7bbedf4937712.stex" ]
 
 [params]
 

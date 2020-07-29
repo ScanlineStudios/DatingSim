@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/plane1.png-34b5b1cfd6139d1b262aea69d0706776.stex"
+path="res://.import/explosion.png-cbb5c2e9bb46c04a7922dfc9e718728b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://galaga/player/plane1.png"
-dest_files=[ "res://.import/plane1.png-34b5b1cfd6139d1b262aea69d0706776.stex" ]
+source_file="res://miniGames/galaga/explosion.png"
+dest_files=[ "res://.import/explosion.png-cbb5c2e9bb46c04a7922dfc9e718728b.stex" ]
 
 [params]
 

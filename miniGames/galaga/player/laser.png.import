@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spaceBad.png-b55a4ceddd2827600e598d7d78ea5e61.stex"
+path="res://.import/laser.png-ea62b2faf08f112cbb56e9f8c594d0cd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://galaga/enemies/spaceBad.png"
-dest_files=[ "res://.import/spaceBad.png-b55a4ceddd2827600e598d7d78ea5e61.stex" ]
+source_file="res://miniGames/galaga/player/laser.png"
+dest_files=[ "res://.import/laser.png-ea62b2faf08f112cbb56e9f8c594d0cd.stex" ]
 
 [params]
 
