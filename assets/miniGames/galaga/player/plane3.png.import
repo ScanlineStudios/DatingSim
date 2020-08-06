@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boobie.png-129a806285f6870aa69fa493bc96e4e5.stex"
+path="res://.import/plane3.png-308544f04b89e2a729c06a102836d6a1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CharacterArt/boobie.png"
-dest_files=[ "res://.import/boobie.png-129a806285f6870aa69fa493bc96e4e5.stex" ]
+source_file="res://assets/miniGames/galaga/player/plane3.png"
+dest_files=[ "res://.import/plane3.png-308544f04b89e2a729c06a102836d6a1.stex" ]
 
 [params]
 

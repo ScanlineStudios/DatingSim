@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/plane1.png-6ed8b7b323aa1e615a839952e2d8b0d7.stex"
+path="res://.import/plane6.png-70c8de97bfe731c27487bed3fa43d0e3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://miniGames/galaga/player/plane1.png"
-dest_files=[ "res://.import/plane1.png-6ed8b7b323aa1e615a839952e2d8b0d7.stex" ]
+source_file="res://assets/miniGames/galaga/player/plane6.png"
+dest_files=[ "res://.import/plane6.png-70c8de97bfe731c27487bed3fa43d0e3.stex" ]
 
 [params]
 

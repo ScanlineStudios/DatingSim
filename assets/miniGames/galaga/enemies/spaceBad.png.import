@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/greasey.png-e5e5736531ec4a8755e7bbedf4937712.stex"
+path="res://.import/spaceBad.png-c9fe0898216bae6ee0a00aa6dac98d61.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CharacterArt/greasey.png"
-dest_files=[ "res://.import/greasey.png-e5e5736531ec4a8755e7bbedf4937712.stex" ]
+source_file="res://assets/miniGames/galaga/enemies/spaceBad.png"
+dest_files=[ "res://.import/spaceBad.png-c9fe0898216bae6ee0a00aa6dac98d61.stex" ]
 
 [params]
 

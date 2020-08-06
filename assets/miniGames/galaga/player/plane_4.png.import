@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spaceBad.png-efaea884197ab7b177417d1273daaad5.stex"
+path="res://.import/plane_4.png-efb425e4709bb3c10bed2ef8ddf342eb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://miniGames/galaga/enemies/spaceBad.png"
-dest_files=[ "res://.import/spaceBad.png-efaea884197ab7b177417d1273daaad5.stex" ]
+source_file="res://assets/miniGames/galaga/player/plane_4.png"
+dest_files=[ "res://.import/plane_4.png-efb425e4709bb3c10bed2ef8ddf342eb.stex" ]
 
 [params]
 
