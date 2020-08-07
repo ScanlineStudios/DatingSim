@@ -1,6 +1,6 @@
-extends "res://miniGames/actor.gd"
+extends "res://scripts/miniGames/actorBaseClass.gd"
 
-var explosion = preload("res://miniGames/galaga/Explosion0.tscn")
+var explosion = preload("res://scenes/miniGames/galaga/Explosion0.tscn")
 
 
 func _on_PlayerBullet_body_entered(body):

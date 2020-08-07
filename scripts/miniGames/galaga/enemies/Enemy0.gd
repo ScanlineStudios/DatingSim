@@ -1,4 +1,4 @@
-extends "res://miniGames/actor.gd"
+extends "res://scripts/miniGames/actorBaseClass.gd"
 
 
 var move_direction = Vector2.RIGHT

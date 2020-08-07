@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/unispace/unispace rg.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/buttonStart.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 2 )
+
+[node name="mainMenu" type="Node2D"]
+
+[node name="margin" type="MarginContainer" parent="."]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 560.0
+margin_bottom = 680.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="margin"]
+margin_right = 520.0
+margin_bottom = 640.0
+
+[node name="topBanner" type="HBoxContainer" parent="margin/VBoxContainer"]
+margin_right = 520.0
+
+[node name="CenterContainer" type="CenterContainer" parent="margin/VBoxContainer/topBanner"]
+
+[node name="TextureRect" type="TextureRect" parent="margin/VBoxContainer/topBanner/CenterContainer"]
+
+[node name="titleContainer" type="CenterContainer" parent="margin/VBoxContainer"]
+margin_top = 4.0
+margin_right = 520.0
+margin_bottom = 77.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="margin/VBoxContainer/titleContainer"]
+margin_left = 44.0
+margin_right = 476.0
+margin_bottom = 73.0
+
+[node name="Label" type="Label" parent="margin/VBoxContainer/titleContainer/VBoxContainer"]
+margin_right = 432.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 1 )
+text = "Unnamed Dating Sim"
+align = 1
+max_lines_visible = 100
+
+[node name="Label2" type="Label" parent="margin/VBoxContainer/titleContainer/VBoxContainer"]
+margin_top = 53.0
+margin_right = 432.0
+margin_bottom = 73.0
+custom_fonts/font = SubResource( 2 )
+text = "v0.0 - early dev"
+align = 2
+
+[node name="VBoxButtonsContainer" type="VBoxContainer" parent="margin/VBoxContainer"]
+margin_left = 229.0
+margin_top = 347.0
+margin_right = 291.0
+margin_bottom = 373.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="buttonStart" type="Button" parent="margin/VBoxContainer/VBoxButtonsContainer"]
+margin_right = 62.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 3 )
+text = "START"
+script = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="margin/VBoxContainer/VBoxButtonsContainer/buttonStart"]
+offset = Vector2( 30, 0 )
+current = true
+zoom = Vector2( 1, 1.2 )
+[connection signal="pressed" from="margin/VBoxContainer/VBoxButtonsContainer/buttonStart" to="margin/VBoxContainer/VBoxButtonsContainer/buttonStart" method="_on_buttonStart_pressed"]

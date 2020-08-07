@@ -16,13 +16,20 @@ _global_script_class_icons={
 [application]
 
 config/name="ArcadeGames"
-run/main_scene="res://scenes/miniGames/galaga/galaga.tscn"
+run/main_scene="res://scenes/mainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+
+[display]
+
+window/size/borderless=true
+window/size/fullscreen=true
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 

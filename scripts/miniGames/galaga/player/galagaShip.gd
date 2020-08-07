@@ -1,11 +1,11 @@
-extends "res://miniGames/actor.gd"
+extends "res://scripts/miniGames/actorBaseClass.gd"
 
 # export var speed = 100 
 export var bullet_speed = 100
 # lazers/sec
 export var fire_rate = 0.2
 
-var bullet = preload("res://miniGames/galaga/player/PlayerBullet.tscn")
+var bullet = preload("res://scenes/miniGames/galaga/player/PlayerBullet.tscn")
 var can_fire = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
