@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/miniGames/galaga/player/GalagaShip.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/miniGames/galaga/enemies/Enemy0-1.tscn" type="PackedScene" id=3]
+
+[sub_resource type="TileSet" id=1]
+
+[sub_resource type="PhysicsMaterial" id=2]
+bounce = 0.1
+
+[sub_resource type="PhysicsMaterial" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=4]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 24, 319 )
+
+[sub_resource type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+
+[node name="Galaga" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+format = 1
+
+[node name="GalagaShip" parent="." instance=ExtResource( 1 )]
+position = Vector2( 504.344, 504.344 )
+mode = 2
+
+[node name="Enemy0Phys" parent="." instance=ExtResource( 3 )]
+position = Vector2( 468.255, 111.694 )
+physics_material_override = SubResource( 2 )
+
+[node name="Walls" type="StaticBody2D" parent="." groups=[
+"wall",
+]]
+collision_mask = 7
+physics_material_override = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+material = SubResource( 4 )
+use_parent_material = true
+position = Vector2( 0, 320 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+material = SubResource( 7 )
+position = Vector2( 1019.12, 317.755 )
+shape = SubResource( 5 )
