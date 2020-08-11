@@ -3,6 +3,7 @@ extends "res://scripts/miniGames/actorBaseClass.gd"
 
 var move_direction = Vector2.RIGHT
 
+
 func _ready():
 	# lock rotation
 	set_mode(MODE_CHARACTER)
@@ -21,3 +22,14 @@ func _physics_process(delta):
 #			move_and_collide(Vector2.DOWN * delta * move_speed * 10)
 #
 	pass 
+
+
+func _on_Enemy0Phys_body_shape_entered(body_id, body, body_shape, local_shape):
+	# look up dmg in dmg table and subtract from hp
+	
+	pass
+
+
+func _on_Enemy0Phys_body_entered(body):
+	_hit(body.get_groups()[0])
+	
