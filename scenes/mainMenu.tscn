@@ -1,20 +1,36 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/unispace/unispace rg.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/buttonStart.gd" type="Script" id=3]
+[ext_resource path="res://assets/game bg.png" type="Texture" id=4]
 
-[sub_resource type="DynamicFont" id=1]
-size = 40
-font_data = ExtResource( 1 )
+[sub_resource type="ShaderMaterial" id=1]
 
 [sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 2 )
+size = 40
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 2 )
+
 [node name="mainMenu" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource( 1 )
+anchor_right = 100.0
+margin_left = -246.0
+margin_right = 10620.0
+margin_bottom = 8852.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="margin" type="MarginContainer" parent="."]
 margin_left = 40.0
@@ -49,7 +65,7 @@ margin_bottom = 73.0
 [node name="Label" type="Label" parent="margin/VBoxContainer/titleContainer/VBoxContainer"]
 margin_right = 432.0
 margin_bottom = 49.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Unnamed Dating Sim"
 align = 1
 max_lines_visible = 100
@@ -58,8 +74,8 @@ max_lines_visible = 100
 margin_top = 53.0
 margin_right = 432.0
 margin_bottom = 73.0
-custom_fonts/font = SubResource( 2 )
-text = "v0.0 - early dev"
+custom_fonts/font = SubResource( 3 )
+text = "v0.1 - early dev"
 align = 2
 
 [node name="VBoxButtonsContainer" type="VBoxContainer" parent="margin/VBoxContainer"]
@@ -73,7 +89,7 @@ size_flags_vertical = 6
 [node name="buttonStart" type="Button" parent="margin/VBoxContainer/VBoxButtonsContainer"]
 margin_right = 62.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "START"
 script = ExtResource( 3 )
 

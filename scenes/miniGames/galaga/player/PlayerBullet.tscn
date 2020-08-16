@@ -3,13 +3,13 @@
 [ext_resource path="res://scripts/miniGames/galaga/player/PlayerBullet.gd" type="Script" id=1]
 [ext_resource path="res://assets/miniGames/galaga/player/laser.png" type="Texture" id=2]
 
-
-
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.38458
 height = 44.1151
 
-[node name="PlayerBullet" type="RigidBody2D"]
+[node name="PlayerBullet" type="RigidBody2D" groups=[
+"playerBullet",
+]]
 collision_layer = 2
 collision_mask = 5
 gravity_scale = 0.0

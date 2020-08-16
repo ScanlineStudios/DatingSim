@@ -1,30 +1,37 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/miniGames/galaga/player/GalagaShip.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/game bg.png" type="Texture" id=2]
 [ext_resource path="res://scenes/miniGames/galaga/enemies/Enemy0-1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/miniGames/DamageTable.tscn" type="PackedScene" id=4]
 
-[sub_resource type="TileSet" id=1]
-
-[sub_resource type="PhysicsMaterial" id=2]
+[sub_resource type="PhysicsMaterial" id=1]
 bounce = 0.1
 
-[sub_resource type="PhysicsMaterial" id=3]
+[sub_resource type="PhysicsMaterial" id=2]
 
-[sub_resource type="CanvasItemMaterial" id=4]
+[sub_resource type="CanvasItemMaterial" id=3]
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 24, 319 )
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 27.8887, 995.578 )
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=5]
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 6 )
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
 
 [node name="Galaga" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 1 )
-format = 1
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 4000.0
+margin_bottom = 3000.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+stretch_mode = 2
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GalagaShip" parent="." instance=ExtResource( 1 )]
 position = Vector2( 504.344, 504.344 )
@@ -32,21 +39,56 @@ mode = 2
 
 [node name="Enemy0Phys" parent="." instance=ExtResource( 3 )]
 position = Vector2( 468.255, 111.694 )
-physics_material_override = SubResource( 2 )
+physics_material_override = SubResource( 1 )
+
+[node name="Enemy0Phys2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1482.6, 195.826 )
+physics_material_override = SubResource( 1 )
+
+[node name="Enemy0Phys3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1169.89, 440.286 )
+physics_material_override = SubResource( 1 )
+
+[node name="Enemy0Phys4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 261.893, 319.644 )
+physics_material_override = SubResource( 1 )
+
+[node name="Enemy0Phys5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 912.727, 232.336 )
+physics_material_override = SubResource( 1 )
 
 [node name="Walls" type="StaticBody2D" parent="." groups=[
 "wall",
 ]]
 collision_mask = 7
-physics_material_override = SubResource( 3 )
+physics_material_override = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
-material = SubResource( 4 )
+material = SubResource( 3 )
 use_parent_material = true
-position = Vector2( 0, 320 )
-shape = SubResource( 5 )
+position = Vector2( 0, 716 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
-material = SubResource( 7 )
-position = Vector2( 1019.12, 317.755 )
-shape = SubResource( 5 )
+material = SubResource( 6 )
+position = Vector2( 1997.12, 714.755 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+material = SubResource( 6 )
+position = Vector2( 1017, 0 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+material = SubResource( 6 )
+position = Vector2( 1017, 1504 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+zoom = Vector2( 1.95, 2.5 )
+
+[node name="DamageTable" parent="." instance=ExtResource( 4 )]
