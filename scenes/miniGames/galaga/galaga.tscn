@@ -60,6 +60,7 @@ physics_material_override = SubResource( 1 )
 [node name="Walls" type="StaticBody2D" parent="." groups=[
 "wall",
 ]]
+scale = Vector2( 0.9, 0.9 )
 collision_mask = 7
 physics_material_override = SubResource( 2 )
 
@@ -89,6 +90,6 @@ shape = SubResource( 4 )
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
-zoom = Vector2( 1.95, 2.5 )
+zoom = Vector2( 1.75, 2.3 )
 
 [node name="DamageTable" parent="." instance=ExtResource( 4 )]
