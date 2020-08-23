@@ -33,7 +33,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "github-integration" )
+enabled=PoolStringArray( "EXP-System-Dialog", "github-integration" )
 
 [input]
 
