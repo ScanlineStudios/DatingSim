@@ -56,7 +56,7 @@ story = {
 0: 4
 },
 "text": "<speaker>Variable Test: Time</speaker>
-<dialog>Registry initialized at <variable>Time</variable>.</dialog>"
+<dialog>Registry initializeddddddddddddddddd at <variable>Time</variable>.</dialog>"
 },
 4: {
 "links": {

@@ -11,7 +11,6 @@ var _did = 0
 var _nid = 0
 var _final_nid = 0
 var _Story_Reader
-
 # Virtual Methods
 
 func _ready():

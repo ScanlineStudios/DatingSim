@@ -3,10 +3,6 @@
 [ext_resource path="res://scripts/miniGames/galaga/enemies/Enemy0.gd" type="Script" id=1]
 [ext_resource path="res://assets/miniGames/galaga/enemies/spaceBad.png" type="Texture" id=2]
 
-
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 74.7502, 83.05 )
 
