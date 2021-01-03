@@ -1,0 +1,100 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/EXP-System-Dialog/Resource_BakedStory/EXP_BakedStory.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+TYPE = "EXP_Baked_Story"
+story = {
+1: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<start>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Boobie</speaker>
+<dialog>TTTTTTTTTTTTTT ttttttttttttttt TTTTTTTTTTT tttttt test</dialog>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Boobie</speaker>
+<speaker>Boobie</speaker>
+<dialog>test 2</dialog>"
+},
+4: {
+"links": {
+
+},
+"text": "<end>"
+}
+}
+},
+2: {
+"nodes": {
+1: {
+"links": {
+0: 3
+},
+"text": "<start>"
+},
+2: {
+"links": {
+
+},
+"text": "<end>"
+},
+3: {
+"links": {
+0: 4
+},
+"text": "<speaker>Variable Test: Time</speaker>
+<dialog>Registry initialized at <variable>Time</variable>.</dialog>"
+},
+4: {
+"links": {
+0: 2
+},
+"text": "<speaker>Variable Test: OS</speaker>
+<dialog>Your operating system is <variable>SYSTEM</variable>.</dialog>"
+}
+}
+},
+3: {
+"nodes": {
+1: {
+"links": {
+0: 3
+},
+"text": "<start>"
+},
+2: {
+"links": {
+
+},
+"text": "<end>"
+},
+3: {
+"links": {
+0: 2,
+1: 2
+},
+"text": "<speaker>Boobie</speaker>
+<dialog>Hey do you want to chat?</dialog>
+<choiceJSON>{\"Sure! (Play minigame)\" : 0, \"Not now (Go to title menu) : 1\"}</choiceJSON>"
+}
+}
+}
+}
+names = {
+"Test": 1,
+"branchingTest": 3,
+"variableTest": 2
+}

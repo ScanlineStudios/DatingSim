@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 TYPE = "EXP_Story_editor"
 names = {
-"Test": 1
+"Test": 1,
+"branchingTest": 3,
+"variableTest": 2
 }
 story = {
 1: {
@@ -16,7 +18,7 @@ story = {
 "name": "Test",
 "nodes": {
 1: {
-"graph_offset": Vector2( 40, 40 ),
+"graph_offset": Vector2( -160, -160 ),
 "links": {
 0: 2
 },
@@ -56,6 +58,97 @@ story = {
 "rect_size": Vector2( 324, 137 ),
 "slot_amount": 1,
 "text": "<end>",
+"type": "line"
+}
+}
+},
+2: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "testing variables here",
+"name": "variableTest",
+"nodes": {
+1: {
+"graph_offset": Vector2( 40, 40 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( -380, 280 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( -380, -40 ),
+"links": {
+0: 4
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Variable Test: Time</speaker>
+<dialog>Registry initialized at <variable>Time</variable>.</dialog>",
+"type": "line"
+},
+4: {
+"graph_offset": Vector2( -380, 120 ),
+"links": {
+0: 2
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<speaker>Variable Test: OS</speaker>
+<dialog>Your operating system is <variable>SYSTEM</variable>.</dialog>",
+"type": "line"
+}
+}
+},
+3: {
+"available_nid": [  ],
+"groups": [  ],
+"human_readable_description": "testing branching here",
+"name": "branchingTest",
+"nodes": {
+1: {
+"graph_offset": Vector2( -660, 60 ),
+"links": {
+0: 3
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<start>",
+"type": "line"
+},
+2: {
+"graph_offset": Vector2( 460, 80 ),
+"links": {
+
+},
+"rect_size": Vector2( 324, 137 ),
+"slot_amount": 1,
+"text": "<end>",
+"type": "line"
+},
+3: {
+"graph_offset": Vector2( -200, 60 ),
+"links": {
+0: 2,
+1: 2
+},
+"rect_size": Vector2( 462, 209 ),
+"slot_amount": 2,
+"text": "<speaker>Boobie</speaker>
+<dialog>Hey do you want to chat?</dialog>
+<choiceJSON>{\"Sure! (Play minigame)\" : 0, \"Not now (Go to title menu) : 1\"}</choiceJSON>",
 "type": "line"
 }
 }
