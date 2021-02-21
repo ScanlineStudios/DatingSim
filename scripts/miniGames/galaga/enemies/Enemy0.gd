@@ -1,4 +1,4 @@
-extends "res://scripts/miniGames/actorBaseClass.gd"
+extends "res://scripts/miniGames/actorBaseClassKine.gd"
 
 
 var move_direction = Vector2.RIGHT
@@ -6,30 +6,25 @@ var move_direction = Vector2.RIGHT
 
 func _ready():
 	# lock rotation
-	set_mode(MODE_CHARACTER)
+	# set_mode(MODE_CHARACTER)
 	# start movement routine
-	apply_central_impulse(DOWN * move_speed * .1)
+	# apply_central_impulse(DOWN * move_speed * .1)
 	pass
 
 func _physics_process(delta):
-	 
-	
-	#var collision = move_and_collide(move_direction * delta * move_speed)
+	pass
+	# var collision = move_and_collide(DOWN * move_speed * .1 * delta)
 	#if collision:
-#
+	#	print("Collided with: ", collision.collider.name)
+	
+#	for i in get_slide_count():
+#		var c = get_slide_collision(i)
+#		print("Collided with: ", c.collider.name)
+#		_hit(c.get_groups()[0])
+
 #		if collision.get_collider().is_in_group("wall"):
 #			move_direction = move_direction * -1 # .reflect(collision.normal)
 #			move_and_collide(Vector2.DOWN * delta * move_speed * 10)
-#
-	pass 
 
-
-func _on_Enemy0Phys_body_shape_entered(body_id, body, body_shape, local_shape):
-	# look up dmg in dmg table and subtract from hp
-	
-	pass
-
-
-func _on_Enemy0Phys_body_entered(body):
-	_hit(body.get_groups()[0])
-	
+func _on_Hurtbox_area_entered(area):
+	_hit(area.get_groups()[0])

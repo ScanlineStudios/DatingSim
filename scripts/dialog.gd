@@ -3,6 +3,7 @@ extends Node
 onready var _Body_AnimationPlayer = find_node("Body_AnimationPlayer")
 onready var _Body_Label = find_node("Body_Label")
 onready var _Dialog_Box = find_node("Dialog_Box")
+onready var _Registry = find_node("Simulated_Registry")
 onready var _Speaker_Label = find_node("Speaker_Label")
 onready var _Prompt_NinePatchRect = find_node("Prompt_NinePatchRect")
 
@@ -10,20 +11,19 @@ var _did = 0
 var _nid = 0
 var _final_nid = 0
 var _Story_Reader
-
 # Virtual Methods
 
 func _ready():
 	var Story_Reader_Class = load("res://addons/EXP-System-Dialog/Reference_StoryReader/EXP_StoryReader.gd")
 	_Story_Reader = Story_Reader_Class.new()
 	
-	var story = load("res://bakedTest.tres")
+	var story = load("res://writing/baked/bakedTestStory.tres")
 	_Story_Reader.read(story)
 	
 	_Dialog_Box.visible = false
 	_Prompt_NinePatchRect.visible = false
 	
-	play_dialog("Test")
+	play_dialog("variableTest")
 
 func _input(event):
 	if event is InputEventKey:
@@ -55,6 +55,20 @@ func play_dialog(record_name : String):
 	
 # Private
 
+func _inject_variables(text : String) -> String:
+	var variable_count = text.count("<variable>")
+	
+	for i in range(variable_count):
+		var variable_name = _get_tagged_text("variable", text)
+		var variable_value = _Registry.lookup(variable_name)
+		var start_index = text.find("<variable>")
+		var end_index = text.find("</variable>") + "</variable>".length()
+		var substr_length = end_index - start_index
+		text.erase(start_index, substr_length)
+		text = text.insert(start_index, str(variable_value))
+		
+	return text
+
 func _is_playing() -> bool:
 	return _Dialog_Box.visible 
 
@@ -77,6 +91,7 @@ func _get_tagged_text(tag : String, text : String) -> String:
 
 func _play_node():
 	var text = _Story_Reader.get_text(_did, _nid)
+	text = _inject_variables(text)
 	var speaker = _get_tagged_text("speaker", text)
 	var dialog = _get_tagged_text("dialog", text)
 	

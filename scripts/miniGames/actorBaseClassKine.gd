@@ -1,4 +1,6 @@
-extends PhysicsBody2D
+extends KinematicBody2D
+
+# Builds on actor base class. Functionality for Kinempatic actors 
 
 # This is the base actor script that all 2d enteties that move or do actions will 
 # inherit from. this includes players and enemies 
@@ -12,14 +14,13 @@ const FORWARD = UP
 
 var damageTable
 var explosion = preload("res://scenes/miniGames/galaga/Explosion0.tscn")
-export var move_speed = 250 # default move speed
+export var move_speed = 550 #250 # default move speed
 export var hp = 5 # default hit point total
 # what this entity is targeting. ie, looking at, moving twards, attacking ect 
 var target 
 
 func _ready():
 	# default to no gravity
-	#set_gravity_scale(0)
 	# find damage table
 	damageTable = get_tree().get_root().get_node("/root/Galaga/DamageTable")
 	if !damageTable:
