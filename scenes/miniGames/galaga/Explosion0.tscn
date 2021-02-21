@@ -3,6 +3,8 @@
 [ext_resource path="res://scripts/miniGames/galaga/player/explosion0.gd" type="Script" id=1]
 [ext_resource path="res://assets/miniGames/galaga/player/explosion.png" type="Texture" id=2]
 
+
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ],

@@ -11,7 +11,7 @@ var can_fire = true
 var velocity = Vector2()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	
 	if Input.is_action_pressed("fire") and can_fire:
 		var bullet_instance = bullet.instance()
@@ -38,7 +38,7 @@ func get_input():
 	velocity = velocity.normalized() * move_speed
 	
 	#apply_central_impulse(direction * move_speed * delta)
-func _physics_process(delta):
+func _physics_process(_delta):
 	get_input()
 	velocity = move_and_slide(velocity)
 	

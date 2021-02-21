@@ -21,7 +21,6 @@ var target
 
 func _ready():
 	# default to no gravity
-	print("Kin")
 	# find damage table
 	damageTable = get_tree().get_root().get_node("/root/Galaga/DamageTable")
 	if !damageTable:

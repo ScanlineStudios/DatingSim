@@ -20,6 +20,7 @@ extents = Vector2( 71.6604, 71.5455 )
 [node name="Enemy0Kin" type="KinematicBody2D" groups=[
 "enemy",
 ]]
+scale = Vector2( 0.5, 0.5 )
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 2 )
@@ -29,20 +30,25 @@ position = Vector2( 2.118, 0 )
 scale = Vector2( 0.06, 0.06 )
 frames = SubResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
+"enemy",
+]]
 position = Vector2( 2.38419e-07, 0 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 2 )
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 0, 90 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." groups=[
+"enemy",
+]]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" groups=[
+"enemy",
+]]
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 3 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

@@ -22,9 +22,9 @@ font_data = ExtResource( 2 )
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource( 1 )
 anchor_right = 100.0
-margin_left = -246.0
-margin_right = 10620.0
-margin_bottom = 8852.0
+margin_left = -2.0
+margin_right = 10311.0
+margin_bottom = 6054.0
 rect_scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 4 )
 stretch_mode = 2
@@ -32,37 +32,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="margin" type="MarginContainer" parent="."]
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 560.0
-margin_bottom = 680.0
+[node name="margin" type="MarginContainer" parent="TextureRect"]
+margin_left = 43.0
+margin_top = 384.0
+margin_right = 1062.0
+margin_bottom = 952.0
+rect_scale = Vector2( 10, 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="margin"]
-margin_right = 520.0
-margin_bottom = 640.0
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/margin"]
+margin_right = 1019.0
+margin_bottom = 568.0
 
-[node name="topBanner" type="HBoxContainer" parent="margin/VBoxContainer"]
-margin_right = 520.0
+[node name="topBanner" type="HBoxContainer" parent="TextureRect/margin/VBoxContainer"]
+margin_right = 1019.0
 
-[node name="CenterContainer" type="CenterContainer" parent="margin/VBoxContainer/topBanner"]
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect/margin/VBoxContainer/topBanner"]
 
-[node name="TextureRect" type="TextureRect" parent="margin/VBoxContainer/topBanner/CenterContainer"]
+[node name="TextureRect" type="TextureRect" parent="TextureRect/margin/VBoxContainer/topBanner/CenterContainer"]
 
-[node name="titleContainer" type="CenterContainer" parent="margin/VBoxContainer"]
+[node name="titleContainer" type="CenterContainer" parent="TextureRect/margin/VBoxContainer"]
 margin_top = 4.0
-margin_right = 520.0
+margin_right = 1019.0
 margin_bottom = 77.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="margin/VBoxContainer/titleContainer"]
-margin_left = 44.0
-margin_right = 476.0
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/margin/VBoxContainer/titleContainer"]
+margin_left = 293.0
+margin_right = 725.0
 margin_bottom = 73.0
 
-[node name="Label" type="Label" parent="margin/VBoxContainer/titleContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="TextureRect/margin/VBoxContainer/titleContainer/VBoxContainer"]
 margin_right = 432.0
 margin_bottom = 49.0
 custom_fonts/font = SubResource( 2 )
@@ -70,7 +71,7 @@ text = "Unnamed Dating Sim"
 align = 1
 max_lines_visible = 100
 
-[node name="Label2" type="Label" parent="margin/VBoxContainer/titleContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="TextureRect/margin/VBoxContainer/titleContainer/VBoxContainer"]
 margin_top = 53.0
 margin_right = 432.0
 margin_bottom = 73.0
@@ -78,23 +79,21 @@ custom_fonts/font = SubResource( 3 )
 text = "v0.1 - early dev"
 align = 2
 
-[node name="VBoxButtonsContainer" type="VBoxContainer" parent="margin/VBoxContainer"]
-margin_left = 229.0
-margin_top = 347.0
-margin_right = 291.0
-margin_bottom = 373.0
+[node name="VBoxButtonsContainer" type="VBoxContainer" parent="TextureRect/margin/VBoxContainer"]
+margin_left = 478.0
+margin_top = 311.0
+margin_right = 540.0
+margin_bottom = 337.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="buttonStart" type="Button" parent="margin/VBoxContainer/VBoxButtonsContainer"]
+[node name="buttonStart" type="Button" parent="TextureRect/margin/VBoxContainer/VBoxButtonsContainer"]
 margin_right = 62.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 4 )
 text = "START"
 script = ExtResource( 3 )
-
-[node name="Camera2D" type="Camera2D" parent="margin/VBoxContainer/VBoxButtonsContainer/buttonStart"]
-offset = Vector2( 30, 0 )
-current = true
-zoom = Vector2( 1, 1.2 )
-[connection signal="pressed" from="margin/VBoxContainer/VBoxButtonsContainer/buttonStart" to="margin/VBoxContainer/VBoxButtonsContainer/buttonStart" method="_on_buttonStart_pressed"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TextureRect/margin/VBoxContainer/VBoxButtonsContainer/buttonStart" to="TextureRect/margin/VBoxContainer/VBoxButtonsContainer/buttonStart" method="_on_buttonStart_pressed"]

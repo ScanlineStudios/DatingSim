@@ -12,10 +12,10 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	
-	var collision = move_and_collide(DOWN * move_speed * .1 * delta)
-	if collision:
-		print("Collided with: ", collision.collider.name)
+	pass
+	# var collision = move_and_collide(DOWN * move_speed * .1 * delta)
+	#if collision:
+	#	print("Collided with: ", collision.collider.name)
 	
 #	for i in get_slide_count():
 #		var c = get_slide_collision(i)
