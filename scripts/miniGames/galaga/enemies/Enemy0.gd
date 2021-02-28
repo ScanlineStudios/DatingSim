@@ -8,12 +8,19 @@ var velocity = Vector2()
 var thread
 var move_direction = Vector2.RIGHT
 
+signal score_changed
 
 func _ready():
-	# TODO: begin pseudo random movement routine
+	# begin pseudo random movement routine
 	randomize()
 	thread = Thread.new()
 	thread.start(self, "_pick_points_routine", 80.0)
+	
+	var label = get_tree().get_root().get_node("Galaga/GUI/MarginContainer/HBoxContainer/VBoxContainer/Score")
+	self.connect("score_changed", label, "update_score")
+	# overwrite default score value 
+	score_value = 10
+	
 
 func _physics_process(delta):
 	velocity = position.direction_to(target_position) * speed * delta

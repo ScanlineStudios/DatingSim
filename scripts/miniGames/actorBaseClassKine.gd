@@ -16,6 +16,7 @@ var damageTable
 var explosion = preload("res://scenes/miniGames/galaga/Explosion0.tscn")
 export var move_speed = 550 #250 # default move speed
 export var hp = 5 # default hit point total
+var score_value = 0
 # what this entity is targeting. ie, looking at, moving twards, attacking ect 
 var target 
 
@@ -28,6 +29,8 @@ func _ready():
 	pass
 
 func _die():
+	# always emmit signal? may not always be connected to anything
+	emit_signal("score_changed", score_value) 
 	var explosion_instance = explosion.instance()
 	explosion_instance.position = get_global_position()
 	get_tree().get_root().add_child(explosion_instance)
