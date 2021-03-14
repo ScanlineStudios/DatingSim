@@ -12,14 +12,14 @@ var thread
 func _ready():
 	# Start spawn process
 	thread = Thread.new()
-	thread.start(self, "_spawn_tread",spawn_scene)
+	thread.start(self, "_spawn_thread",spawn_scene)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
-func _spawn_tread(_spawn_scene := spawn_scene) -> void:
+func _spawn_thread(_spawn_scene := spawn_scene) -> void:
 	# spawn num_to_spawn, waiting spawn_cooldown seconds after each spawn
 	
 	for i in range(num_to_spawn):
