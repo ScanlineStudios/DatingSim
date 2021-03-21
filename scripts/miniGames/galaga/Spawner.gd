@@ -24,14 +24,16 @@ func _spawn_thread(_spawn_scene := spawn_scene) -> void:
 	
 	for i in range(num_to_spawn):
 		var spawn := _spawn_scene.instance() as Node2D
-
+		# Move the new instance to the Spawner2D position
+		spawn.global_position = global_position
+		# Face enemy downward
+		spawn.global_rotation_degrees = 0
 		add_child(spawn)
 
 		# Prevents the Spawner2D transform from affecting the new instance
 		spawn.set_as_toplevel(true)
 
-		# Move the new instance to the Spawner2D position
-		spawn.global_position = global_position
+		
 		# cooldown 
 		var t = Timer.new()
 		t.set_wait_time(spawn_cooldown)

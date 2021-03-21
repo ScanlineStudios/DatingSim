@@ -2,7 +2,6 @@ extends "res://scripts/miniGames/actorBaseClassKine.gd"
 
 ## This script handels the movement and spawning of individual enemy ships
 export var ships_in_squad = 5
-export var squad_speed = 200
 export var rotate_speed = 0
 export var ship_dist_from_center = 40
 
@@ -47,7 +46,10 @@ func radial_spawn(num_to_spawn : int, dist_from_center: int):
 	var coordinates = radial_coordinates_to_spawn(num_to_spawn, dist_from_center)
 	for coordinate in coordinates: 
 		var spawn := spawn_scene.instance() as Node2D
+		spawn.global_position = global_position + coordinate
+		# point enemy down
+		# spawn.global_rotation_degrees = 180
 		add_child(spawn)
 		#spawn.set_as_toplevel(true)
-		spawn.global_position = global_position + coordinate
+		
 	

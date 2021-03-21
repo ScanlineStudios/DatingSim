@@ -9,7 +9,9 @@ func _ready():
 
 
 func _physics_process(delta):
-	move_and_collide(FORWARD * move_speed * delta)
+	
+	move_and_collide(-transform.y * move_speed * delta)
+	print(rotation_degrees)
 
 
 func _on_Hitbox_area_entered(area):

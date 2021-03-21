@@ -21,11 +21,14 @@ extents = Vector2( 71.6604, 71.5455 )
 [node name="Enemy0Kin" type="KinematicBody2D" groups=[
 "enemy",
 ]]
+rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 2 )
+move_speed = 100
 hp = 2
+bullet_speed = 800
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 2.118, 0 )
@@ -38,8 +41,8 @@ frames = SubResource( 1 )
 position = Vector2( 2.38419e-07, 0 )
 shape = SubResource( 2 )
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 0, 90 )
+[node name="FirePoint" type="Node2D" parent="."]
+position = Vector2( 82.0553, 16.4324 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Hurtbox" type="Area2D" parent="." groups=[

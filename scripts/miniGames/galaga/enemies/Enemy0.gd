@@ -1,17 +1,16 @@
 extends "res://scripts/miniGames/actorBaseClassKine.gd"
 
-export (int) var speed = 200
+# export (int) var speed = 200
 export (float) var fire_cooldown = 5.0
 export (float) var move_cooldown = 1.0
 export (float) var move_spread = 80.0
+export (int) var bullet_speed = 10
 
 var target_position = Vector2(0,0)
 var velocity = Vector2()
 var move_direction = Vector2.RIGHT
 
-# TODO: consider threads array. then stop all threads on death?
-var thread
-var fire_thred
+var enemy_bullet = preload("res://scenes/miniGames/galaga/enemies/EnemyBullet.tscn")
 
 signal score_changed
 
@@ -46,7 +45,7 @@ func _ready():
 	
 
 func _physics_process(delta):
-	velocity = position.direction_to(target_position) * speed * delta
+	velocity = position.direction_to(target_position) * move_speed * delta
 	# look_at(target)
 	if position.distance_to(target_position) > 5:
 		move_and_collide(velocity)
@@ -63,6 +62,15 @@ func _post_hit():
 # thread that shoots then sleeps for fire_cooldown seconds
 func _fire_routine(fire_cooldown: float = 5.0) -> void:
 	print("fire")
+	var bullet_instance = enemy_bullet.instance()
+	bullet_instance.position = $FirePoint.get_global_position()
+	bullet_instance.rotation_degrees = rotation_degrees
+	bullet_instance.move_speed = bullet_speed
+	# bullet_instance.apply_impulse(Vector2(),FORWARD.rotated(rotation)*bullet_speed)
+	get_tree().get_root().add_child(bullet_instance)
+	#can_fire = false
+	#yield(get_tree().create_timer(fire_rate),"timeout")
+	#can_fire = true
 	pass
 	
 
