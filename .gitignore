@@ -1,4 +1,8 @@
 
+# Hide our assets
+assets/*
+.assets.back
+
 # Godot-specific ignores
 .import/
 export.cfg
