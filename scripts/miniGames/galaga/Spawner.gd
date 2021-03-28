@@ -12,26 +12,28 @@ var thread
 func _ready():
 	# Start spawn process
 	thread = Thread.new()
-	thread.start(self, "_spawn_tread",spawn_scene)
+	thread.start(self, "_spawn_thread",spawn_scene)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
-func _spawn_tread(_spawn_scene := spawn_scene) -> void:
+func _spawn_thread(_spawn_scene := spawn_scene) -> void:
 	# spawn num_to_spawn, waiting spawn_cooldown seconds after each spawn
 	
 	for i in range(num_to_spawn):
 		var spawn := _spawn_scene.instance() as Node2D
-
+		# Move the new instance to the Spawner2D position
+		spawn.global_position = global_position
+		# Face enemy downward
+		spawn.global_rotation_degrees = 0
 		add_child(spawn)
 
 		# Prevents the Spawner2D transform from affecting the new instance
 		spawn.set_as_toplevel(true)
 
-		# Move the new instance to the Spawner2D position
-		spawn.global_position = global_position
+		
 		# cooldown 
 		var t = Timer.new()
 		t.set_wait_time(spawn_cooldown)

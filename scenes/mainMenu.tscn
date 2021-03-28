@@ -23,8 +23,8 @@ font_data = ExtResource( 2 )
 material = SubResource( 1 )
 anchor_right = 100.0
 margin_left = -2.0
-margin_right = 10311.0
-margin_bottom = 6054.0
+margin_right = 10962.0
+margin_bottom = 7341.0
 rect_scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 4 )
 stretch_mode = 2
@@ -35,19 +35,19 @@ __meta__ = {
 [node name="margin" type="MarginContainer" parent="TextureRect"]
 margin_left = 43.0
 margin_top = 384.0
-margin_right = 1062.0
-margin_bottom = 952.0
+margin_right = 1119.0
+margin_bottom = 1065.0
 rect_scale = Vector2( 10, 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/margin"]
-margin_right = 1019.0
-margin_bottom = 568.0
+margin_right = 1076.0
+margin_bottom = 681.0
 
 [node name="topBanner" type="HBoxContainer" parent="TextureRect/margin/VBoxContainer"]
-margin_right = 1019.0
+margin_right = 1076.0
 
 [node name="CenterContainer" type="CenterContainer" parent="TextureRect/margin/VBoxContainer/topBanner"]
 
@@ -55,12 +55,12 @@ margin_right = 1019.0
 
 [node name="titleContainer" type="CenterContainer" parent="TextureRect/margin/VBoxContainer"]
 margin_top = 4.0
-margin_right = 1019.0
+margin_right = 1076.0
 margin_bottom = 77.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/margin/VBoxContainer/titleContainer"]
-margin_left = 293.0
-margin_right = 725.0
+margin_left = 322.0
+margin_right = 754.0
 margin_bottom = 73.0
 
 [node name="Label" type="Label" parent="TextureRect/margin/VBoxContainer/titleContainer/VBoxContainer"]
@@ -80,10 +80,10 @@ text = "v0.1 - early dev"
 align = 2
 
 [node name="VBoxButtonsContainer" type="VBoxContainer" parent="TextureRect/margin/VBoxContainer"]
-margin_left = 478.0
-margin_top = 311.0
-margin_right = 540.0
-margin_bottom = 337.0
+margin_left = 507.0
+margin_top = 368.0
+margin_right = 569.0
+margin_bottom = 394.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
