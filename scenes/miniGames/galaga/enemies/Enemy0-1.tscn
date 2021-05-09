@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/miniGames/galaga/enemies/enemy ship.png" type="Texture" id=1]
 [ext_resource path="res://scripts/miniGames/galaga/enemies/Enemy0.gd" type="Script" id=2]
-[ext_resource path="res://scenes/miniGames/HealthDisplay.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -21,18 +20,19 @@ extents = Vector2( 71.6604, 71.5455 )
 [node name="Enemy0Kin" type="KinematicBody2D" groups=[
 "enemy",
 ]]
-rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 2 )
-move_speed = 100
+move_speed = 20
 hp = 2
+move_spread = 100.0
 bullet_speed = 800
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 2.118, 0 )
-scale = Vector2( 0.06, 0.06 )
+position = Vector2( -2.209, 0 )
+rotation = 3.14159
+scale = Vector2( 0.0499573, 0.06 )
 frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
@@ -42,7 +42,7 @@ position = Vector2( 2.38419e-07, 0 )
 shape = SubResource( 2 )
 
 [node name="FirePoint" type="Node2D" parent="."]
-position = Vector2( 82.0553, 16.4324 )
+position = Vector2( 0, -44 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Hurtbox" type="Area2D" parent="." groups=[
@@ -57,7 +57,4 @@ collision_mask = 2
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 3 )
 
-[node name="HealthDisplay" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 42 )
-scale = Vector2( 0.4, 0.3 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

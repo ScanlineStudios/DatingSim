@@ -46,9 +46,9 @@ func radial_spawn(num_to_spawn : int, dist_from_center: int):
 	var coordinates = radial_coordinates_to_spawn(num_to_spawn, dist_from_center)
 	for coordinate in coordinates: 
 		var spawn := spawn_scene.instance() as Node2D
-		spawn.global_position = global_position + coordinate
+		#spawn.global_position += coordinate
 		# point enemy down
-		# spawn.global_rotation_degrees = 180
+		#spawn.global_rotation_degrees = global_rotation_degrees
 		add_child(spawn)
 		#spawn.set_as_toplevel(true)
 		

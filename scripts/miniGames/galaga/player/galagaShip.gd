@@ -18,7 +18,7 @@ func _process(_delta):
 		bullet_instance.position = $FirePoint.get_global_position()
 		bullet_instance.rotation_degrees = rotation_degrees
 		bullet_instance.move_speed = bullet_speed
-		# bullet_instance.apply_impulse(Vector2(),FORWARD.rotated(rotation)*bullet_speed)
+		
 		get_tree().get_root().add_child(bullet_instance)
 		can_fire = false
 		yield(get_tree().create_timer(fire_rate),"timeout")

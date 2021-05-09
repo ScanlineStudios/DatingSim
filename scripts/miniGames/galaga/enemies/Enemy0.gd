@@ -14,11 +14,11 @@ var enemy_bullet = preload("res://scenes/miniGames/galaga/enemies/EnemyBullet.ts
 
 signal score_changed
 
-onready var health_display = $HealthDisplay
+#onready var health_display = $HealthDisplay
 
 func _ready():
 	max_hp = hp
-	health_display.set_max_value(max_hp)
+	#health_display.set_max_value(max_hp)
 	# begin pseudo random movement routine
 	randomize()
 	var pick_points_timer = Timer.new()
@@ -28,7 +28,7 @@ func _ready():
 	add_child(pick_points_timer)
 	pick_points_timer.start()
 	
-	# TODO: begine weapon firing routine
+	# begine weapon firing routine
 	var fire_timer = Timer.new()
 	fire_timer.set_wait_time(fire_cooldown + randf()*fire_cooldown)
 	fire_timer.set_one_shot(false)
@@ -42,13 +42,11 @@ func _ready():
 	self.connect("score_changed", label, "update_score")
 	# overwrite default score value 
 	score_value = 10
-	
 
 func _physics_process(delta):
 	velocity = position.direction_to(target_position) * move_speed * delta
-	# look_at(target)
-	if position.distance_to(target_position) > 5:
-		move_and_collide(velocity)
+	
+	move_and_collide(velocity)
 
 
 func _on_Hurtbox_area_entered(area):
@@ -56,7 +54,7 @@ func _on_Hurtbox_area_entered(area):
 
 # override defult post hit function
 func _post_hit():
-	health_display.update_healthbar(hp)
+	#health_display.update_healthbar(hp)
 	pass
 
 # thread that shoots then sleeps for fire_cooldown seconds
@@ -64,9 +62,9 @@ func _fire_routine(fire_cooldown: float = 5.0) -> void:
 	print("fire")
 	var bullet_instance = enemy_bullet.instance()
 	bullet_instance.position = $FirePoint.get_global_position()
-	bullet_instance.rotation_degrees = rotation_degrees
+	bullet_instance.global_rotation_degrees = global_rotation_degrees
 	bullet_instance.move_speed = bullet_speed
-	# bullet_instance.apply_impulse(Vector2(),FORWARD.rotated(rotation)*bullet_speed)
+	
 	get_tree().get_root().add_child(bullet_instance)
 	#can_fire = false
 	#yield(get_tree().create_timer(fire_rate),"timeout")
@@ -80,6 +78,7 @@ func _pick_points_routine(radius: float = 30.0) -> void:
 	var r = sqrt(rand_range(0.0, 1.0)) * radius
 	var t = rand_range(0.0, 1.0) * TAU
 	target_position = Vector2(r * cos(t), r * sin(t))
+	print_debug("moving to: ", target_position )
 	
 
 # sleep for sleep_time seconds
