@@ -1,20 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/miniGames/galaga/enemies/GalagaSquad.gd" type="Script" id=1]
 [ext_resource path="res://scenes/miniGames/galaga/enemies/Enemy0-1.tscn" type="PackedScene" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
 
 [node name="GalagaSquad" type="KinematicBody2D" groups=[
 "enemy",
 ]]
-rotation = 1.5708
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 1 )
-move_speed = 0
+move_speed = 300
 hp = 1
 ship_dist_from_center = 14
 spawn_scene = ExtResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 3 )

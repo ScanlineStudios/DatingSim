@@ -20,11 +20,12 @@ extents = Vector2( 71.6604, 71.5455 )
 [node name="Enemy0Kin" type="KinematicBody2D" groups=[
 "enemy",
 ]]
+rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 2 )
-move_speed = 20
+move_speed = 50
 hp = 2
 move_spread = 100.0
 bullet_speed = 800

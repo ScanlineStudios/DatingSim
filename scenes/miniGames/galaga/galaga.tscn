@@ -74,8 +74,7 @@ shape = SubResource( 3 )
 [node name="DamageTable" parent="." instance=ExtResource( 4 )]
 
 [node name="Spawner" type="Position2D" parent="."]
-position = Vector2( 545.326, 218.801 )
-rotation = 3.14159
+position = Vector2( 159.246, 135.362 )
 script = ExtResource( 5 )
 spawn_scene = ExtResource( 3 )
 num_to_spawn = 20

@@ -59,7 +59,7 @@ func _post_hit():
 
 # thread that shoots then sleeps for fire_cooldown seconds
 func _fire_routine(fire_cooldown: float = 5.0) -> void:
-	print("fire")
+	
 	var bullet_instance = enemy_bullet.instance()
 	bullet_instance.position = $FirePoint.get_global_position()
 	bullet_instance.global_rotation_degrees = global_rotation_degrees
@@ -78,7 +78,7 @@ func _pick_points_routine(radius: float = 30.0) -> void:
 	var r = sqrt(rand_range(0.0, 1.0)) * radius
 	var t = rand_range(0.0, 1.0) * TAU
 	target_position = Vector2(r * cos(t), r * sin(t))
-	print_debug("moving to: ", target_position )
+	
 	
 
 # sleep for sleep_time seconds

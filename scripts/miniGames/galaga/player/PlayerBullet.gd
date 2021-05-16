@@ -5,7 +5,6 @@ extends "res://scripts/miniGames/actorBaseClassKine.gd"
 func _ready():
 	# TODO: start self destruct timer
 	# TODO: Orient in given direction?
-	print_debug(rotation_degrees)
 	pass 
 
 
