@@ -1,12 +1,15 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/miniGames/galaga/player/GalagaShip.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/game bg.png" type="Texture" id=2]
 [ext_resource path="res://scenes/miniGames/galaga/enemies/GalagaSquad.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/miniGames/DamageTable.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/miniGames/galaga/Spawner.gd" type="Script" id=5]
 [ext_resource path="res://assets/fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://scripts/miniGames/galaga/Score.gd" type="Script" id=7]
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/game bg.png-fe002bcb5d01994e353f08666c467144.stex"
 
 [sub_resource type="PhysicsMaterial" id=1]
 
@@ -17,7 +20,7 @@ extents = Vector2( 27.8887, 995.578 )
 
 [sub_resource type="Shader" id=4]
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=7]
 shader = SubResource( 4 )
 
 [sub_resource type="DynamicFont" id=6]
@@ -30,7 +33,7 @@ font_data = ExtResource( 6 )
 margin_right = 4000.0
 margin_bottom = 3606.0
 rect_scale = Vector2( 0.3, 0.2 )
-texture = ExtResource( 2 )
+texture = SubResource( 5 )
 stretch_mode = 2
 flip_v = true
 __meta__ = {
@@ -55,18 +58,18 @@ position = Vector2( -28.0299, 721.833 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
-material = SubResource( 5 )
+material = SubResource( 7 )
 position = Vector2( 1229.01, 698.779 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
-material = SubResource( 5 )
+material = SubResource( 7 )
 position = Vector2( 980.002, -26.4268 )
 rotation = 1.5708
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
-material = SubResource( 5 )
+material = SubResource( 7 )
 position = Vector2( 807.799, 826.356 )
 rotation = 1.5708
 shape = SubResource( 3 )
@@ -74,7 +77,7 @@ shape = SubResource( 3 )
 [node name="DamageTable" parent="." instance=ExtResource( 4 )]
 
 [node name="Spawner" type="Position2D" parent="."]
-position = Vector2( 159.246, 135.362 )
+position = Vector2( -125.011, 92.9356 )
 script = ExtResource( 5 )
 spawn_scene = ExtResource( 3 )
 num_to_spawn = 20

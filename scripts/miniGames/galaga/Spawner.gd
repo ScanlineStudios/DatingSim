@@ -22,7 +22,7 @@ func _ready():
 func _spawn_thread(_spawn_scene := spawn_scene) -> void:
 	# spawn num_to_spawn, waiting spawn_cooldown seconds after each spawn
 	
-	for i in range(num_to_spawn):
+	for _i in range(num_to_spawn):
 		var spawn := _spawn_scene.instance() as Node2D
 		# Move the new instance to the Spawner2D position
 		spawn.global_position = global_position

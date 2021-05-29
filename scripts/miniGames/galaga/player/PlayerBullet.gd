@@ -9,15 +9,13 @@ func _ready():
 
 
 func _physics_process(delta):
-	
 	move_and_collide(-transform.y * move_speed * delta)
 
 
 
-func _on_Hitbox_area_entered(area):
-	# if !body.is_in_group("player"):
+func _on_Hitbox_area_entered(_area):
 	# DEBUG
-	print_debug(area.get_groups()[0])
+	# print_debug(area.get_groups()[0])
 	var explosion_instance = explosion.instance()
 	explosion_instance.position = get_global_position()
 	get_tree().get_root().add_child(explosion_instance)

@@ -9,7 +9,7 @@
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 1 )
-move_speed = 300
+move_speed = 500
 hp = 1
 ship_dist_from_center = 14
 spawn_scene = ExtResource( 2 )

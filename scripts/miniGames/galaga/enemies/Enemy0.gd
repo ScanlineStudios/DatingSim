@@ -58,7 +58,7 @@ func _post_hit():
 	pass
 
 # thread that shoots then sleeps for fire_cooldown seconds
-func _fire_routine(fire_cooldown: float = 5.0) -> void:
+func _fire_routine(_fire_cooldown: float = 5.0) -> void:
 	
 	var bullet_instance = enemy_bullet.instance()
 	bullet_instance.position = $FirePoint.get_global_position()

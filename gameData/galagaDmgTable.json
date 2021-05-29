@@ -1,4 +1,6 @@
 {
 	"player": 1,
 	"playerBullet": 1,
+	"enemyBullet": 1,
+	"enemy": 1,
 }
