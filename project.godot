@@ -10,12 +10,12 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
-
 }
 
 [application]
 
-config/name="ArcadeGames"
+config/name="DatingSim"
+config/description="Al's Starlight Diner is a sci-fi romance and narrative driven game set in the near future. "
 run/main_scene="res://scenes/mainMenu.tscn"
 config/icon="res://icon.png"
 
@@ -68,9 +68,10 @@ fire={
 
 2d_physics/layer_1="walls"
 2d_physics/layer_2="player"
-2d_physics/layer_3="enemies"
+2d_physics/layer_3="enemy"
 2d_physics/layer_4="projectile"
 
 [rendering]
 
 environment/default_environment="res://default_env.tres"
+threads/description="Al's Starlight "

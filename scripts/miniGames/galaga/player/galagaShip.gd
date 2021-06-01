@@ -10,22 +10,23 @@ var can_fire = true
 
 var velocity = Vector2()
 
+onready var health_display = $HealthDisplay
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	
 	if Input.is_action_pressed("fire") and can_fire:
 		var bullet_instance = bullet.instance()
 		bullet_instance.position = $FirePoint.get_global_position()
 		bullet_instance.rotation_degrees = rotation_degrees
 		bullet_instance.move_speed = bullet_speed
-		# bullet_instance.apply_impulse(Vector2(),FORWARD.rotated(rotation)*bullet_speed)
+		
 		get_tree().get_root().add_child(bullet_instance)
 		can_fire = false
 		yield(get_tree().create_timer(fire_rate),"timeout")
 		can_fire = true
-		
-func get_input():
 
+
+func get_input():
 	velocity = Vector2()
 	if Input.is_action_pressed("move_up"):
 		velocity += UP
@@ -37,15 +38,23 @@ func get_input():
 		velocity += RIGHT
 	velocity = velocity.normalized() * move_speed
 	
-	#apply_central_impulse(direction * move_speed * delta)
+	
 func _physics_process(_delta):
 	get_input()
 	velocity = move_and_slide(velocity)
+
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# lock rotation 
-	print("ship")
+	max_hp = hp
+	health_display.set_max_value(max_hp)
+	print("Player Ship Ready")
 	#set_mode(MODE_CHARACTER) 
+
+
+func _on_Hurtbox_area_entered(area):
+	_hit(area.get_groups()[0])
 	
 
+func _post_hit():
+	health_display.update_healthbar(hp)

@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/unispace/unispace rg.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/buttonStart.gd" type="Script" id=3]
-[ext_resource path="res://assets/game bg.png" type="Texture" id=4]
+[ext_resource path="res://assets/IMG_1178.PNG" type="Texture" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -27,7 +27,7 @@ margin_right = 10962.0
 margin_bottom = 7341.0
 rect_scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 4 )
-stretch_mode = 2
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -96,4 +96,5 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="TextureRect/margin/VBoxContainer/VBoxButtonsContainer/buttonStart" to="TextureRect/margin/VBoxContainer/VBoxButtonsContainer/buttonStart" method="_on_buttonStart_pressed"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/miniGames/galaga/player/PlayerBullet.gd" type="Script" id=1]
-[ext_resource path="res://assets/miniGames/galaga/player/laser.png" type="Texture" id=2]
+[ext_resource path="res://assets/miniGames/galaga/enemies/enemy laser.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.13338
@@ -16,6 +16,7 @@ height = 27.0901
 collision_layer = 4
 collision_mask = 2147483650
 script = ExtResource( 1 )
+move_speed = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
 "enemyBullet",
@@ -27,6 +28,9 @@ shape = SubResource( 1 )
 ]]
 rotation = 1.5708
 scale = Vector2( 0.04, 0.15 )
+
+[node name="enemy laser" type="Sprite" parent="Sprite"]
+position = Vector2( 0.000305176, 20 )
 texture = ExtResource( 2 )
 
 [node name="Hitbox" type="Area2D" parent="." groups=[
@@ -39,4 +43,5 @@ collision_mask = 2
 "enemyBullet",
 ]]
 shape = SubResource( 2 )
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
