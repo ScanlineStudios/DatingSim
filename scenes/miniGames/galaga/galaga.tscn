@@ -7,23 +7,23 @@
 [ext_resource path="res://assets/fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://scripts/miniGames/galaga/Score.gd" type="Script" id=7]
 
-[sub_resource type="StreamTexture" id=5]
+[sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/game bg.png-fe002bcb5d01994e353f08666c467144.stex"
 
-[sub_resource type="PhysicsMaterial" id=1]
+[sub_resource type="PhysicsMaterial" id=2]
 
-[sub_resource type="CanvasItemMaterial" id=2]
+[sub_resource type="CanvasItemMaterial" id=3]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 27.8887, 995.578 )
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=5]
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 size = 32
 font_data = ExtResource( 6 )
 
@@ -33,7 +33,7 @@ font_data = ExtResource( 6 )
 margin_right = 4000.0
 margin_bottom = 3606.0
 rect_scale = Vector2( 0.3, 0.2 )
-texture = SubResource( 5 )
+texture = SubResource( 1 )
 stretch_mode = 2
 flip_v = true
 __meta__ = {
@@ -49,30 +49,30 @@ scale = Vector2( 0.5, 0.5 )
 ]]
 scale = Vector2( 0.9, 0.9 )
 collision_mask = 2
-physics_material_override = SubResource( 1 )
+physics_material_override = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
-material = SubResource( 2 )
+material = SubResource( 3 )
 use_parent_material = true
 position = Vector2( -28.0299, 721.833 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
-material = SubResource( 7 )
+material = SubResource( 6 )
 position = Vector2( 1229.01, 698.779 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
-material = SubResource( 7 )
+material = SubResource( 6 )
 position = Vector2( 980.002, -26.4268 )
 rotation = 1.5708
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
-material = SubResource( 7 )
+material = SubResource( 6 )
 position = Vector2( 807.799, 826.356 )
 rotation = 1.5708
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="DamageTable" parent="." instance=ExtResource( 4 )]
 
@@ -115,7 +115,7 @@ size_flags_horizontal = 3
 [node name="Score" type="Label" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_right = 1040.0
 margin_bottom = 39.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "0"
 align = 2
 script = ExtResource( 7 )

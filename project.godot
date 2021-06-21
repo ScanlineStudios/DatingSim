@@ -8,8 +8,38 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Dialogic",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicClass.gd"
+}, {
+"base": "Control",
+"class": "DialogicBackgroundMusic",
+"language": "GDScript",
+"path": "res://addons/dialogic/Nodes/BackgroundMusic.gd"
+}, {
+"base": "Node",
+"class": "DialogicDefinitionsUtil",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicDefinitionsUtil.gd"
+}, {
+"base": "Reference",
+"class": "DialogicResources",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicResources.gd"
+}, {
+"base": "Reference",
+"class": "DialogicUtil",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicUtil.gd"
+} ]
 _global_script_class_icons={
+"Dialogic": "",
+"DialogicBackgroundMusic": "",
+"DialogicDefinitionsUtil": "",
+"DialogicResources": "",
+"DialogicUtil": ""
 }
 
 [application]
@@ -23,6 +53,8 @@ config/icon="res://icon.png"
 
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+DialogicSingleton="*res://addons/dialogic/Other/DialogicSingleton.gd"
+EventBussSingleton="*res://scripts/eventBussSingleton.gd"
 
 [display]
 
@@ -34,7 +66,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "EXP-System-Dialog", "github-integration" )
+enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/github-integration/plugin.cfg" )
 
 [input]
 

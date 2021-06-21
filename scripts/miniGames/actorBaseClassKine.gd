@@ -29,7 +29,7 @@ func _ready():
 	damageTable = get_tree().get_root().get_node("/root/Galaga/DamageTable")
 	if !damageTable:
 		print("Failed to load damage table")
-	pass
+
 
 # default death function
 func _die():
@@ -39,7 +39,7 @@ func _die():
 	explosion_instance.position = get_global_position()
 	get_tree().get_root().add_child(explosion_instance)
 	queue_free()
-	pass 
+ 
 
 # default on hit function
 func _hit(group):

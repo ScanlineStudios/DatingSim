@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/miniGames/galaga/galaga.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/DiologicTest.gd" type="Script" id=2]
+[ext_resource path="res://scripts/miniGames/MiniGameControl.gd" type="Script" id=3]
+
+[node name="DialogRoot" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="MiniGameControl" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Galaga" parent="MiniGameControl" instance=ExtResource( 1 )]
+position = Vector2( 197, 51 )
+scale = Vector2( 0.8, 1 )
+
+[node name="Manager" type="Node2D" parent="."]
+visible = false
+
+[connection signal="start_tamerin_minigame" from="." to="." method="_on_DialogRoot_start_tamerin_minigame"]
