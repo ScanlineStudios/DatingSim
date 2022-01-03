@@ -74,7 +74,9 @@ position = Vector2( 807.799, 826.356 )
 rotation = 1.5708
 shape = SubResource( 4 )
 
-[node name="DamageTable" parent="." instance=ExtResource( 4 )]
+[node name="DamageTable" parent="." groups=[
+"DamageTable",
+] instance=ExtResource( 4 )]
 
 [node name="Spawner" type="Position2D" parent="."]
 position = Vector2( -125.011, 92.9356 )

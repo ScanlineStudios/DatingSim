@@ -9,7 +9,7 @@ func _ready():
 	var dialog = Dialogic.start("TamarinTest")
 	add_child(dialog)
 	dialog.connect('start_tamerin_minigame', self, '_on_DialogRoot_start_tamerin_minigame')
-	
+	dialog.connect("signal",self,"signal_func")
 	
 func _wait(wait : int) -> void:
 	print_debug("waiting for ", wait)
@@ -22,8 +22,11 @@ func _wait(wait : int) -> void:
 	t.queue_free()
 	
 	
-func _on_DialogRoot_start_tamerin_minigame() -> void:
+func _on_DialogRoot_start_tamerin_minigame(value) -> void:
 	print_debug("starting minigame")
+	print_debug(value)
 	var instance = galaga_scene.instance()
 	add_child(instance)
 
+func signal_func():
+	print("signal")
