@@ -1,0 +1,196 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/characterArt/Tamarin_neutral.png" type="Texture" id=1]
+[ext_resource path="res://scripts/dialog.gd" type="Script" id=2]
+[ext_resource path="res://Dialog-System-Example/textures/menu_section_9patch.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/fonts/unispace/unispace rg.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://scripts/Simulated_Registry.gd" type="Script" id=6]
+[ext_resource path="res://scenes/Option.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 26
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "bodyText"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "PressSpacebar"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.02, 1.02 ), Vector2( 1, 1 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="boobie3" type="Sprite" parent="."]
+position = Vector2( 101.366, 382.449 )
+scale = Vector2( -0.28066, 0.28066 )
+texture = ExtResource( 1 )
+
+[node name="Dialog_Player" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Dialog_Box" type="Control" parent="Dialog_Player"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body_NinePatchRect" type="NinePatchRect" parent="Dialog_Player/Dialog_Box"]
+anchor_left = 13.511
+anchor_top = 10.311
+anchor_right = 13.511
+anchor_bottom = 10.311
+margin_left = -360.02
+margin_top = -149.997
+margin_right = 359.98
+margin_bottom = 150.003
+texture = ExtResource( 3 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin_Container" type="MarginContainer" parent="Dialog_Player/Dialog_Box/Body_NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 48.0
+margin_right = -16.0
+margin_bottom = -48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body_Label" type="Label" parent="Dialog_Player/Dialog_Box/Body_NinePatchRect/Margin_Container"]
+margin_right = 687.0
+margin_bottom = 204.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Test text 123. This is to test the text animation.
+"
+autowrap = true
+percent_visible = 0.0
+
+[node name="Body_AnimationPlayer" type="AnimationPlayer" parent="Dialog_Player/Dialog_Box/Body_NinePatchRect/Margin_Container/Body_Label"]
+autoplay = "bodyText"
+anims/bodyText = SubResource( 2 )
+
+[node name="Speaker_NinePatchRect" type="NinePatchRect" parent="Dialog_Player/Dialog_Box/Body_NinePatchRect"]
+anchor_left = -0.018
+anchor_top = 0.038
+anchor_right = -0.018
+anchor_bottom = 0.038
+margin_left = -0.0400047
+margin_top = -24.4
+margin_right = 233.96
+margin_bottom = 23.6
+texture = ExtResource( 3 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speaker_Label" type="Label" parent="Dialog_Player/Dialog_Box/Body_NinePatchRect/Speaker_NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
+text = "Tamrin"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Prompt_NinePatchRect" type="NinePatchRect" parent="Dialog_Player/Dialog_Box/Body_NinePatchRect"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -727.461
+margin_top = -35.2864
+margin_right = -427.461
+margin_bottom = 12.7136
+texture = ExtResource( 3 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Prompt_Label" type="Label" parent="Dialog_Player/Dialog_Box/Body_NinePatchRect/Prompt_NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
+text = "Press Spacebar to Continue"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Prompt_AnimationPlayer" type="AnimationPlayer" parent="Dialog_Player/Dialog_Box/Body_NinePatchRect/Prompt_NinePatchRect"]
+autoplay = "PressSpacebar"
+anims/PressSpacebar = SubResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Dialog_Player/Dialog_Box/Body_NinePatchRect"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -494.0
+margin_top = -61.0
+margin_right = -1.99969
+margin_bottom = -13.0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option" parent="Dialog_Player/Dialog_Box/Body_NinePatchRect/VBoxContainer" instance=ExtResource( 7 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 0.0
+margin_right = 492.0
+margin_bottom = 48.0
+
+[node name="Simulated_Registry" type="Node" parent="Dialog_Player"]
+script = ExtResource( 6 )
+
+[connection signal="animation_finished" from="Dialog_Player/Dialog_Box/Body_NinePatchRect/Margin_Container/Body_Label/Body_AnimationPlayer" to="Dialog_Player" method="_on_Body_AnimationPlayer_animation_finished"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/miniGames/galaga/galaga.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/DiologicTest.gd" type="Script" id=2]
+
+[node name="DialogRoot" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Manager" type="Node2D" parent="."]
+visible = false
+
+[node name="Galaga" parent="Manager" instance=ExtResource( 1 )]
+visible = false
+position = Vector2( 197, 51 )
+scale = Vector2( 0.8, 1 )
+
+[connection signal="start_tamerin_minigame" from="." to="." method="_on_DialogRoot_start_tamerin_minigame"]

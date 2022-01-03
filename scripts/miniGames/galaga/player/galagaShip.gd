@@ -56,5 +56,17 @@ func _on_Hurtbox_area_entered(area):
 	_hit(area.get_groups()[0])
 	
 
+# Override base _post_hit function
 func _post_hit():
 	health_display.update_healthbar(hp)
+	
+	
+# Override default death function
+func _die():
+	
+	# TODO: If health <= 0 do something. Send signal? 
+	print_debug("Galaga: GAME OVER")
+	var explosion_instance = explosion.instance()
+	explosion_instance.position = get_global_position()
+	get_tree().get_root().add_child(explosion_instance)
+	queue_free()

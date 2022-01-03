@@ -2,7 +2,7 @@ extends Node
 
 # Dictionary that maps tags to damage values
 var damageTable = {}
-export(String, FILE, "*.json") var damageTableFileName #= "res://gameData/default.json" 
+export(String, FILE, "*.json") var damageTableFileName = "res://gameData/galagaDmgTable.json" 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

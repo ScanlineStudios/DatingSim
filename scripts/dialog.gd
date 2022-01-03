@@ -17,13 +17,13 @@ func _ready():
 	var Story_Reader_Class = load("res://addons/EXP-System-Dialog/Reference_StoryReader/EXP_StoryReader.gd")
 	_Story_Reader = Story_Reader_Class.new()
 	
-	var story = load("res://writing/baked/bakedTestStory.tres")
+	var story = load("res://writing/baked/BakedTamrinDialog0.tres")
 	_Story_Reader.read(story)
 	
 	_Dialog_Box.visible = false
 	_Prompt_NinePatchRect.visible = false
 	
-	play_dialog("variableTest")
+	play_dialog("TamrinDialog0")
 
 func _input(event):
 	if event is InputEventKey:

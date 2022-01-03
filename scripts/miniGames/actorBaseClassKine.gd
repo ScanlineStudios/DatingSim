@@ -12,7 +12,7 @@ const UP = Vector2(0,-1)
 const DOWN = Vector2(0,1)
 const FORWARD = UP
 
-var damageTable
+var damageTable# = get_node("../../../DamageTable")
 var explosion = preload("res://scenes/miniGames/galaga/Explosion0.tscn")
 export var move_speed = 550 #250 # default move speed
 
@@ -26,10 +26,11 @@ var show_health_bar = false
 
 func _ready():
 	# find damage table
-	damageTable = get_tree().get_root().get_node("/root/Galaga/DamageTable")
+	# TODO: is there a way to use get_node in place of find_node?
+	damageTable = get_tree().get_root().find_node("DamageTable", true, false)
 	if !damageTable:
 		print("Failed to load damage table")
-	pass
+
 
 # default death function
 func _die():
@@ -39,12 +40,12 @@ func _die():
 	explosion_instance.position = get_global_position()
 	get_tree().get_root().add_child(explosion_instance)
 	queue_free()
-	pass 
+ 
 
 # default on hit function
 func _hit(group):
 	# look up tag in dmg table
-	var damage = damageTable._getDamage(group)
+	var damage = damageTable._getDamage(group)  
 	#print(str("Took ", damage, " damage from ", group))
 	hp -= damage
 	

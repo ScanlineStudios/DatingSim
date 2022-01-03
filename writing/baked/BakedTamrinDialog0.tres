@@ -1,0 +1,58 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/EXP-System-Dialog/Resource_BakedStory/EXP_BakedStory.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+TYPE = "EXP_Baked_Story"
+story = {
+1: {
+"nodes": {
+1: {
+"links": {
+0: 3
+},
+"text": "<start>"
+},
+2: {
+"links": {
+},
+"text": "<end>"
+},
+3: {
+"links": {
+0: 5,
+1: 4
+},
+"text": "<speaker>Tamrin</speaker>
+<dialog>Hey it's you. Want to chat?</dialog>
+<choiceJSON>{\"Yah! (Start Minigame)\":0, \"Nope\": 1}</choiceJSON>"
+},
+4: {
+"links": {
+0: 2
+},
+"text": "<speaker>Tamrin</speaker>
+<dialog>Oh. Ok</dialog>"
+},
+5: {
+"links": {
+0: 6
+},
+"text": "<speaker>Tamrin</speaker>
+<dialog>*start game*<dialog>
+"
+},
+6: {
+"links": {
+0: 2
+},
+"text": "<speaker>Tamrin</speaker>
+<dialog>I'd say you scored *poins in minigame* points in that conversation<dialog>"
+}
+}
+}
+}
+names = {
+"TamrinDialog0": 1
+}
