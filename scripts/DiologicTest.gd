@@ -6,6 +6,10 @@ signal start_tamerin_minigame
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for child in get_children():
+		if child.has_method("set_is_active"):
+			child.set_is_active(false)
+
 	var dialog = Dialogic.start("TamarinTest")
 	add_child(dialog)
 	dialog.connect('start_tamerin_minigame', self, '_on_DialogRoot_start_tamerin_minigame')
