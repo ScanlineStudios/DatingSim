@@ -1,1 +1,20 @@
-{"glossary":[],"variables":[{"id":"1623002447-648","name":"score","type":0,"value":"0"}]}
+{
+	"glossary": [
+		{
+			"extra": "",
+			"id": "1645646177-787",
+			"name": "Minigame",
+			"text": "An abstraction of a conversation. The better you do in the game the more the caracter will like you. ",
+			"title": "Minigame",
+			"type": 1
+		}
+	],
+	"variables": [
+		{
+			"id": "1645646172-648",
+			"name": "Tamarin Score",
+			"type": 0,
+			"value": "0"
+		}
+	]
+}

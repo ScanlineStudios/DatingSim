@@ -1,0 +1,24 @@
+{
+	"color": "#ff08cb10",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1645561288.json",
+	"mirror_portraits": false,
+	"name": "Tamarin",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 200,
+	"offset_y": 550,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://assets/characterArt/Tamarin_neutral.png"
+		},
+		{
+			"name": "Tamarin_neutral",
+			"path": "res://assets/characterArt/Tamarin_neutral.png"
+		}
+	],
+	"scale": 50
+}

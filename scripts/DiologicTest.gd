@@ -1,16 +1,16 @@
-extends Node2D
+extends Control
 
-var galaga_scene = load("res://scenes/miniGames/galaga/galaga.tscn")
+# 
 
-signal start_tamerin_minigame
+export var dialogicTimeline = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var dialog = Dialogic.start("TamarinTest")
+	var dialog = Dialogic.start(dialogicTimeline)
 	add_child(dialog)
-	dialog.connect('start_tamerin_minigame', self, '_on_DialogRoot_start_tamerin_minigame')
-	dialog.connect("signal",self,"signal_func")
+	dialog.connect('dialogic_signal', self, '_on_dialogic_signal')
 	
+# TODO: move wait function to utilities class?
 func _wait(wait : int) -> void:
 	print_debug("waiting for ", wait)
 	var t = Timer.new()
@@ -22,11 +22,8 @@ func _wait(wait : int) -> void:
 	t.queue_free()
 	
 	
-func _on_DialogRoot_start_tamerin_minigame(value) -> void:
+func _on_dialogic_signal(value) -> void:
 	print_debug("starting minigame")
-	print_debug(value)
-	var instance = galaga_scene.instance()
-	add_child(instance)
+	SignalManager.emit_signal(value)
+	
 
-func signal_func():
-	print("signal")
