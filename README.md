@@ -1,6 +1,6 @@
 # DatingSim
 
-This is a sci-fi dating sim where the success your romantic outcomes are based on making the right choices in addition to doing well in characters' mini-games.
+This is a sci-fi dating sim where the success of your romantic outcomes depends on the choices you make in addition to your performance in your crush's mini-game.
 
 
-![](./assets/characterArt/lineup.png) 
+![](.lineup.png) 
