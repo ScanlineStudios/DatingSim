@@ -15,9 +15,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="GalagaShip" type="KinematicBody2D" groups=[
-"player",
-]]
+[node name="GalagaShip" type="KinematicBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
@@ -25,6 +23,7 @@ hp = 5
 bullet_speed = 1000
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 9 )
 shape = SubResource( 2 )
 
@@ -35,9 +34,8 @@ frames = SubResource( 1 )
 [node name="FirePoint" type="Node2D" parent="."]
 position = Vector2( 0, -50 )
 
-[node name="Hurtbox" type="Area2D" parent="." groups=[
-"enemy",
-]]
+[node name="Hurtbox" type="Area2D" parent="." groups=["enemy"]]
+visible = false
 collision_layer = 2
 collision_mask = 4
 

@@ -16,8 +16,8 @@ func _ready():
 	game.set_process(false)
 	game.hide()
 	SignalManager.connect("start_tamerin_minigame", self, "_on_start_tamerin_minigame")
-	#freeze.freeze_scene(game, true)
-	#freeze.freeze_scene(dialog, false)
+	freeze.freeze_scene(game, true)
+	freeze.freeze_scene(dialog, false)
 	#yield( get_tree().create_timer(2.0), "timeout")
 	#print("timer finished")
 	#freeze.freeze_scene(dialog, true)
@@ -45,7 +45,7 @@ func _on_start_tamerin_minigame():
 	game.show()
 	game.set_process(true)
 	
-	#dialog.paused = true
+	### dialog.paused = true
 	freeze.freeze_scene(dialog, true)
 	dialog.hide()
 	freeze.freeze_scene(game, false)
