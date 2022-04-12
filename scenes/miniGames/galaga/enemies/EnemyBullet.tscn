@@ -10,22 +10,17 @@ radius = 6.13338
 radius = 8.38458
 height = 27.0901
 
-[node name="EnemyBullet" type="KinematicBody2D" groups=[
-"enemyBullet",
-]]
+[node name="EnemyBullet" type="KinematicBody2D" groups=["enemyBullet"]]
 collision_layer = 4
 collision_mask = 2147483650
 script = ExtResource( 1 )
 move_speed = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
-"enemyBullet",
-]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemyBullet"]]
+visible = false
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="." groups=[
-"enemyBullet",
-]]
+[node name="Sprite" type="Sprite" parent="." groups=["enemyBullet"]]
 rotation = 1.5708
 scale = Vector2( 0.04, 0.15 )
 
@@ -33,15 +28,12 @@ scale = Vector2( 0.04, 0.15 )
 position = Vector2( 0.000305176, 20 )
 texture = ExtResource( 2 )
 
-[node name="Hitbox" type="Area2D" parent="." groups=[
-"enemyBullet",
-]]
+[node name="Hitbox" type="Area2D" parent="." groups=["enemyBullet"]]
+visible = false
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=[
-"enemyBullet",
-]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=["enemyBullet"]]
 shape = SubResource( 2 )
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

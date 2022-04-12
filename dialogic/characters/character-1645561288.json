@@ -20,5 +20,6 @@
 			"path": "res://assets/characterArt/Tamarin_neutral.png"
 		}
 	],
-	"scale": 50
+	"scale": 50,
+	"theme": ""
 }
