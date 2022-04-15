@@ -15,7 +15,9 @@ func _ready():
 	game.visible = false
 	freeze.freeze_scene(game, true)
 	game.hide()
-	SignalManager.connect("start_tamerin_minigame", self, "_on_start_tamerin_minigame")
+	var error = SignalManager.connect("start_tamerin_minigame", self, "_on_start_tamerin_minigame")
+	if error:
+		print("Error: ", error)
 	freeze.freeze_scene(game, true)
 	freeze.freeze_scene(dialog, false)
 	

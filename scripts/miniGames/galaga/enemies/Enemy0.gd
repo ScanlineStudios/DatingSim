@@ -40,7 +40,10 @@ func _ready():
 	# Init score related things
 	var score_label_path = String(galaga.get_path()) + "/GUI/MarginContainer/HBoxContainer/VBoxContainer/Score"
 	var label = get_node(score_label_path)
-	self.connect("score_changed", label, "update_score")
+	var error = self.connect("score_changed", label, "update_score")
+	if error:
+		print("Error: ", error)
+	
 	# overwrite default score value 
 	score_value = 10
 
