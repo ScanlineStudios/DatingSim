@@ -29,22 +29,21 @@ font_data = ExtResource( 6 )
 
 [node name="Galaga" type="Node2D"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+visible = false
 margin_right = 4000.0
 margin_bottom = 3606.0
 rect_scale = Vector2( 0.3, 0.2 )
 texture = SubResource( 1 )
 stretch_mode = 2
 flip_v = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GalagaShip" parent="." instance=ExtResource( 1 )]
 position = Vector2( 504.344, 504.344 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Walls" type="StaticBody2D" parent="." groups=["wall"]]
+visible = false
 scale = Vector2( 0.9, 0.9 )
 collision_mask = 2
 physics_material_override = SubResource( 2 )
