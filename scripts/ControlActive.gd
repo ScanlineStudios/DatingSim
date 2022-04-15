@@ -13,14 +13,11 @@ onready var game = get_child(0)
 
 func _ready():
 	game.visible = false
-	game.set_process(false)
+	freeze.freeze_scene(game, true)
 	game.hide()
 	SignalManager.connect("start_tamerin_minigame", self, "_on_start_tamerin_minigame")
 	freeze.freeze_scene(game, true)
 	freeze.freeze_scene(dialog, false)
-	#yield( get_tree().create_timer(2.0), "timeout")
-	#print("timer finished")
-	#freeze.freeze_scene(dialog, true)
 	
 
 #func _unhandled_input(event):
@@ -38,14 +35,16 @@ func set_is_active(value):
 	# visible = is_active
 
 
-
 func _on_start_tamerin_minigame():
 	print("minigame signal recieved")
 	
 	game.show()
-	game.set_process(true)
 	
 	### dialog.paused = true
 	freeze.freeze_scene(dialog, true)
 	dialog.hide()
+	
+	#yield( get_tree().create_timer(2.0), "timeout")
+	#print("timer finished")
+	
 	freeze.freeze_scene(game, false)

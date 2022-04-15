@@ -29,8 +29,10 @@ font_data = ExtResource( 6 )
 
 [node name="Galaga" type="Node2D"]
 
-[node name="Background" type="TextureRect" parent="."]
-visible = false
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
 margin_right = 4000.0
 margin_bottom = 3606.0
 rect_scale = Vector2( 0.3, 0.2 )
