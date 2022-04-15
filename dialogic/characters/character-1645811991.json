@@ -1,0 +1,24 @@
+{
+	"color": "#ff6af2f2",
+	"description": "Bug Boi",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1645811991.json",
+	"mirror_portraits": false,
+	"name": "Nancy",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 180,
+	"offset_y": 390,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		},
+		{
+			"name": "Nancy_neutral",
+			"path": "res://assets/characterArt/Nancy_neutral.png"
+		}
+	],
+	"scale": 38
+}

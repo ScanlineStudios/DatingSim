@@ -1,0 +1,24 @@
+{
+	"color": "#ff8e67cd",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1645812743.json",
+	"mirror_portraits": false,
+	"name": "Jerico",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 200,
+	"offset_y": 600,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		},
+		{
+			"name": "Jerico_neutral",
+			"path": "res://assets/characterArt/Jerico_neutral.png"
+		}
+	],
+	"scale": 45
+}
