@@ -20,5 +20,6 @@
 			"path": "res://assets/characterArt/Jerico_neutral.png"
 		}
 	],
-	"scale": 45
+	"scale": 45,
+	"theme": ""
 }
