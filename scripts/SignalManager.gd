@@ -5,6 +5,8 @@ extends Node
 
 # Emitted to start Tamerin mini-game
 signal start_tamerin_minigame
+#
+signal score_changed
 
 
 

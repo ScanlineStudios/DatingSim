@@ -12,8 +12,8 @@ var move_direction = Vector2.RIGHT
 
 var enemy_bullet = preload("res://scenes/miniGames/galaga/enemies/EnemyBullet.tscn")
 onready var galaga = get_node("../../..") #get_node("../Galaga")
-signal score_changed
 
+signal score_changed
 #onready var health_display = $HealthDisplay
 
 func _ready():
@@ -50,7 +50,7 @@ func _ready():
 func _physics_process(delta):
 	velocity = position.direction_to(target_position) * move_speed * delta
 	
-	move_and_collide(velocity)
+	var collision = move_and_collide(velocity)
 
 
 func _on_Hurtbox_area_entered(area):
