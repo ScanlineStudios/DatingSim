@@ -22,11 +22,11 @@
 			"character": "character-1645811991.json",
 			"event_id": "dialogic_001",
 			"portrait": "Nancy_neutral",
-			"text": "What"
+			"text": "What Minigame"
 		}
 	],
 	"metadata": {
-		"dialogic-version": "1.3",
+		"dialogic-version": "1.4.1",
 		"file": "timeline-1645812079.json",
 		"name": "NancyTest"
 	}

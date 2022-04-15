@@ -26,7 +26,7 @@
 			"character": "character-1645561288.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Oh hey its you"
+			"text": "Minigame . Oh hey its you"
 		},
 		{
 			"event_id": "dialogic_025",
@@ -55,10 +55,10 @@
 			"character": "character-1645561288.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Ok later"
+			"text": "Ok later  Minigame"
 		},
 		{
-			"choice": "Yes (Minigame)",
+			"choice": "Yes Minigame",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
@@ -76,7 +76,7 @@
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "[TODO: Freeze dialog to play minigame]"
+			"text": "play Minigame"
 		},
 		{
 			"condition": ">",
