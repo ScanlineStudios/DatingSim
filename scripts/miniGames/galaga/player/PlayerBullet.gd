@@ -1,6 +1,6 @@
 extends "res://scripts/miniGames/actorBaseClassKine.gd"
 
-#var explosion = preload("res://scenes/miniGames/galaga/Explosion0.tscn")
+#var explosion = preload("res://scenes/miniGames/tamerinMinigame/Explosion0.tscn")
 
 func _ready():
 	# TODO: start self destruct timer

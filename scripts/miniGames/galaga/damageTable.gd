@@ -2,7 +2,7 @@ extends Node
 
 # Dictionary that maps tags to damage values
 var damageTable = {}
-export(String, FILE, "*.json") var damageTableFileName = "res://gameData/galagaDmgTable.json" 
+export(String, FILE, "*.json") var damageTableFileName = "res://gameData/tamerinMinigameDmgTable.json" 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +17,7 @@ func _ready():
 	if typeof(jsonParseOut.result) == TYPE_DICTIONARY:
 		damageTable = jsonParseOut.result
 	else: 
-		print("Failed to parse json " + jsonParseOut.result)
+		print("Failed to parse json " + String(jsonParseOut.result))
 
 func _getDamage(tag):
 

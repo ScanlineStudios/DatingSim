@@ -11,7 +11,7 @@ const DOWN = Vector2(0,1)
 const FORWARD = UP
 
 var damageTable
-var explosion = preload("res://scenes/miniGames/galaga/Explosion0.tscn")
+var explosion = preload("res://scenes/miniGames/tamerinMinigame/Explosion0.tscn")
 export var move_speed = 250 # default move speed
 export var hp = 5 # default hit point total
 # what this entity is targeting. ie, looking at, moving twards, attacking ect 

@@ -10,8 +10,8 @@ var target_position = Vector2(0,0)
 var velocity = Vector2()
 var move_direction = Vector2.RIGHT
 
-var enemy_bullet = preload("res://scenes/miniGames/galaga/enemies/EnemyBullet.tscn")
-onready var galaga = get_node("../../..") #get_node("../Galaga")
+var enemy_bullet = preload("res://scenes/miniGames/tamerinMinigame/enemies/EnemyBullet.tscn")
+onready var tamerinMinigame = get_node("../../..") #get_node("../Galaga")
 
 signal score_changed
 #onready var health_display = $HealthDisplay
@@ -38,7 +38,7 @@ func _ready():
 	
 	
 	# Init score related things
-	var score_label_path = String(galaga.get_path()) + "/GUI/MarginContainer/HBoxContainer/VBoxContainer/Score"
+	var score_label_path = String(tamerinMinigame.get_path()) + "/GUI/MarginContainer/HBoxContainer/VBoxContainer/Score"
 	var label = get_node(score_label_path)
 	var error = self.connect("score_changed", label, "update_score")
 	if error:
