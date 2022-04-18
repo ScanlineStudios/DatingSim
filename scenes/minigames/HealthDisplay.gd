@@ -3,7 +3,7 @@
 extends Node2D
 
 #var bar_red = preload("res://assets/barHorizontal_red.png")
-var bar_green = preload("res://assets/miniGames/barHorizontal_green.png")
+var bar_green = preload("res://assets/minigames/barHorizontal_green.png")
 #var bar_yellow = preload("res://assets/barHorizontal_yellow.png")
 
 onready var healthbar = $HealthBar

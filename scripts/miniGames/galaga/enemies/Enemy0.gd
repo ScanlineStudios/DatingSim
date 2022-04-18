@@ -10,7 +10,7 @@ var target_position = Vector2(0,0)
 var velocity = Vector2()
 var move_direction = Vector2.RIGHT
 
-var enemy_bullet = preload("res://scenes/miniGames/tamerinMinigame/enemies/EnemyBullet.tscn")
+var enemy_bullet = preload("res://scenes/minigames/tamerinMinigame/enemies/EnemyBullet.tscn")
 onready var tamerinMinigame = get_node("../../..") #get_node("../Galaga")
 
 signal score_changed

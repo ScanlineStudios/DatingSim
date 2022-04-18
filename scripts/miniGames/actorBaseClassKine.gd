@@ -13,7 +13,7 @@ const DOWN = Vector2(0,1)
 const FORWARD = UP
 
 var damageTable# = get_node("../../../DamageTable")
-var explosion = preload("res://scenes/miniGames/tamerinMinigame/Explosion0.tscn")
+var explosion = preload("res://scenes/minigames/tamerinMinigame/Explosion0.tscn")
 export var move_speed = 550 #250 # default move speed
 
 export (int) var hp # default hit point total 

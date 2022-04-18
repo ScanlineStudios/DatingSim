@@ -5,7 +5,7 @@ export var bullet_speed = 100
 # lazers/sec
 export var fire_rate = 0.2
 
-var bullet = preload("res://scenes/miniGames/tamerinMinigame/player/PlayerBullet.tscn")
+var bullet = preload("res://scenes/minigames/tamerinMinigame/player/PlayerBullet.tscn")
 var can_fire = true
 
 var velocity = Vector2()
