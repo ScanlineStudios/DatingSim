@@ -4,4 +4,11 @@
 
 [node name="DialogSkeleton" type="Control"]
 modulate = Color( 1, 1, 1, 0.454902 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialog" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
 script = ExtResource( 1 )
+dialogicTimeline = "TamarinTest"

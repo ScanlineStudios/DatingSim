@@ -21,6 +21,7 @@ script = ExtResource( 5 )
 z_index = 2
 
 [node name="GUI" parent="." instance=ExtResource( 2 )]
+layer = 128
 
 [node name="Freeze" type="Node" parent="."]
 script = ExtResource( 3 )
