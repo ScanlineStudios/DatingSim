@@ -2,13 +2,5 @@
 
 [ext_resource path="res://scripts/DiologicTest.gd" type="Script" id=1]
 
-[node name="DialogSkeleton" type="Control"]
-modulate = Color( 1, 1, 1, 0.454902 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Dialog" type="Control" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="DialogSkeleton" type="CanvasLayer"]
 script = ExtResource( 1 )
-dialogicTimeline = "TamarinTest"
