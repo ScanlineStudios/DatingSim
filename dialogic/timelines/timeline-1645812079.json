@@ -1,0 +1,33 @@
+{
+	"events": [
+		{
+			"background": "res://assets/placeHolders/bar.png",
+			"event_id": "dialogic_021"
+		},
+		{
+			"action": "join",
+			"character": "character-1645811991.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "Nancy_neutral",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1645811991.json",
+			"event_id": "dialogic_001",
+			"portrait": "Nancy_neutral",
+			"text": "What Minigame"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1645812079.json",
+		"name": "NancyTest"
+	}
+}
