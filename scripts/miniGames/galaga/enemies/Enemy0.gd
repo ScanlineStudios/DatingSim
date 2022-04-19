@@ -50,7 +50,7 @@ func _ready():
 func _physics_process(delta):
 	velocity = position.direction_to(target_position) * move_speed * delta
 	
-	var collision = move_and_collide(velocity)
+	var _collision = move_and_collide(velocity)
 
 
 func _on_Hurtbox_area_entered(area):

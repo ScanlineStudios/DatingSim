@@ -9,7 +9,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	var collision = move_and_collide(-transform.y * move_speed * delta)
+	var _collision = move_and_collide(-transform.y * move_speed * delta)
 
 
 
