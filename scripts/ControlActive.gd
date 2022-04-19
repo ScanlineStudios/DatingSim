@@ -12,9 +12,9 @@ onready var game = get_child(0)
 
 
 func _ready():
-	game.visible = false
+	#game.visible = false
 	freeze.freeze_scene(game, true)
-	game.hide()
+	#game.hide()
 	var error = SignalManager.connect("start_tamerin_minigame", self, "_on_start_tamerin_minigame")
 	if error:
 		print("Error: ", error)
@@ -40,11 +40,12 @@ func set_is_active(value):
 func _on_start_tamerin_minigame():
 	print("minigame signal recieved")
 	
-	game.show()
+	# TODO: find way to hide/show scenes and script generated nodes
+	# game.show()
 	
 	### dialog.paused = true
 	freeze.freeze_scene(dialog, true)
-	dialog.hide()
+	#dialog.hide()
 	
 	#yield( get_tree().create_timer(2.0), "timeout")
 	#print("timer finished")
