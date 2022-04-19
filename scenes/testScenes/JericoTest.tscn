@@ -5,8 +5,4 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="DialogSkeleton" parent="." instance=ExtResource( 1 )]
-margin_left = 338.0
-margin_top = 230.0
-margin_right = 338.0
-margin_bottom = 230.0
 dialogicTimeline = "JericoTest"
