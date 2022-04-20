@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://scripts/miniGames/galaga/Score.gd" type="Script" id=2]
-[ext_resource path="res://scripts/miniGames/galaga/Spawner.gd" type="Script" id=3]
+[ext_resource path="res://scripts/minigames/tamerinMinigame/Score.gd" type="Script" id=2]
+[ext_resource path="res://scripts/minigames/tamerinMinigame/Spawner.gd" type="Script" id=3]
 [ext_resource path="res://scenes/minigames/tamerinMinigame/enemies/GalagaSquad.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/minigames/tamerinMinigame/player/TamerinMinigameShip.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/minigames/DamageTable.tscn" type="PackedScene" id=6]

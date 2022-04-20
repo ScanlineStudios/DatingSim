@@ -1,4 +1,4 @@
-extends "res://scripts/miniGames/actorBaseClassKine.gd"
+extends "res://scripts/minigames/actorBaseClassKine.gd"
 
 # export var speed = 100 
 export var bullet_speed = 100
@@ -65,7 +65,7 @@ func _post_hit():
 func _die():
 	
 	# TODO: If health <= 0 do something. Send signal? 
-	print_debug("Galaga: GAME OVER")
+	print_debug("TamerinMinigame: GAME OVER")
 	var explosion_instance = explosion.instance()
 	explosion_instance.position = get_global_position()
 	get_tree().get_root().add_child(explosion_instance)

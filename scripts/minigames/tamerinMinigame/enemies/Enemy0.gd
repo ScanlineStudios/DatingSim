@@ -1,4 +1,4 @@
-extends "res://scripts/miniGames/actorBaseClassKine.gd"
+extends "res://scripts/minigames/actorBaseClassKine.gd"
 
 # export (int) var speed = 200
 export (float) var fire_cooldown = 5.0
@@ -11,7 +11,7 @@ var velocity = Vector2()
 var move_direction = Vector2.RIGHT
 
 var enemy_bullet = preload("res://scenes/minigames/tamerinMinigame/enemies/EnemyBullet.tscn")
-onready var tamerinMinigame = get_node("../../..") #get_node("../Galaga")
+onready var tamerinMinigame = get_node("../../..") #get_node("../TamerinMinigame")
 
 signal score_changed
 #onready var health_display = $HealthDisplay

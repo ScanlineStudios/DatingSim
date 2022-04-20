@@ -1,4 +1,4 @@
-extends "res://scripts/miniGames/actorBaseClassKine.gd"
+extends "res://scripts/minigames/actorBaseClassKine.gd"
 
 ## This script handels the movement and spawning of individual enemy ships
 export var ships_in_squad = 5
