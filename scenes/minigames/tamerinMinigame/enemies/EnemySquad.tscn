@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/minigames/tamerinMinigame/enemies/EnemySquad.gd" type="Script" id=1]
+[ext_resource path="res://scenes/minigames/tamerinMinigame/enemies/Enemy0-1.tscn" type="PackedScene" id=2]
+
+[node name="TamerinMinigameSquad" type="KinematicBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 1 )
+move_speed = 500
+hp = 1
+ship_dist_from_center = 14
+spawn_scene = ExtResource( 2 )

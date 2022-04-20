@@ -1,4 +1,4 @@
-extends Control
+extends Node
 
 # Attatches to DialogSkeleton node. Plays the Dialogic timeline
 # given in the dialogicTimeline variable
