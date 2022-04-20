@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/minigames/tamerinMinigame/Score.gd" type="Script" id=2]
 [ext_resource path="res://scripts/minigames/tamerinMinigame/Spawner.gd" type="Script" id=3]
-[ext_resource path="res://scenes/minigames/tamerinMinigame/enemies/GalagaSquad.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/minigames/tamerinMinigame/enemies/EnemySquad.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/minigames/tamerinMinigame/player/TamerinMinigameShip.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/minigames/DamageTable.tscn" type="PackedScene" id=6]
 
@@ -74,7 +74,6 @@ rotation = 1.5708
 shape = SubResource( 4 )
 
 [node name="DamageTable" parent="." groups=["DamageTable"] instance=ExtResource( 6 )]
-damageTableFileName = "res://gameData/tamerinMinigameDmgTable.json"
 
 [node name="Spawner" type="Position2D" parent="."]
 position = Vector2( -125.011, 92.9356 )

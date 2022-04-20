@@ -22,7 +22,7 @@ func _ready():
 	print("phys")
 	set_gravity_scale(0)
 	# find damage table
-	damageTable = get_tree().get_root().get_node("/root/Galaga/DamageTable")
+	damageTable = get_tree().get_root().get_node("/root/TamerinMinigame/DamageTable")
 	if !damageTable:
 		print("Failed to load damage table")
 	pass

@@ -4,4 +4,4 @@
 
 [node name="Root" type="Node2D"]
 
-[node name="Galaga" parent="." instance=ExtResource( 1 )]
+[node name="TamerinMinigame" parent="." instance=ExtResource( 1 )]
