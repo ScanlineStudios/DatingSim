@@ -1,25 +1,18 @@
 extends Position2D
 
 export var spawn_scene: PackedScene
-export var num_to_spawn: int
-export var spawn_cooldown: float
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-var thread
+#export var num_to_spawn: int
+#export var spawn_cooldown: float
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Start spawn process
-	thread = Thread.new()
-	thread.start(self, "_spawn_thread",spawn_scene)
-	
+	# spawn_squads(spawn_scene)
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
-func _spawn_thread(_spawn_scene := spawn_scene) -> void:
+# Spawns a given number of given squads 
+func spawn_squads(_spawn_scene := spawn_scene, num_to_spawn := 1, spawn_cooldown := 2) -> void:
 	# spawn num_to_spawn, waiting spawn_cooldown seconds after each spawn
 	
 	for _i in range(num_to_spawn):
