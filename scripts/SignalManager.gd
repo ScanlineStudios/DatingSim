@@ -5,8 +5,8 @@ extends Node
 
 # Emitted to start Tamerin mini-game
 signal start_tamerin_minigame
-# Emitted when Tamerin mini-game finished
-signal finish_tamerin_minigame
+# Emitted when Tamerin mini-game player destroyed
+signal tamerin_minigame_player_destroyed
 #
 signal score_changed
 

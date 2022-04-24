@@ -51,3 +51,5 @@ func _on_start_tamerin_minigame():
 	#print("timer finished")
 	
 	freeze.freeze_scene(game, false)
+	
+	game.start()
