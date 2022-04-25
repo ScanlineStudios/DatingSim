@@ -15,9 +15,11 @@ func _ready():
 	#game.visible = false
 	freeze.freeze_scene(game, true)
 	#game.hide()
-	var error = SignalManager.connect("start_tamerin_minigame", self, "_on_start_tamerin_minigame")
+	var error = SignalManager.connect("tamerin_minigame_started", self, "_on_tamerin_minigame_started")
 	if error:
 		print("Error: ", error)
+		
+	error = SignalManager.connect("tamerin_minigame_ended",self, "_on_tamerin_minigame_ended")
 	freeze.freeze_scene(game, true)
 	freeze.freeze_scene(dialog, false)
 	
@@ -37,18 +39,19 @@ func set_is_active(value):
 	# visible = is_active
 
 
-func _on_start_tamerin_minigame():
+func _on_tamerin_minigame_ended(score:int):
+	# set score where dialogic can read it
+	print_debug(score)
+
+
+func _on_tamerin_minigame_started():
 	print("minigame signal recieved")
 	
 	# TODO: find way to hide/show scenes and script generated nodes
 	# game.show()
 	
-	### dialog.paused = true
 	freeze.freeze_scene(dialog, true)
 	#dialog.hide()
-	
-	#yield( get_tree().create_timer(2.0), "timeout")
-	#print("timer finished")
 	
 	freeze.freeze_scene(game, false)
 	

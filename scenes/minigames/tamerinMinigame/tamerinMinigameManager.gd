@@ -4,6 +4,8 @@ onready var spawner = get_node("Spawner")
 onready var enenmy0 = preload("res://scenes/minigames/tamerinMinigame/enemies/Enemy0-1.tscn")
 onready var squad = preload("res://scenes/minigames/tamerinMinigame/enemies/EnemySquad.tscn")
 #other enemies here
+
+onready var score_label: Label = get_node("GUI/MarginContainer/HBoxContainer/VBoxContainer/Score") 
 onready var countdown_timer_label : Label = get_node("GUI/MarginContainer3/HBoxContainer2/VBoxContainer/CenterLabel")
 onready var countdown_tick_timer = Timer.new()
 
@@ -12,7 +14,7 @@ onready var countdown_tick_timer = Timer.new()
 func _ready():
 	
 	add_child(countdown_tick_timer) #to process
-	var error = SignalManager.connect("tamerin_minigame_player_destroyed", self, "_on_tamerin_minigame_player_destroyed")
+	var _error = SignalManager.connect("tamerin_minigame_player_destroyed", self, "_on_tamerin_minigame_player_destroyed")
 	
 	# todo: Configure squads?
 	
@@ -23,11 +25,14 @@ func _ready():
 # called after ending triger (player death, time out, all enemies dead)
 func end():
 	update_center_label("GAME OVER")
+	
+	var score = score_label.score
+	SignalManager.emit_signal("tamerin_minigame_ended", score)
 	pass
 
 # begine countdown then start spawning and rest of minigame. 
 # TODO: potential dificulty input, timer input?
-func start() -> void:
+func start(duration_seconds: int = 100, dificulty: int = 50) -> void:
 	
 	# Countdown timer
 	var seconds_to_countdown : int = 4 
