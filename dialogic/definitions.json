@@ -12,7 +12,7 @@
 	"variables": [
 		{
 			"id": "1645646172-648",
-			"name": "Tamarin Score",
+			"name": "tamarin_score",
 			"type": 0,
 			"value": "0"
 		}

@@ -42,6 +42,9 @@ func set_is_active(value):
 func _on_tamerin_minigame_ended(score:int):
 	# set score where dialogic can read it
 	print_debug(score)
+	Dialogic.set_variable("tamarin_score", score)
+	freeze.freeze_scene(dialog, false)
+	freeze.freeze_scene(game, true)
 
 
 func _on_tamerin_minigame_started():
