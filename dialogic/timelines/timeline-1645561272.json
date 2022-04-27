@@ -3,7 +3,7 @@
 		{
 			"background": "res://assets/placeHolders/bar.png",
 			"event_id": "dialogic_021",
-			"fade_duration": 0.5
+			"fade_duration": 0.1
 		},
 		{
 			"animation": "[Default]",

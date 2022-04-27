@@ -20,22 +20,36 @@ var SECONDS_IN_MIN = 60
 var MINUTES_IN_HOUR = 60
 
 # called after ending triger (player death, time out, all enemies dead)
-func end():
+func end(end_cause: String = "GAME OVER"):
 	
 	started = false
 	
-	update_center_label("GAME OVER")
+	update_center_label(end_cause)
 	
 	var score = score_label.score
 	SignalManager.emit_signal("tamerin_minigame_ended", score)
-	
+
+
+func get_all_nodes(node: Node) -> Array:
+	var return_array = []
+	for N in node.get_children():
+		return_array.append_array([N])
+		if N.get_child_count() > 0:
+			print("["+N.get_name()+"]")
+			
+			return_array.append_array(get_all_nodes(N))
+		
+	# if no children return empty array
+	return return_array
+
 
 func _on_tamerin_minigame_player_destroyed():
 	end()
 
+
 func _process(delta):
 	
-	# TODO: game timer logic here
+	# Game timer logic
 	if started:
 		time_passed += delta
 		time_remaining = duration_seconds - time_passed
@@ -43,8 +57,31 @@ func _process(delta):
 		var game_timer_seconds = int(fmod(time_remaining, SECONDS_IN_MIN))
 		var game_timer_minuites = int(fmod(time_remaining, SECONDS_IN_MIN * MINUTES_IN_HOUR) / MINUTES_IN_HOUR)
 		
-		update_game_timer_label(String(game_timer_minuites)+":"+String(game_timer_seconds))
+		var game_timer_seconds_string = String(game_timer_seconds)
+		var game_timer_minuites_string = String(game_timer_minuites)
+		
+		if game_timer_seconds < 10:
+			game_timer_seconds_string = "0"+game_timer_seconds_string
+		
+		if game_timer_minuites < 10:
+			game_timer_minuites_string = "0"+game_timer_minuites_string
+			
+		update_game_timer_label(game_timer_minuites_string+":"+game_timer_seconds_string)
 	
+		if int(time_remaining) == 0:
+			end("TIME UP")
+
+
+# TODO: Move to utility 
+func set_visible(_visible:bool)-> void:
+	var all_decendant_nodes = get_all_nodes(self)
+	print_debug(all_decendant_nodes)
+	for node in all_decendant_nodes:
+		if node.get("visible") != null:
+			print("visible = "+String(_visible))
+			node.visible = _visible
+	
+
 
 # begine countdown then start spawning and rest of minigame. 
 # TODO: potential dificulty input, timer input?

@@ -6,15 +6,15 @@ extends Node2D
 
 var is_active = true setget set_is_active
 #var timer = get_tree().create_timer(10.0)
-onready var freeze = get_parent().get_node("Freeze")
-onready var dialog = get_parent().get_node("DialogSkeleton")
-onready var game = get_child(0)
+onready var freeze: Node = get_parent().get_node("Freeze")
+onready var dialog: CanvasLayer = get_parent().get_node("DialogSkeleton")
+onready var game: Node2D = get_child(0)
 
 
 func _ready():
 	#game.visible = false
 	freeze.freeze_scene(game, true)
-	#game.hide()
+	game.set_visible(false)
 	var error = SignalManager.connect("tamerin_minigame_started", self, "_on_tamerin_minigame_started")
 	if error:
 		print("Error: ", error)
@@ -45,13 +45,15 @@ func _on_tamerin_minigame_ended(score:int):
 	Dialogic.set_variable("tamarin_score", score)
 	freeze.freeze_scene(dialog, false)
 	freeze.freeze_scene(game, true)
+	# TODO: delay for fade out and unload minigame scene
+	game.set_visible(false)
 
 
 func _on_tamerin_minigame_started():
 	print("minigame signal recieved")
 	
-	# TODO: find way to hide/show scenes and script generated nodes
-	# game.show()
+	# hide/show scenes and script generated nodes
+	game.set_visible(true)
 	
 	freeze.freeze_scene(dialog, true)
 	#dialog.hide()
