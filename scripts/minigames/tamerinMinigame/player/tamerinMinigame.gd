@@ -47,13 +47,13 @@ func _physics_process(_delta):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	max_hp = hp
-	health_display.set_max_value(max_hp)
-	print("Player Ship Ready") 
+	health_display.set_max_value(max_hp) 
 
 
 func _on_Hurtbox_area_entered(area):
 	_hit(area.get_groups()[0])
 	
+
 
 # Override base _post_hit function
 func _post_hit():

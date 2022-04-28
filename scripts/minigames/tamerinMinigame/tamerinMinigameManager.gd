@@ -30,17 +30,7 @@ func end(end_cause: String = "GAME OVER"):
 	SignalManager.emit_signal("tamerin_minigame_ended", score)
 
 
-func get_all_nodes(node: Node) -> Array:
-	var return_array = []
-	for N in node.get_children():
-		return_array.append_array([N])
-		if N.get_child_count() > 0:
-			print("["+N.get_name()+"]")
-			
-			return_array.append_array(get_all_nodes(N))
-		
-	# if no children return empty array
-	return return_array
+
 
 
 func _on_tamerin_minigame_player_destroyed():
@@ -72,15 +62,7 @@ func _process(delta):
 			end("TIME UP")
 
 
-# TODO: Move to utility 
-func set_visible(_visible:bool)-> void:
-	var all_decendant_nodes = get_all_nodes(self)
-	print_debug(all_decendant_nodes)
-	for node in all_decendant_nodes:
-		if node.get("visible") != null:
-			print("visible = "+String(_visible))
-			node.visible = _visible
-	
+
 
 
 # begine countdown then start spawning and rest of minigame. 
