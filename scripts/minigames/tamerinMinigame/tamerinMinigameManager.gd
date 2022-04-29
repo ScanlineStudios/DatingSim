@@ -1,8 +1,8 @@
 extends Node2D
 
-onready var spawner = get_node("Spawner")
-onready var enenmy0 = preload("res://scenes/minigames/tamerinMinigame/enemies/Enemy0-1.tscn")
-onready var squad = preload("res://scenes/minigames/tamerinMinigame/enemies/EnemySquad.tscn")
+#onready var spawner = get_node("Spawner")
+onready var enenmy0: PackedScene = preload("res://scenes/minigames/tamerinMinigame/enemies/Enemy0-1.tscn")
+onready var squad: PackedScene = preload("res://scenes/minigames/tamerinMinigame/enemies/EnemySquad.tscn")
 #other enemies here
 
 onready var score_label: Label = get_node("GUI/MarginContainer/HBoxContainer/VBoxContainer/Score") 
@@ -10,8 +10,8 @@ onready var countdown_timer_label: Label = get_node("GUI/MarginContainer3/HBoxCo
 onready var countdown_tick_timer: Timer = Timer.new()
 onready var game_timer_label: Label = get_node("GUI/MarginContainer2/HBoxContainer2/VBoxContainer/GameTimer")
 
-onready var spawn_area: CollisionObject2D = get_node("StaticBody2D/SpawnArea")
-onready var despawn_area: CollisionObject2D = get_node("StaticBody2D/DespawnArea")
+onready var spawn_area: CollisionShape2D = get_node("StaticBody2D/SpawnArea")
+onready var despawn_area: CollisionShape2D = get_node("StaticBody2D/DespawnArea")
 
 var started: bool = false
 var time_passed: float = 0.0
@@ -23,7 +23,7 @@ var SECONDS_IN_MIN = 60
 var MINUTES_IN_HOUR = 60
 
 # called after ending triger (player death, time out, all enemies dead)
-func end(end_cause: String = "GAME OVER"):
+func end(end_cause: String = "GAME OVER") -> void:
 	
 	started = false
 	
@@ -33,7 +33,8 @@ func end(end_cause: String = "GAME OVER"):
 	SignalManager.emit_signal("tamerin_minigame_ended", score)
 
 
-
+func get_random_point_in_spawn()-> Vector2:
+	return Vector2(0,0)
 
 
 func _on_tamerin_minigame_player_destroyed():
@@ -65,14 +66,43 @@ func _process(delta):
 			end("TIME UP")
 
 
+# Spawns a given number of given squads 
+# TODO: add time active, after which they go off screen and despawn
+func spawn_squads(_spawn_scene: PackedScene, num_to_spawn: int = 1, spawn_cooldown: int = 2, seconds_active: int = 30) -> void:
+	# spawn num_to_spawn, waiting spawn_cooldown seconds after each spawn
+	
+	for _i in range(num_to_spawn):
+		var spawn := _spawn_scene.instance() as Node2D
+		
+		# TODO: pick random point in spawn area
+		var spawn_point: Vector2 = get_random_point_in_spawn()
+		# TODO: pass allong active area and despawn area and seconds active
+		
+		# Move the new instance to the Spawner2D position
+		spawn.global_position = spawn_point# global_position
+		# Face enemy downward
+		spawn.global_rotation_degrees = global_rotation_degrees
+		add_child(spawn)
+
+		# Prevents the Spawner2D transform from affecting the new instance
+		spawn.set_as_toplevel(true)
+
+		# cooldown 
+		var t = Timer.new()
+		t.set_wait_time(spawn_cooldown)
+		t.set_one_shot(true)
+		self.add_child(t)
+		t.start()
+		yield(t,"timeout")
+
+
 # begine countdown then start spawning and rest of minigame. 
 # TODO: potential dificulty input, timer input?
 func start(_duration_seconds: int = 100, dificulty: int = 50) -> void:
 	
 	duration_seconds = _duration_seconds
-	# Countdown timer
+	# Countdown from 3, replace 0 with GO!
 	# TODO reduce amount of magic numbers
-	# var seconds_to_countdown : int = 4 
 	for num in range(3,-1, -1):
 		countdown_tick_timer.start(1)
 		var label_text : String = String(num)
@@ -83,13 +113,13 @@ func start(_duration_seconds: int = 100, dificulty: int = 50) -> void:
 		
 	started = true
 	
-	spawner.spawn_squads(squad, 7, 3)
+	spawn_squads(squad, 7, 3)
 	
 	# clear center label
 	countdown_tick_timer.start(2)
 	yield(countdown_tick_timer, "timeout")
 	update_center_label("")
-	
+
 
 # Initialize tamerinMinigame but do not start spawning
 func _ready():
@@ -98,7 +128,8 @@ func _ready():
 	var _error = SignalManager.connect("tamerin_minigame_player_destroyed", self, "_on_tamerin_minigame_player_destroyed")
 	
 	# todo: Configure squads?
-	
+	squad.set("spawn_scene", enenmy0)
+	print_debug(squad)
 	# do test sequence if this node is the root
 	if (get_tree().get_root() == self.get_parent()):
 		start() 
