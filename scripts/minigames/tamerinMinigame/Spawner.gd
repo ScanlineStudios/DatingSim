@@ -12,7 +12,8 @@ func _ready():
 
 
 # Spawns a given number of given squads 
-func spawn_squads(_spawn_scene := spawn_scene, num_to_spawn := 1, spawn_cooldown := 2) -> void:
+# TODO: add time active, after which they go off screen and despawn
+func spawn_squads(_spawn_scene := spawn_scene, num_to_spawn: int = 1, spawn_cooldown: int = 2, seconds_active: int = 30) -> void:
 	# spawn num_to_spawn, waiting spawn_cooldown seconds after each spawn
 	
 	for _i in range(num_to_spawn):
@@ -26,7 +27,6 @@ func spawn_squads(_spawn_scene := spawn_scene, num_to_spawn := 1, spawn_cooldown
 		# Prevents the Spawner2D transform from affecting the new instance
 		spawn.set_as_toplevel(true)
 
-		
 		# cooldown 
 		var t = Timer.new()
 		t.set_wait_time(spawn_cooldown)

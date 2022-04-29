@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/minigames/tamerinMinigame/Score.gd" type="Script" id=2]
@@ -17,7 +17,7 @@ load_path = "res://.import/game bg.png-fe002bcb5d01994e353f08666c467144.stex"
 [sub_resource type="CanvasItemMaterial" id=3]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 27.8887, 995.578 )
+extents = Vector2( 374.163, 55.8927 )
 
 [sub_resource type="Shader" id=5]
 
@@ -31,6 +31,9 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=8]
 size = 148
 font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 400, 19.8007 )
 
 [node name="TamerinMinigame" type="Node2D"]
 script = ExtResource( 7 )
@@ -194,3 +197,17 @@ grow_vertical = 2
 custom_fonts/font = SubResource( 8 )
 align = 1
 valign = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="SpawnArea" type="CollisionShape2D" parent="StaticBody2D"]
+material = SubResource( 3 )
+use_parent_material = true
+position = Vector2( 534.344, -33.9835 )
+shape = SubResource( 9 )
+
+[node name="DespawnArea" type="CollisionShape2D" parent="StaticBody2D"]
+material = SubResource( 3 )
+use_parent_material = true
+position = Vector2( 534.344, 775.59 )
+shape = SubResource( 9 )

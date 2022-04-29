@@ -7,16 +7,11 @@ export var ship_dist_from_center = 40
 
 export var spawn_scene: PackedScene
 
-# TODO: Grid or radial spawn pattern?
-
-# TODO: squad movement pattern. Random-ish place in front of player to shoot.
-#		Back and forth? 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	# spawn ships_in_squad ships
-	radial_spawn(ships_in_squad, ship_dist_from_center)
-	
+var despawn_area
+var seconds_active
+var spawn_area
+# location squad is currently trying to move to
+var target_location
 
 
 # TODO: move squad back and fourth 
@@ -26,7 +21,20 @@ func _physics_process(delta):
 	if collision:
 		print("Collided with: ", collision.collider.name)
 
-# TODO: Generate a list of coordinates starting at (0, dist_from_center) rotating 
+
+
+# TODO: squad movement pattern. Random-ish place in front of player to shoot.
+#		Back and forth? 
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	# spawn ships_in_squad ships
+	radial_spawn(ships_in_squad, ship_dist_from_center)
+	target_location_picking_routine(target)
+
+
+
+# Generate a list of coordinates starting at (0, dist_from_center) rotating 
 # clockwise 
 func radial_coordinates_to_spawn(num_to_spawn : int, dist_from_center: int) -> Array:
 	var increment0 = 2*PI/num_to_spawn # int division be carful
@@ -40,7 +48,7 @@ func radial_coordinates_to_spawn(num_to_spawn : int, dist_from_center: int) -> A
 	
 	return coordinates
 
-# TODO: spawn ships in a radial patern
+# spawn ships in a radial patern
 func radial_spawn(num_to_spawn : int, dist_from_center: int):
 	# find coordinates to spawn ships at
 	var coordinates = radial_coordinates_to_spawn(num_to_spawn, dist_from_center)
@@ -52,4 +60,7 @@ func radial_spawn(num_to_spawn : int, dist_from_center: int):
 		add_child(spawn)
 		#spawn.set_as_toplevel(true)
 		
-	
+
+# while squad is active pic location infront of target
+func target_location_picking_routine(target: Node) -> void:
+	pass

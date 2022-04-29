@@ -7,8 +7,11 @@ onready var squad = preload("res://scenes/minigames/tamerinMinigame/enemies/Enem
 
 onready var score_label: Label = get_node("GUI/MarginContainer/HBoxContainer/VBoxContainer/Score") 
 onready var countdown_timer_label: Label = get_node("GUI/MarginContainer3/HBoxContainer2/VBoxContainer/CenterLabel")
-onready var countdown_tick_timer = Timer.new()
+onready var countdown_tick_timer: Timer = Timer.new()
 onready var game_timer_label: Label = get_node("GUI/MarginContainer2/HBoxContainer2/VBoxContainer/GameTimer")
+
+onready var spawn_area: CollisionObject2D = get_node("StaticBody2D/SpawnArea")
+onready var despawn_area: CollisionObject2D = get_node("StaticBody2D/DespawnArea")
 
 var started: bool = false
 var time_passed: float = 0.0
@@ -60,9 +63,6 @@ func _process(delta):
 	
 		if int(time_remaining) == 0:
 			end("TIME UP")
-
-
-
 
 
 # begine countdown then start spawning and rest of minigame. 
