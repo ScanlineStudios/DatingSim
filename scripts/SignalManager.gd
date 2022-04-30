@@ -4,10 +4,12 @@
 extends Node
 
 # Emitted to start Tamerin mini-game
-signal start_tamerin_minigame
-# Emitted when Tamerin mini-game finished
-signal finish_tamerin_minigame
-#
+signal tamerin_minigame_started
+# Emitted when Tamerin mini-game player destroyed
+signal tamerin_minigame_player_destroyed
+# Emitted when Tamerin mini-game is finished. expect a score parameter
+signal tamerin_minigame_ended(score)
+
 signal score_changed
 
 

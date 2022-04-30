@@ -1,0 +1,47 @@
+{
+	"events": [
+		{
+			"choice": "",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		},
+		{
+			"anchor_id": "",
+			"event_id": "dialogic_016"
+		},
+		{
+			"event_id": "dialogic_015",
+			"id": "anchor-1634488067",
+			"index": 0,
+			"name": ""
+		},
+		{
+			"change_timeline": "",
+			"event_id": "dialogic_020"
+		},
+		{
+			"audio_bus": "Master",
+			"background-music": "play",
+			"event_id": "dialogic_031",
+			"event_name": "BackgroundMusic",
+			"fade_length": 1,
+			"file": "",
+			"volume": 0
+		},
+		{
+			"background": "",
+			"event_id": "dialogic_021"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1650840201.json",
+		"name": "TamarinTest2"
+	}
+}

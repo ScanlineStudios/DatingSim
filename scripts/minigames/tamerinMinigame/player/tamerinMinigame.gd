@@ -43,18 +43,17 @@ func _physics_process(_delta):
 	get_input()
 	velocity = move_and_slide(velocity)
 
-	
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	max_hp = hp
-	health_display.set_max_value(max_hp)
-	print("Player Ship Ready")
-	#set_mode(MODE_CHARACTER) 
+	health_display.set_max_value(max_hp) 
 
 
 func _on_Hurtbox_area_entered(area):
 	_hit(area.get_groups()[0])
 	
+
 
 # Override base _post_hit function
 func _post_hit():
@@ -64,8 +63,8 @@ func _post_hit():
 # Override default death function
 func _die():
 	
-	# TODO: If health <= 0 do something. Send signal? 
-	print_debug("TamerinMinigame: GAME OVER")
+	# If health <= 0 do something. Send player death signal? 
+	SignalManager.emit_signal("tamerin_minigame_player_destroyed")
 	var explosion_instance = explosion.instance()
 	explosion_instance.position = get_global_position()
 	get_tree().get_root().add_child(explosion_instance)

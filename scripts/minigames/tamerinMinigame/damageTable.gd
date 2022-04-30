@@ -10,7 +10,7 @@ func _ready():
 	# read file containing damage mappings? 
 	# file is json in form { "<collision mask name>": <damage value>, }   
 	var file = File.new()
-	print(damageTableFileName)
+	#print(damageTableFileName)
 	file.open(damageTableFileName, file.READ)
 	var json = file.get_as_text()
 	var jsonParseOut = JSON.parse(json)

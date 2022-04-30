@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/minigames/tamerinMinigame/Score.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/minigames/tamerinMinigame/enemies/EnemySquad.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/minigames/tamerinMinigame/player/TamerinMinigameShip.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/minigames/DamageTable.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/minigames/tamerinMinigame/tamerinMinigameManager.gd" type="Script" id=7]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -27,7 +28,12 @@ shader = SubResource( 5 )
 size = 32
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=8]
+size = 148
+font_data = ExtResource( 1 )
+
 [node name="TamerinMinigame" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="TamerinMinigameShip" parent="." instance=ExtResource( 5 )]
 position = Vector2( 504.344, 504.344 )
@@ -79,42 +85,112 @@ shape = SubResource( 4 )
 position = Vector2( -125.011, 92.9356 )
 script = ExtResource( 3 )
 spawn_scene = ExtResource( 4 )
-num_to_spawn = 20
-spawn_cooldown = 2.0
 
-[node name="GUI" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="GUI" type="CanvasLayer" parent="."]
+layer = 119
 
 [node name="MarginContainer" type="MarginContainer" parent="GUI"]
+margin_left = 771.0
 margin_right = 1080.0
 margin_bottom = 60.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 10
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GUI/MarginContainer"]
 margin_left = 20.0
 margin_top = 10.0
-margin_right = 1060.0
+margin_right = 289.0
 margin_bottom = 50.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/MarginContainer/HBoxContainer"]
-margin_right = 1040.0
+margin_right = 269.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
+alignment = 1
 
 [node name="Score" type="Label" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_right = 1040.0
+margin_right = 269.0
 margin_bottom = 39.0
 custom_fonts/font = SubResource( 7 )
 text = "0"
 align = 2
 script = ExtResource( 2 )
+
+[node name="MarginContainer2" type="MarginContainer" parent="GUI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -329.0
+margin_right = 329.0
+margin_bottom = 59.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 10
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GUI/MarginContainer2"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 638.0
+margin_bottom = 49.0
+grow_horizontal = 0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/MarginContainer2/HBoxContainer2"]
+margin_right = 618.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="GameTimer" type="Label" parent="GUI/MarginContainer2/HBoxContainer2/VBoxContainer"]
+margin_right = 618.0
+margin_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 7 )
+text = "0:00"
+align = 1
+valign = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="GUI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -65.0
+margin_top = -99.0
+margin_right = 65.0
+margin_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 10
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GUI/MarginContainer3"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 110.0
+margin_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/MarginContainer3/HBoxContainer2"]
+margin_right = 90.0
+margin_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="CenterLabel" type="Label" parent="GUI/MarginContainer3/HBoxContainer2/VBoxContainer"]
+margin_right = 90.0
+margin_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 8 )
+align = 1
+valign = 1

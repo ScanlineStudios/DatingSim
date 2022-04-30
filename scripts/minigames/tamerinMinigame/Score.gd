@@ -1,13 +1,9 @@
 extends Label
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var score: int = 0
 
 func update_score(points_scored: int):
-	var score = int(text)
+	score = int(text)
 	score += points_scored
 	text = str(score)
 	
