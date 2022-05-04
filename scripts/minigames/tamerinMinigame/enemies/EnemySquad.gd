@@ -7,20 +7,24 @@ export var ship_dist_from_center = 40
 
 export var spawn_scene: PackedScene
 
-var despawn_area
-var seconds_active
-var spawn_area
+var active_area: CollisionShape2D
+var despawn_area: CollisionShape2D
+var seconds_active: int
+var spawn_area: CollisionShape2D
 # location squad is currently trying to move to
-var target_location
+var location_to_move: Vector2
 
+var random = RandomNumberGenerator.new()
 
-# TODO: move squad back and fourth 
+onready var destination_refresh_timer: Timer = Timer.new()
+
 func _physics_process(delta):
 	
-	var collision = move_and_collide(RIGHT * move_speed * .1 * delta)
+	# TODO: move twards target lovation
+	var move_direction = position.direction_to(location_to_move)
+	var collision = move_and_collide(move_direction * move_speed * .1 * delta)
 	if collision:
 		print("Collided with: ", collision.collider.name)
-
 
 
 # TODO: squad movement pattern. Random-ish place in front of player to shoot.
@@ -29,9 +33,9 @@ func _physics_process(delta):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# spawn ships_in_squad ships
+	add_child(destination_refresh_timer)
 	radial_spawn(ships_in_squad, ship_dist_from_center)
-	target_location_picking_routine(target)
-
+	location_to_move_picking_routine(target)
 
 
 # Generate a list of coordinates starting at (0, dist_from_center) rotating 
@@ -48,6 +52,7 @@ func radial_coordinates_to_spawn(num_to_spawn : int, dist_from_center: int) -> A
 	
 	return coordinates
 
+
 # spawn ships in a radial patern
 func radial_spawn(num_to_spawn : int, dist_from_center: int):
 	# find coordinates to spawn ships at
@@ -61,6 +66,31 @@ func radial_spawn(num_to_spawn : int, dist_from_center: int):
 		#spawn.set_as_toplevel(true)
 		
 
-# while squad is active pic location infront of target
-func target_location_picking_routine(target: Node) -> void:
-	pass
+# while squad is active pick location infront of target
+func location_to_move_picking_routine(target: KinematicBody2D) -> void:
+	# TODO get
+	var i = 0
+	while target:
+		
+		var min_x = active_area.position.x - active_area.shape.extents.x
+		var max_x = active_area.position.x + active_area.shape.extents.x
+		
+		var target_x = target.position.x
+		var destination_x = random.randfn( target_x, 30)
+		
+		if destination_x > max_x:
+			destination_x = max_x
+		elif destination_x < min_x:
+			destination_x = min_x
+		
+		var min_y = active_area.position.y - active_area.shape.extents.y
+		var max_y = active_area.position.y + active_area.shape.extents.y
+		var destination_y = rand_range(min_y, max_y)
+		
+		location_to_move = Vector2(destination_x, destination_y)
+		print_debug("New move location: ", location_to_move)
+		# wait 10 sec
+		destination_refresh_timer.start(10)
+		yield(destination_refresh_timer, "timeout")
+		print_debug("Destination timer up", i)
+	

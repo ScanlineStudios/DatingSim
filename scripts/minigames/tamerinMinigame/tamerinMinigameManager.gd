@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var player_ship: KinematicBody2D = get_node("TamerinMinigameShip")
+
 #onready var spawner = get_node("Spawner")
 onready var enenmy0: PackedScene = preload("res://scenes/minigames/tamerinMinigame/enemies/Enemy0-1.tscn")
 onready var squad: PackedScene = preload("res://scenes/minigames/tamerinMinigame/enemies/EnemySquad.tscn")
@@ -12,12 +14,13 @@ onready var game_timer_label: Label = get_node("GUI/MarginContainer2/HBoxContain
 
 onready var spawn_area: CollisionShape2D = get_node("StaticBody2D/SpawnArea")
 onready var despawn_area: CollisionShape2D = get_node("StaticBody2D/DespawnArea")
+onready var active_area: CollisionShape2D = get_node("StaticBody2D/ActiveArea")
+
 
 var started: bool = false
 var time_passed: float = 0.0
 var time_remaining
 var duration_seconds: int
-
 
 var SECONDS_IN_MIN = 60
 var MINUTES_IN_HOUR = 60
@@ -32,9 +35,20 @@ func end(end_cause: String = "GAME OVER") -> void:
 	var score = score_label.score
 	SignalManager.emit_signal("tamerin_minigame_ended", score)
 
-
-func get_random_point_in_spawn()-> Vector2:
-	return Vector2(0,0)
+# TODO: move to utility function bundle?
+func get_random_point_in_area(shapeNode: CollisionShape2D)-> Vector2:
+	var center = shapeNode.position
+	var bounds = shapeNode.shape.extents
+	
+	var x_min = center.x - bounds.x
+	var x_range_size = bounds.x
+	var x_rand = rand_range(x_min, x_min+x_range_size) 
+	
+	var y_min = center.y - bounds.y
+	var y_range_size = bounds.y
+	var y_rand = rand_range(y_min, y_min+y_range_size)
+	
+	return Vector2(x_rand,y_rand)
 
 
 func _on_tamerin_minigame_player_destroyed():
@@ -72,16 +86,23 @@ func spawn_squads(_spawn_scene: PackedScene, num_to_spawn: int = 1, spawn_cooldo
 	# spawn num_to_spawn, waiting spawn_cooldown seconds after each spawn
 	
 	for _i in range(num_to_spawn):
-		var spawn := _spawn_scene.instance() as Node2D
+		var spawn := _spawn_scene.instance() as KinematicBody2D
 		
 		# TODO: pick random point in spawn area
-		var spawn_point: Vector2 = get_random_point_in_spawn()
+		var spawn_point: Vector2 = get_random_point_in_area(active_area)
 		# TODO: pass allong active area and despawn area and seconds active
 		
 		# Move the new instance to the Spawner2D position
 		spawn.global_position = spawn_point# global_position
 		# Face enemy downward
 		spawn.global_rotation_degrees = global_rotation_degrees
+		
+		spawn.set("active_area", active_area)
+		spawn.set("despawn_area", despawn_area)
+		spawn.set("seconds_active", seconds_active)
+		
+		spawn.set("target", player_ship)
+		
 		add_child(spawn)
 
 		# Prevents the Spawner2D transform from affecting the new instance
@@ -113,7 +134,7 @@ func start(_duration_seconds: int = 100, dificulty: int = 50) -> void:
 		
 	started = true
 	
-	spawn_squads(squad, 7, 3)
+	spawn_squads(squad, 2, 3)
 	
 	# clear center label
 	countdown_tick_timer.start(2)

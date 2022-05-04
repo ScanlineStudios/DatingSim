@@ -57,6 +57,3 @@ func _hit(group):
 	
 func _post_hit():
 	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
