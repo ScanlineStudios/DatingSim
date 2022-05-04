@@ -90,7 +90,8 @@ func location_to_move_picking_routine(target: KinematicBody2D) -> void:
 		location_to_move = Vector2(destination_x, destination_y)
 		print_debug("New move location: ", location_to_move)
 		# wait 10 sec
-		destination_refresh_timer.start(10)
+		var delay = randi()%4
+		destination_refresh_timer.start(5+delay)
 		yield(destination_refresh_timer, "timeout")
 		print_debug("Destination timer up", i)
 	
