@@ -17,6 +17,22 @@ var location_to_move: Vector2
 var random = RandomNumberGenerator.new()
 
 onready var destination_refresh_timer: Timer = Timer.new()
+onready var active_timer: Timer = Timer.new()
+
+onready var location_to_move_picking_thread = Thread.new()
+
+
+func despawn_routine()->void:
+	active_timer.start(3)
+	yield(active_timer, "timeout")
+	
+	print_debug("TODO: Despawn squad")
+	# set target to null to stop movement routine
+	target = null
+	#set location_to_move to random location in despawn zone
+	location_to_move = Utility.get_random_point_in_area(despawn_area)
+	# TODO: on collision with despawn area, despawn squad 
+	#despawn_area.shape.
 
 func _physics_process(delta):
 	
@@ -27,15 +43,20 @@ func _physics_process(delta):
 		print("Collided with: ", collision.collider.name)
 
 
-# TODO: squad movement pattern. Random-ish place in front of player to shoot.
-#		Back and forth? 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# spawn ships_in_squad ships
+	# add timers
 	add_child(destination_refresh_timer)
+	add_child(active_timer)
+	
+	# spawn ships_in_squad ships
 	radial_spawn(ships_in_squad, ship_dist_from_center)
-	location_to_move_picking_routine(target)
+	
+	location_to_move_picking_routine()
+	
+	#despawn squad after timer finished
+	despawn_routine()
+	
 
 
 # Generate a list of coordinates starting at (0, dist_from_center) rotating 
@@ -67,31 +88,29 @@ func radial_spawn(num_to_spawn : int, dist_from_center: int):
 		
 
 # while squad is active pick location infront of target
-func location_to_move_picking_routine(target: KinematicBody2D) -> void:
-	# TODO get
-	var i = 0
+func location_to_move_picking_routine() -> void:
+	
 	while target:
 		
 		var min_x = active_area.position.x - active_area.shape.extents.x
 		var max_x = active_area.position.x + active_area.shape.extents.x
 		
 		var target_x = target.position.x
-		var destination_x = random.randfn( target_x, 30)
+		var destination_x = random.randfn( target_x, 50)
 		
-		if destination_x > max_x:
-			destination_x = max_x
-		elif destination_x < min_x:
-			destination_x = min_x
+		
+		destination_x = clamp(destination_x, min_x, max_x)
+		
 		
 		var min_y = active_area.position.y - active_area.shape.extents.y
 		var max_y = active_area.position.y + active_area.shape.extents.y
 		var destination_y = rand_range(min_y, max_y)
 		
 		location_to_move = Vector2(destination_x, destination_y)
-		print_debug("New move location: ", location_to_move)
+		#print_debug("New move location: ", location_to_move)
 		# wait 10 sec
 		var delay = randi()%4
-		destination_refresh_timer.start(5+delay)
+		destination_refresh_timer.start(3+delay)
 		yield(destination_refresh_timer, "timeout")
-		print_debug("Destination timer up", i)
+		#print_debug("Destination timer up", i)
 	

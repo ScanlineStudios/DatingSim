@@ -31,7 +31,7 @@ size = 148
 font_data = ExtResource( 1 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 400, 37.7407 )
+extents = Vector2( 525.63, 37.7407 )
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 522, 205 )
@@ -198,7 +198,7 @@ valign = 1
 [node name="SpawnArea" type="CollisionShape2D" parent="StaticBody2D"]
 material = SubResource( 3 )
 use_parent_material = true
-position = Vector2( 534.344, -82.0377 )
+position = Vector2( 534.344, -91.5514 )
 shape = SubResource( 9 )
 
 [node name="ActiveArea" type="CollisionShape2D" parent="StaticBody2D"]
@@ -209,5 +209,5 @@ disabled = true
 [node name="DespawnArea" type="CollisionShape2D" parent="StaticBody2D"]
 material = SubResource( 3 )
 use_parent_material = true
-position = Vector2( 534.344, 775.59 )
+position = Vector2( 546.14, 816.023 )
 shape = SubResource( 9 )

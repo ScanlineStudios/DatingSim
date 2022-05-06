@@ -36,19 +36,19 @@ func end(end_cause: String = "GAME OVER") -> void:
 	SignalManager.emit_signal("tamerin_minigame_ended", score)
 
 # TODO: move to utility function bundle?
-func get_random_point_in_area(shapeNode: CollisionShape2D)-> Vector2:
-	var center = shapeNode.position
-	var bounds = shapeNode.shape.extents
-	
-	var x_min = center.x - bounds.x
-	var x_range_size = bounds.x*2
-	var x_rand = rand_range(x_min, x_min+x_range_size) 
-	
-	var y_min = center.y - bounds.y
-	var y_range_size = bounds.y*2
-	var y_rand = rand_range(y_min, y_min+y_range_size)
-	
-	return Vector2(x_rand,y_rand)
+#func get_random_point_in_area(shapeNode: CollisionShape2D)-> Vector2:
+#	var center = shapeNode.position
+#	var bounds = shapeNode.shape.extents
+#	
+#	var x_min = center.x - bounds.x
+#	var x_range_size = bounds.x*2
+#	var x_rand = rand_range(x_min, x_min+x_range_size) 
+#	
+#	var y_min = center.y - bounds.y
+#	var y_range_size = bounds.y*2
+#	var y_rand = rand_range(y_min, y_min+y_range_size)
+#	
+#	return Vector2(x_rand,y_rand)
 
 
 func _on_tamerin_minigame_player_destroyed():
@@ -89,7 +89,7 @@ func spawn_squads(_spawn_scene: PackedScene, num_to_spawn: int = 1, spawn_cooldo
 		var spawn := _spawn_scene.instance() as KinematicBody2D
 		
 		# TODO: pick random point in spawn area
-		var spawn_point: Vector2 = get_random_point_in_area(spawn_area)
+		var spawn_point: Vector2 = Utility.get_random_point_in_area(spawn_area)
 		# TODO: pass allong active area and despawn area and seconds active
 		
 		# Move the new instance to the Spawner2D position
