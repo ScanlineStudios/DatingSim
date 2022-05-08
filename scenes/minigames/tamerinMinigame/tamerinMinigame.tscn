@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/minigames/tamerinMinigame/Score.gd" type="Script" id=2]
+[ext_resource path="res://scripts/minigames/tamerinMinigame/DespawnArea.gd" type="Script" id=3]
 [ext_resource path="res://scenes/minigames/tamerinMinigame/player/TamerinMinigameShip.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/minigames/DamageTable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/minigames/tamerinMinigame/tamerinMinigameManager.gd" type="Script" id=7]
@@ -193,21 +194,30 @@ custom_fonts/font = SubResource( 8 )
 align = 1
 valign = 1
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="SpawnArea" type="Area2D" parent="."]
 
-[node name="SpawnArea" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Shape" type="CollisionShape2D" parent="SpawnArea"]
 material = SubResource( 3 )
 use_parent_material = true
 position = Vector2( 534.344, -91.5514 )
 shape = SubResource( 9 )
 
-[node name="ActiveArea" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="ActiveArea" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="ActiveArea"]
+visible = false
 position = Vector2( 539.871, 235.634 )
 shape = SubResource( 10 )
 disabled = true
 
-[node name="DespawnArea" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="DespawnArea" type="Area2D" parent="."]
+collision_mask = 15
+script = ExtResource( 3 )
+
+[node name="Shape" type="CollisionShape2D" parent="DespawnArea"]
 material = SubResource( 3 )
 use_parent_material = true
-position = Vector2( 546.14, 816.023 )
+position = Vector2( 546.14, 844.023 )
 shape = SubResource( 9 )
+
+[connection signal="area_entered" from="DespawnArea" to="DespawnArea" method="_on_DespawnArea_area_entered"]

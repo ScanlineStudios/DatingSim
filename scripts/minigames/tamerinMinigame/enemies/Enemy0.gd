@@ -55,7 +55,13 @@ func _physics_process(delta):
 
 
 func _on_Hurtbox_area_entered(area):
-	_hit(area.get_groups()[0])
+	#print_debug(area.name)
+	#if area.name == "DespawnArea":
+	#	queue_free()
+	#else:
+	var groups = area.get_groups()
+	if len(groups) > 0:
+		_hit(groups[0])
 
 # override defult post hit function
 func _post_hit():

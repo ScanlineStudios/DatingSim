@@ -12,9 +12,9 @@ onready var countdown_timer_label: Label = get_node("GUI/MarginContainer3/HBoxCo
 onready var countdown_tick_timer: Timer = Timer.new()
 onready var game_timer_label: Label = get_node("GUI/MarginContainer2/HBoxContainer2/VBoxContainer/GameTimer")
 
-onready var spawn_area: CollisionShape2D = get_node("StaticBody2D/SpawnArea")
-onready var despawn_area: CollisionShape2D = get_node("StaticBody2D/DespawnArea")
-onready var active_area: CollisionShape2D = get_node("StaticBody2D/ActiveArea")
+onready var spawn_area: CollisionShape2D = get_node("SpawnArea/Shape")
+onready var despawn_area: CollisionShape2D = get_node("DespawnArea/Shape")
+onready var active_area: CollisionShape2D = get_node("ActiveArea/Shape")
 
 
 var started: bool = false
@@ -134,7 +134,7 @@ func start(_duration_seconds: int = 100, dificulty: int = 50) -> void:
 		
 	started = true
 	
-	spawn_squads(squad, 2, 3)
+	spawn_squads(squad, 5, 4)
 	
 	# clear center label
 	countdown_tick_timer.start(2)

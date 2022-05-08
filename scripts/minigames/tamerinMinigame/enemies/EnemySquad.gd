@@ -19,20 +19,18 @@ var random = RandomNumberGenerator.new()
 onready var destination_refresh_timer: Timer = Timer.new()
 onready var active_timer: Timer = Timer.new()
 
-onready var location_to_move_picking_thread = Thread.new()
+# onready var location_to_move_picking_thread = Thread.new()
 
 
 func despawn_routine()->void:
-	active_timer.start(3)
+	active_timer.start(seconds_active)
 	yield(active_timer, "timeout")
 	
-	print_debug("TODO: Despawn squad")
 	# set target to null to stop movement routine
 	target = null
-	#set location_to_move to random location in despawn zone
+	# set location_to_move to random location in despawn zone
 	location_to_move = Utility.get_random_point_in_area(despawn_area)
-	# TODO: on collision with despawn area, despawn squad 
-	#despawn_area.shape.
+
 
 func _physics_process(delta):
 	
