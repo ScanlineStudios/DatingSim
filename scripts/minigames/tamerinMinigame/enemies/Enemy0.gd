@@ -55,10 +55,6 @@ func _physics_process(delta):
 
 
 func _on_Hurtbox_area_entered(area):
-	#print_debug(area.name)
-	#if area.name == "DespawnArea":
-	#	queue_free()
-	#else:
 	var groups = area.get_groups()
 	if len(groups) > 0:
 		_hit(groups[0])
@@ -67,6 +63,7 @@ func _on_Hurtbox_area_entered(area):
 func _post_hit():
 	#health_display.update_healthbar(hp)
 	pass
+
 
 # thread that shoots then sleeps for fire_cooldown seconds
 func _fire_routine(_fire_cooldown: float = 5.0) -> void:
@@ -77,11 +74,7 @@ func _fire_routine(_fire_cooldown: float = 5.0) -> void:
 	bullet_instance.move_speed = bullet_speed
 	
 	get_tree().get_root().add_child(bullet_instance)
-	#can_fire = false
-	#yield(get_tree().create_timer(fire_rate),"timeout")
-	#can_fire = true
-	pass
-	
+
 
 # pick random point to move to inside a circle relative to parent node 
 func _pick_points_routine(radius: float = 30.0) -> void:
@@ -89,8 +82,7 @@ func _pick_points_routine(radius: float = 30.0) -> void:
 	var r = sqrt(rand_range(0.0, 1.0)) * radius
 	var t = rand_range(0.0, 1.0) * TAU
 	target_position = Vector2(r * cos(t), r * sin(t))
-	
-	
+
 
 # sleep for sleep_time seconds
 func my_sleep(sleep_time: float) -> void:

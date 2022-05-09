@@ -9,8 +9,10 @@ onready var squad: PackedScene = preload("res://scenes/minigames/tamerinMinigame
 
 onready var score_label: Label = get_node("GUI/MarginContainer/HBoxContainer/VBoxContainer/Score") 
 onready var countdown_timer_label: Label = get_node("GUI/MarginContainer3/HBoxContainer2/VBoxContainer/CenterLabel")
-onready var countdown_tick_timer: Timer = Timer.new()
 onready var game_timer_label: Label = get_node("GUI/MarginContainer2/HBoxContainer2/VBoxContainer/GameTimer")
+
+onready var countdown_tick_timer: Timer = Timer.new()
+onready var spawn_timer: Timer = Timer.new()
 
 onready var spawn_area: CollisionShape2D = get_node("SpawnArea/Shape")
 onready var despawn_area: CollisionShape2D = get_node("DespawnArea/Shape")
@@ -34,21 +36,6 @@ func end(end_cause: String = "GAME OVER") -> void:
 	
 	var score = score_label.score
 	SignalManager.emit_signal("tamerin_minigame_ended", score)
-
-# TODO: move to utility function bundle?
-#func get_random_point_in_area(shapeNode: CollisionShape2D)-> Vector2:
-#	var center = shapeNode.position
-#	var bounds = shapeNode.shape.extents
-#	
-#	var x_min = center.x - bounds.x
-#	var x_range_size = bounds.x*2
-#	var x_rand = rand_range(x_min, x_min+x_range_size) 
-#	
-#	var y_min = center.y - bounds.y
-#	var y_range_size = bounds.y*2
-#	var y_rand = rand_range(y_min, y_min+y_range_size)
-#	
-#	return Vector2(x_rand,y_rand)
 
 
 func _on_tamerin_minigame_player_destroyed():
@@ -88,19 +75,18 @@ func spawn_squads(_spawn_scene: PackedScene, num_to_spawn: int = 1, spawn_cooldo
 	for _i in range(num_to_spawn):
 		var spawn := _spawn_scene.instance() as KinematicBody2D
 		
-		# TODO: pick random point in spawn area
+		# pick random point in spawn area
 		var spawn_point: Vector2 = Utility.get_random_point_in_area(spawn_area)
-		# TODO: pass allong active area and despawn area and seconds active
 		
 		# Move the new instance to the Spawner2D position
 		spawn.global_position = spawn_point# global_position
 		# Face enemy downward
 		spawn.global_rotation_degrees = global_rotation_degrees
 		
+		# pass allong active area and despawn area and seconds active
 		spawn.set("active_area", active_area)
 		spawn.set("despawn_area", despawn_area)
 		spawn.set("seconds_active", seconds_active)
-		
 		spawn.set("target", player_ship)
 		
 		add_child(spawn)
@@ -109,12 +95,8 @@ func spawn_squads(_spawn_scene: PackedScene, num_to_spawn: int = 1, spawn_cooldo
 		spawn.set_as_toplevel(true)
 
 		# cooldown 
-		var t = Timer.new()
-		t.set_wait_time(spawn_cooldown)
-		t.set_one_shot(true)
-		self.add_child(t)
-		t.start()
-		yield(t,"timeout")
+		spawn_timer.start(spawn_cooldown)
+		yield(spawn_timer,"timeout")
 
 
 # begine countdown then start spawning and rest of minigame. 
@@ -145,7 +127,9 @@ func start(_duration_seconds: int = 100, dificulty: int = 50) -> void:
 # Initialize tamerinMinigame but do not start spawning
 func _ready():
 	
-	add_child(countdown_tick_timer) #to process
+	add_child(countdown_tick_timer)
+	add_child(spawn_timer)
+	
 	var _error = SignalManager.connect("tamerin_minigame_player_destroyed", self, "_on_tamerin_minigame_player_destroyed")
 	
 	# todo: Configure squads?
