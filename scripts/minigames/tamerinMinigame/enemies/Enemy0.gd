@@ -14,6 +14,7 @@ var enemy_bullet = preload("res://scenes/minigames/tamerinMinigame/enemies/Enemy
 # TODO: fix wonky paything here. ../..?
 onready var tamerinMinigame = get_node("../..") #get_node("../TamerinMinigame")
 
+# Localized signal for when instace dies
 signal score_changed
 #onready var health_display = $HealthDisplay
 

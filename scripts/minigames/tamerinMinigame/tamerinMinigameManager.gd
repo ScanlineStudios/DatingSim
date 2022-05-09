@@ -69,7 +69,7 @@ func _process(delta):
 
 # Spawns a given number of given squads 
 # TODO: add time active, after which they go off screen and despawn
-func spawn_squads(_spawn_scene: PackedScene, num_to_spawn: int = 1, spawn_cooldown: int = 2, seconds_active: int = 30) -> void:
+func spawn_squads(_spawn_scene: PackedScene, num_to_spawn: int = 1, spawn_cooldown: int = 2, seconds_active: int = 30, squad_size: int = 5) -> void:
 	# spawn num_to_spawn, waiting spawn_cooldown seconds after each spawn
 	
 	for _i in range(num_to_spawn):
@@ -116,7 +116,7 @@ func start(_duration_seconds: int = 100, dificulty: int = 50) -> void:
 		
 	started = true
 	
-	spawn_squads(squad, 5, 4)
+	spawn_squads(squad, dificulty, 2 ,_duration_seconds)
 	
 	# clear center label
 	countdown_tick_timer.start(2)
@@ -137,7 +137,7 @@ func _ready():
 	print_debug(squad)
 	# do test sequence if this node is the root
 	if (get_tree().get_root() == self.get_parent()):
-		start() 
+		start(10,1) 
 
 
 func update_center_label(update_string: String = "") -> void:

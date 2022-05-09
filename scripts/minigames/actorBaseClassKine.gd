@@ -20,7 +20,7 @@ export (int) var hp # default hit point total
 var max_hp = hp
 var score_value = 0
 # what this entity is targeting. ie, looking at, moving twards, attacking ect 
-var target
+var target:KinematicBody2D 
 # True to show healthbar. False to hide it. default false
 var show_health_bar = false
 

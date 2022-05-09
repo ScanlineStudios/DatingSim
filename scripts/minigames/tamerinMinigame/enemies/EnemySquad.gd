@@ -54,7 +54,6 @@ func _ready():
 	
 	#despawn squad after timer finished
 	despawn_routine()
-	
 
 
 # Generate a list of coordinates starting at (0, dist_from_center) rotating 
@@ -87,8 +86,8 @@ func radial_spawn(num_to_spawn : int, dist_from_center: int):
 
 # while squad is active pick location infront of target
 func location_to_move_picking_routine() -> void:
-	
-	while target:
+	# track target with it exists
+	while target && weakref(target).get_ref():
 		
 		var min_x = active_area.position.x - active_area.shape.extents.x
 		var max_x = active_area.position.x + active_area.shape.extents.x
@@ -96,9 +95,7 @@ func location_to_move_picking_routine() -> void:
 		var target_x = target.position.x
 		var destination_x = random.randfn( target_x, 50)
 		
-		
 		destination_x = clamp(destination_x, min_x, max_x)
-		
 		
 		var min_y = active_area.position.y - active_area.shape.extents.y
 		var max_y = active_area.position.y + active_area.shape.extents.y
@@ -110,5 +107,4 @@ func location_to_move_picking_routine() -> void:
 		var delay = randi()%4
 		destination_refresh_timer.start(3+delay)
 		yield(destination_refresh_timer, "timeout")
-		#print_debug("Destination timer up", i)
-	
+		
