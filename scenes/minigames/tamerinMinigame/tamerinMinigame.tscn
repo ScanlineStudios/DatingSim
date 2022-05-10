@@ -38,6 +38,7 @@ extents = Vector2( 525.63, 37.7407 )
 extents = Vector2( 522, 205 )
 
 [node name="TamerinMinigame" type="Node2D"]
+position = Vector2( 0, 1 )
 script = ExtResource( 7 )
 
 [node name="TamerinMinigameShip" parent="." instance=ExtResource( 5 )]

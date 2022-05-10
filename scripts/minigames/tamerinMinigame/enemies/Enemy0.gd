@@ -12,7 +12,7 @@ var move_direction = Vector2.RIGHT
 
 var enemy_bullet = preload("res://scenes/minigames/tamerinMinigame/enemies/EnemyBullet.tscn")
 # TODO: fix wonky paything here. ../..?
-onready var tamerinMinigame = get_node("../..") #get_node("../TamerinMinigame")
+onready var minigame_root = get_node("../..") #get_node("../TamerinMinigame")
 
 # Localized signal for when instace dies
 signal score_changed
@@ -40,11 +40,13 @@ func _ready():
 	
 	
 	# Init score related things
-	var score_label_path = String(tamerinMinigame.get_path()) + "/GUI/MarginContainer/HBoxContainer/VBoxContainer/Score"
+	var score_label_path = String(minigame_root.get_path()) + "/GUI/MarginContainer/HBoxContainer/VBoxContainer/Score"
 	var label = get_node(score_label_path)
 	var error = self.connect("score_changed", label, "update_score")
 	if error:
 		print("Error: ", error)
+	
+	error = self.connect("score_changed",minigame_root, "on_score_changed" )
 	
 	# overwrite default score value 
 	score_value = 10

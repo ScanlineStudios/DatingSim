@@ -5,7 +5,7 @@
 
 [sub_resource type="CircleShape2D" id=1]
 
-[node name="TamerinMinigameSquad" type="KinematicBody2D" groups=["enemy"]]
+[node name="TamerinMinigameSquad" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 1 )

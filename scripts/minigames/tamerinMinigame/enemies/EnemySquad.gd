@@ -1,7 +1,7 @@
 extends "res://scripts/minigames/actorBaseClassKine.gd"
 
 ## This script handels the movement and spawning of individual enemy ships
-export var ships_in_squad = 5
+export var squad_size = 5
 export var rotate_speed = 0
 export var ship_dist_from_center = 40
 
@@ -48,7 +48,7 @@ func _ready():
 	add_child(active_timer)
 	
 	# spawn ships_in_squad ships
-	radial_spawn(ships_in_squad, ship_dist_from_center)
+	radial_spawn(squad_size, ship_dist_from_center)
 	
 	location_to_move_picking_routine()
 	

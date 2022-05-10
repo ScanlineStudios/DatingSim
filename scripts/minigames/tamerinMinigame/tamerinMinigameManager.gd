@@ -23,6 +23,7 @@ var started: bool = false
 var time_passed: float = 0.0
 var time_remaining
 var duration_seconds: int
+var done_spawning = false
 
 var SECONDS_IN_MIN = 60
 var MINUTES_IN_HOUR = 60
@@ -41,6 +42,13 @@ func end(end_cause: String = "GAME OVER") -> void:
 func _on_tamerin_minigame_player_destroyed():
 	end()
 
+func on_score_changed(_points):
+	if done_spawning:
+		print_debug("Spawning finished")
+	
+	var enemies = get_tree().get_nodes_in_group("enemy_ship")
+	
+	print_debug(len(enemies)-1, " enemies remaining ", enemies)
 
 func _process(delta):
 	
@@ -88,7 +96,7 @@ func spawn_squads(_spawn_scene: PackedScene, num_to_spawn: int = 1, spawn_cooldo
 		spawn.set("despawn_area", despawn_area)
 		spawn.set("seconds_active", seconds_active)
 		spawn.set("target", player_ship)
-		
+		spawn.set("squad_size", squad_size)
 		add_child(spawn)
 
 		# Prevents the Spawner2D transform from affecting the new instance
@@ -97,6 +105,9 @@ func spawn_squads(_spawn_scene: PackedScene, num_to_spawn: int = 1, spawn_cooldo
 		# cooldown 
 		spawn_timer.start(spawn_cooldown)
 		yield(spawn_timer,"timeout")
+		
+	# TODO: change if waves become a thing
+	done_spawning = true
 
 
 # begine countdown then start spawning and rest of minigame. 
@@ -116,7 +127,7 @@ func start(_duration_seconds: int = 100, dificulty: int = 50) -> void:
 		
 	started = true
 	
-	spawn_squads(squad, dificulty, 2 ,_duration_seconds)
+	spawn_squads(squad, 2, 2 ,_duration_seconds,dificulty)
 	
 	# clear center label
 	countdown_tick_timer.start(2)
@@ -137,7 +148,7 @@ func _ready():
 	print_debug(squad)
 	# do test sequence if this node is the root
 	if (get_tree().get_root() == self.get_parent()):
-		start(10,1) 
+		start(30,1) 
 
 
 func update_center_label(update_string: String = "") -> void:

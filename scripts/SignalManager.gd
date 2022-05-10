@@ -10,7 +10,6 @@ signal tamerin_minigame_player_destroyed
 # Emitted when Tamerin mini-game is finished. expect a score parameter
 signal tamerin_minigame_ended(score)
 
-signal score_changed
 
 
 
