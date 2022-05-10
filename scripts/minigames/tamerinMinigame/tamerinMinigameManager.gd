@@ -13,6 +13,7 @@ onready var game_timer_label: Label = get_node("GUI/MarginContainer2/HBoxContain
 
 onready var countdown_tick_timer: Timer = Timer.new()
 onready var spawn_timer: Timer = Timer.new()
+onready var misc_timer: Timer = Timer.new()
 
 onready var spawn_area: CollisionShape2D = get_node("SpawnArea/Shape")
 onready var despawn_area: CollisionShape2D = get_node("DespawnArea/Shape")
@@ -31,11 +32,17 @@ var MINUTES_IN_HOUR = 60
 # called after ending triger (player death, time out, all enemies dead)
 func end(end_cause: String = "GAME OVER") -> void:
 	
+	var enemies = get_tree().get_nodes_in_group("enemy_ship")
+	
 	started = false
 	
 	update_center_label(end_cause)
 	
 	var score = score_label.score
+	
+	misc_timer.start(2)
+	yield(misc_timer,"timeout")
+	
 	SignalManager.emit_signal("tamerin_minigame_ended", score)
 
 
@@ -43,12 +50,18 @@ func _on_tamerin_minigame_player_destroyed():
 	end()
 
 func on_score_changed(_points):
+	# wait for destroyed node to be removed
+	misc_timer.start(1)
+	yield(misc_timer, "timeout")
+	
 	if done_spawning:
 		print_debug("Spawning finished")
 	
 	var enemies = get_tree().get_nodes_in_group("enemy_ship")
+	var enemies_remaining = len(enemies)
 	
-	print_debug(len(enemies)-1, " enemies remaining ", enemies)
+	if done_spawning && enemies_remaining <= 0:
+		end("Level \nCleared!")
 
 func _process(delta):
 	
@@ -112,7 +125,7 @@ func spawn_squads(_spawn_scene: PackedScene, num_to_spawn: int = 1, spawn_cooldo
 
 # begine countdown then start spawning and rest of minigame. 
 # TODO: potential dificulty input, timer input?
-func start(_duration_seconds: int = 100, dificulty: int = 50) -> void:
+func start(_duration_seconds: int = 100, dificulty: int = 3) -> void:
 	
 	duration_seconds = _duration_seconds
 	# Countdown from 3, replace 0 with GO!
@@ -127,7 +140,7 @@ func start(_duration_seconds: int = 100, dificulty: int = 50) -> void:
 		
 	started = true
 	
-	spawn_squads(squad, 2, 2 ,_duration_seconds,dificulty)
+	spawn_squads(squad, dificulty, 2 ,_duration_seconds,dificulty)
 	
 	# clear center label
 	countdown_tick_timer.start(2)
@@ -140,12 +153,13 @@ func _ready():
 	
 	add_child(countdown_tick_timer)
 	add_child(spawn_timer)
+	add_child(misc_timer)
 	
 	var _error = SignalManager.connect("tamerin_minigame_player_destroyed", self, "_on_tamerin_minigame_player_destroyed")
 	
 	# todo: Configure squads?
 	squad.set("spawn_scene", enenmy0)
-	print_debug(squad)
+	
 	# do test sequence if this node is the root
 	if (get_tree().get_root() == self.get_parent()):
 		start(30,1) 

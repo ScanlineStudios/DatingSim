@@ -1,15 +1,12 @@
 extends Node2D
 
-# This script is used to control wheather a scene is active or not. For example when a mini game 
-# overlay come up during dialog the diolag scene will be set to inactive wile the plauer plays the 
-# mini game then set back to active when the player is done   
+# This script manages the dialog minigame interactions and the trasitions between the two.
 
-#var is_active = true setget set_is_active
-#var timer = get_tree().create_timer(10.0)
-onready var freeze: Node = get_parent().get_node("Freeze")
+#onready var freeze: Node = get_parent().get_node("Freeze")
 onready var dialog: CanvasLayer = get_parent().get_node("DialogSkeleton")
 onready var game: Node2D = get_child(0)
 
+onready var misc_timer: Timer = Timer.new()
 
 func get_all_nodes(node: Node) -> Array:
 	var return_array = []
@@ -24,23 +21,29 @@ func get_all_nodes(node: Node) -> Array:
 
 func _ready():
 	
-	freeze.freeze_scene(game, true)
+	add_child(misc_timer)
+	
+	Utility.freeze_scene(game, true)
 	toggle_offspring_visible(game)
 	var error = SignalManager.connect("tamerin_minigame_started", self, "_on_tamerin_minigame_started")
 	if error:
 		print("Error: ", error)
 		
 	error = SignalManager.connect("tamerin_minigame_ended",self, "_on_tamerin_minigame_ended")
-	freeze.freeze_scene(game, true)
-	freeze.freeze_scene(dialog, false)
+	Utility.freeze_scene(game, true)
+	Utility.freeze_scene(dialog, false)
 
 
 func _on_tamerin_minigame_ended(score:int):
 	# set score where dialogic can read it
 	print_debug(score)
 	Dialogic.set_variable("tamarin_score", score)
-	freeze.freeze_scene(dialog, false)
-	freeze.freeze_scene(game, true)
+	
+	Utility.freeze_scene(dialog, false)
+	Dialogic.next_event()
+	misc_timer.start(2)
+	yield(misc_timer, "timeout")
+	Utility.freeze_scene(game, true)
 	# TODO: delay for fade out and unload minigame scene
 	toggle_offspring_visible(game)
 
@@ -49,10 +52,10 @@ func _on_tamerin_minigame_started():
 	# hide/show scenes and script generated nodes
 	toggle_offspring_visible(game)
 	
-	freeze.freeze_scene(dialog, true)
+	Utility.freeze_scene(dialog, true)
 	#TODO: move /hide dialog scene
 	
-	freeze.freeze_scene(game, false)
+	Utility.freeze_scene(game, false)
 	
 	game.start()
 

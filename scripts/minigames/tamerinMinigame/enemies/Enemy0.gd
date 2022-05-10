@@ -15,7 +15,7 @@ var enemy_bullet = preload("res://scenes/minigames/tamerinMinigame/enemies/Enemy
 onready var minigame_root = get_node("../..") #get_node("../TamerinMinigame")
 
 # Localized signal for when instace dies
-signal score_changed
+#signal score_changed
 #onready var health_display = $HealthDisplay
 
 func _ready():
@@ -52,9 +52,14 @@ func _ready():
 	score_value = 10
 
 func _physics_process(delta):
-	velocity = position.direction_to(target_position) * move_speed * delta
 	
-	var _collision = move_and_collide(velocity)
+	var distance_to_target = Utility.get_distance_between_vectors(self.position, target_position)
+	# only move if far enough to avoid vibrating
+	if distance_to_target > 10 :
+	
+		velocity = position.direction_to(target_position) * move_speed * delta
+		
+		var _collision = move_and_collide(velocity)
 
 
 func _on_Hurtbox_area_entered(area):
@@ -87,11 +92,3 @@ func _pick_points_routine(radius: float = 30.0) -> void:
 	target_position = Vector2(r * cos(t), r * sin(t))
 
 
-# sleep for sleep_time seconds
-func my_sleep(sleep_time: float) -> void:
-	var timer = Timer.new()
-	timer.set_wait_time(sleep_time)
-	timer.set_one_shot(true)
-	add_child(timer)
-	timer.start()
-	yield(timer,"timeout")

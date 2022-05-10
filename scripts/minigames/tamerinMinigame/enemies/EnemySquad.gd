@@ -34,11 +34,14 @@ func despawn_routine()->void:
 
 func _physics_process(delta):
 	
-	# TODO: move twards target lovation
-	var move_direction = position.direction_to(location_to_move)
-	var collision = move_and_collide(move_direction * move_speed * .1 * delta)
-	if collision:
-		print("Collided with: ", collision.collider.name)
+	# move twards target location if not too close
+	var distance_to_target = Utility.get_distance_between_vectors(self.position, location_to_move)
+	# only move if far enough to avoid vibrating
+	if distance_to_target > 10 :
+		var move_direction = position.direction_to(location_to_move)
+		var collision = move_and_collide(move_direction * move_speed * .1 * delta)
+		if collision:
+			print("Collided with: ", collision.collider.name)
 
 
 # Called when the node enters the scene tree for the first time.

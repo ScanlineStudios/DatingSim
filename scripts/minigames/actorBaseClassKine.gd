@@ -18,6 +18,7 @@ export var move_speed = 550 #250 # default move speed
 
 export (int) var hp # default hit point total 
 var max_hp = hp
+signal score_changed
 var score_value = 0
 # what this entity is targeting. ie, looking at, moving twards, attacking ect 
 var target:KinematicBody2D 
@@ -35,11 +36,13 @@ func _ready():
 # default death function
 func _die():
 	# always emmit signal? may not always be connected to anything
-	emit_signal("score_changed", score_value) 
+	
 	var explosion_instance = explosion.instance()
 	explosion_instance.position = get_global_position()
 	get_tree().get_root().add_child(explosion_instance)
 	queue_free()
+	# emmit signal that a thing died and the scor may need to be changed
+	emit_signal("score_changed", score_value) 
  
 
 # default on hit function
