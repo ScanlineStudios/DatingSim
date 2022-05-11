@@ -14,9 +14,7 @@ var enemy_bullet = preload("res://scenes/minigames/tamerinMinigame/enemies/Enemy
 # TODO: fix wonky paything here. ../..?
 onready var minigame_root = get_node("../..") #get_node("../TamerinMinigame")
 
-# Localized signal for when instace dies
-#signal score_changed
-#onready var health_display = $HealthDisplay
+# onready var health_display = $HealthDisplay
 
 func _ready():
 	max_hp = hp
@@ -46,7 +44,7 @@ func _ready():
 	if error:
 		print("Error: ", error)
 	
-	error = self.connect("score_changed",minigame_root, "on_score_changed" )
+	error = self.connect("actor_exited",minigame_root, "on_actor_exited" )
 	
 	# overwrite default score value 
 	score_value = 10

@@ -18,7 +18,10 @@ export var move_speed = 550 #250 # default move speed
 
 export (int) var hp # default hit point total 
 var max_hp = hp
+# Localized signal for when instace dies
 signal score_changed
+# Localized signal for when instace leves the scene
+signal actor_exited
 var score_value = 0
 # what this entity is targeting. ie, looking at, moving twards, attacking ect 
 var target:KinematicBody2D 
@@ -57,6 +60,9 @@ func _hit(group):
 	if hp <= 0:
 		_die()
 	
-	
+
+func _exit_tree():
+	emit_signal("actor_exited")
+
 func _post_hit():
 	pass

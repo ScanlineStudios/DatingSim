@@ -8,7 +8,6 @@
 [node name="Root" type="Node2D"]
 
 [node name="DialogSkeleton" parent="." instance=ExtResource( 1 )]
-layer = 119
 dialogicTimeline = "TamarinTest"
 
 [node name="MiniGameManager" type="Node2D" parent="."]

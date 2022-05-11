@@ -87,7 +87,7 @@ shape = SubResource( 4 )
 [node name="DamageTable" parent="." groups=["DamageTable"] instance=ExtResource( 6 )]
 
 [node name="GUI" type="CanvasLayer" parent="."]
-layer = 119
+layer = 110
 
 [node name="MarginContainer" type="MarginContainer" parent="GUI"]
 margin_left = 771.0

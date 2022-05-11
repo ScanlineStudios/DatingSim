@@ -23,7 +23,7 @@ onready var active_area: CollisionShape2D = get_node("ActiveArea/Shape")
 var started: bool = false
 var time_passed: float = 0.0
 var time_remaining
-var duration_seconds: int
+var game_duration_seconds: int
 var done_spawning = false
 
 var SECONDS_IN_MIN = 60
@@ -49,7 +49,7 @@ func end(end_cause: String = "GAME OVER") -> void:
 func _on_tamerin_minigame_player_destroyed():
 	end()
 
-func on_score_changed(_points):
+func on_actor_exited():
 	# wait for destroyed node to be removed
 	misc_timer.start(1)
 	yield(misc_timer, "timeout")
@@ -68,7 +68,7 @@ func _process(delta):
 	# Game timer logic
 	if started:
 		time_passed += delta
-		time_remaining = duration_seconds - time_passed
+		time_remaining = game_duration_seconds - time_passed
 	
 		var game_timer_seconds = int(fmod(time_remaining, SECONDS_IN_MIN))
 		var game_timer_minuites = int(fmod(time_remaining, SECONDS_IN_MIN * MINUTES_IN_HOUR) / MINUTES_IN_HOUR)
@@ -125,9 +125,10 @@ func spawn_squads(_spawn_scene: PackedScene, num_to_spawn: int = 1, spawn_cooldo
 
 # begine countdown then start spawning and rest of minigame. 
 # TODO: potential dificulty input, timer input?
-func start(_duration_seconds: int = 100, dificulty: int = 3) -> void:
+func start(_game_duration_seconds: int = 100, dificulty: int = 3) -> void:
 	
-	duration_seconds = _duration_seconds
+	game_duration_seconds = _game_duration_seconds
+	var squad_active_seconds = game_duration_seconds / 3
 	# Countdown from 3, replace 0 with GO!
 	# TODO reduce amount of magic numbers
 	for num in range(3,-1, -1):
@@ -140,7 +141,7 @@ func start(_duration_seconds: int = 100, dificulty: int = 3) -> void:
 		
 	started = true
 	
-	spawn_squads(squad, dificulty, 2 ,_duration_seconds,dificulty)
+	spawn_squads(squad, dificulty, 2 ,squad_active_seconds,dificulty)
 	
 	# clear center label
 	countdown_tick_timer.start(2)
@@ -162,7 +163,7 @@ func _ready():
 	
 	# do test sequence if this node is the root
 	if (get_tree().get_root() == self.get_parent()):
-		start(30,1) 
+		start(30,2) 
 
 
 func update_center_label(update_string: String = "") -> void:
