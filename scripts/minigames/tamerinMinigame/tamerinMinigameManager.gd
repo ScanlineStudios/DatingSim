@@ -44,14 +44,14 @@ func end(end_cause: String = "GAME OVER") -> void:
 	yield(misc_timer,"timeout")
 	
 	SignalManager.emit_signal("tamerin_minigame_ended", score)
-
+	Utility.freeze_node(self, true)
 
 func _on_tamerin_minigame_player_destroyed():
 	end()
 
 func on_actor_exited():
 	# wait for destroyed node to be removed
-	misc_timer.start(1)
+	misc_timer.start(.5)
 	yield(misc_timer, "timeout")
 	
 	if done_spawning:
@@ -60,8 +60,9 @@ func on_actor_exited():
 	var enemies = get_tree().get_nodes_in_group("enemy_ship")
 	var enemies_remaining = len(enemies)
 	
-	if done_spawning && enemies_remaining <= 0:
+	if done_spawning && enemies_remaining <= 0 && started:
 		end("Level \nCleared!")
+		
 
 func _process(delta):
 	

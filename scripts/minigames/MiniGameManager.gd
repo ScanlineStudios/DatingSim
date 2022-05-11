@@ -57,7 +57,7 @@ func _on_tamerin_minigame_started():
 	
 	Utility.freeze_scene(game, false)
 	
-	game.start()
+	game.start(30)
 
 # TODO: Move to utility 
 #func set_offspring_visible(node: Node, _visible:bool)-> void:
