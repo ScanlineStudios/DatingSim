@@ -90,7 +90,6 @@ func _process(delta):
 
 
 # Spawns a given number of given squads 
-# TODO: add time active, after which they go off screen and despawn
 func spawn_squads(_spawn_scene: PackedScene, num_to_spawn: int = 1, spawn_cooldown: int = 2, seconds_active: int = 30, squad_size: int = 5) -> void:
 	# spawn num_to_spawn, waiting spawn_cooldown seconds after each spawn
 	
@@ -108,6 +107,7 @@ func spawn_squads(_spawn_scene: PackedScene, num_to_spawn: int = 1, spawn_cooldo
 		# pass allong active area and despawn area and seconds active
 		spawn.set("active_area", active_area)
 		spawn.set("despawn_area", despawn_area)
+		# time active, after which they go off screen and despawn
 		spawn.set("seconds_active", seconds_active)
 		spawn.set("target", player_ship)
 		spawn.set("squad_size", squad_size)

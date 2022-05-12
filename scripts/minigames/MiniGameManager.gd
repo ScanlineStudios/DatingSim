@@ -30,10 +30,10 @@ func _on_tamerin_minigame_ended(score:int):
 	
 	Utility.freeze_scene(dialog, false)
 	Dialogic.next_event()
+	# delay for fade out and unload minigame scene
 	misc_timer.start(2)
 	yield(misc_timer, "timeout")
-	Utility.freeze_scene(game, true)
-	# TODO: delay for fade out and unload minigame scene
+	Utility.freeze_scene(game, true) 
 	Utility.toggle_offspring_visible(game)
 
 

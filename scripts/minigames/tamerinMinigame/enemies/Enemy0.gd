@@ -11,7 +11,7 @@ var velocity = Vector2()
 var move_direction = Vector2.RIGHT
 
 var enemy_bullet = preload("res://scenes/minigames/tamerinMinigame/enemies/EnemyBullet.tscn")
-# TODO: fix wonky paything here. ../..?
+# TODO: fix wonky pathing here. ../..?
 onready var minigame_root = get_node("../..") #get_node("../TamerinMinigame")
 
 # onready var health_display = $HealthDisplay
