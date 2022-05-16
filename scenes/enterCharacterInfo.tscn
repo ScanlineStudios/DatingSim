@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/enterCharacterInfo.gd" type="Script" id=1]
+[ext_resource path="res://clearAstro.png" type="Texture" id=2]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -35,8 +36,9 @@ text = "Name: "
 
 [node name="LineEditName" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 74.0
-margin_right = 132.0
+margin_right = 274.0
 margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
 max_length = 55
 expand_to_text_length = true
 
@@ -58,6 +60,7 @@ margin_left = 74.0
 margin_right = 184.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 110, 0 )
+max_length = 6
 placeholder_text = "he, she, they"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
@@ -72,6 +75,7 @@ margin_left = 197.0
 margin_right = 317.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 120, 0 )
+max_length = 6
 placeholder_text = "him, her, them"
 
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
@@ -86,6 +90,7 @@ margin_left = 330.0
 margin_right = 450.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 120, 0 )
+max_length = 6
 placeholder_text = "his, her, their"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -114,17 +119,17 @@ anchor_left = 0.296
 anchor_top = 0.5
 anchor_right = 0.296
 anchor_bottom = 0.5
-margin_left = 247.32
+margin_left = 248.0
 margin_top = -288.0
 margin_right = 741.32
 margin_bottom = 289.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
-margin_right = 494.0
+margin_right = 500.0
 margin_bottom = 577.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
-margin_right = 494.0
+margin_right = 500.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 0, 30 )
 
@@ -135,9 +140,36 @@ rect_min_size = Vector2( 400, 0 )
 text = "This award for astroneering goes to <character_name> in recognition of <pronoun_subject> hard work. May <pronoun_subject> find success in <pronoun_possesive> future endeavors. "
 autowrap = true
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
+margin_top = 69.0
+margin_right = 500.0
+margin_bottom = 569.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/HBoxContainer2"]
+margin_right = 500.0
+margin_bottom = 500.0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer2/VBoxContainer/HBoxContainer2/MarginContainer"]
+margin_right = 500.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 500, 500 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer2/VBoxContainer/HBoxContainer2/MarginContainer"]
+margin_right = 500.0
+margin_bottom = 500.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/LineEditName" to="." method="_on_LineEditName_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProSub" to="." method="_on_LineEditProSub_text_changed"]
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProObj" to="." method="_on_LineEdit2ProObj_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProObj" to="." method="_on_LineEditProObj_text_changed"]
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProPos" to="." method="_on_LineEdit2ProObj_text_changed"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProObj" to="." method="_on_LineEdit2ProObj_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProPos" to="." method="_on_LineEditProPos_text_changed"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProPos" to="." method="_on_LineEdit2ProObj_text_changed"]
+[connection signal="color_changed" from="MarginContainer/VBoxContainer/HBoxContainer3/ColorPickerSuit" to="." method="_on_ColorPickerSuit_color_changed"]

@@ -4,11 +4,14 @@ extends Control
 onready var preview_label: Label = get_node("MarginContainer2/VBoxContainer/HBoxContainer/Label")
 onready var preview_base_text: String = preview_label.text
 
+onready var suit_color_rect: ColorRect = get_node("MarginContainer2/VBoxContainer/HBoxContainer2/MarginContainer/ColorRect") 
+
 var character_info: Dictionary = {
 	"character_name": "",
 	"pronoun_subject": "",
 	"pronoun_object": "",
-	"pronoun_possesive": "", 
+	"pronoun_possesive": "",
+	"suit_color": "" 
 }
 
 func get_new_label_text()->String:
@@ -61,3 +64,9 @@ func _on_LineEditProObj_text_changed(new_text):
 	
 	var label_text = get_new_label_text()
 	update_preview_label(label_text)
+
+
+func _on_ColorPickerSuit_color_changed(color):
+	character_info.suit_color = color
+	
+	suit_color_rect.color = character_info.suit_color
