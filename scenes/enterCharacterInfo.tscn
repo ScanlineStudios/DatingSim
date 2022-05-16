@@ -1,25 +1,28 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/enterCharacterInfo.gd" type="Script" id=1]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_left = 0.5
+anchor_left = 0.296
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.296
 anchor_bottom = 0.5
-margin_left = -467.0
-margin_top = -288.5
-margin_right = 467.0
-margin_bottom = 288.5
+margin_left = -296.124
+margin_top = -288.0
+margin_right = 197.876
+margin_bottom = 289.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_right = 934.0
+margin_right = 494.0
 margin_bottom = 577.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_right = 934.0
+margin_right = 494.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
 
@@ -30,14 +33,16 @@ margin_bottom = 22.0
 rect_min_size = Vector2( 70, 0 )
 text = "Name: "
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="LineEditName" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 74.0
 margin_right = 132.0
 margin_bottom = 30.0
+max_length = 55
+expand_to_text_length = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 34.0
-margin_right = 934.0
+margin_right = 494.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 0, 30 )
 
@@ -48,7 +53,7 @@ margin_bottom = 22.0
 rect_min_size = Vector2( 70, 0 )
 text = "Pronouns: "
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="LineEditProSub" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 margin_left = 74.0
 margin_right = 184.0
 margin_bottom = 30.0
@@ -62,16 +67,30 @@ margin_right = 193.0
 margin_bottom = 22.0
 text = "/"
 
-[node name="LineEdit2" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="LineEditProObj" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 margin_left = 197.0
 margin_right = 317.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 120, 0 )
 placeholder_text = "him, her, them"
 
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 321.0
+margin_top = 8.0
+margin_right = 326.0
+margin_bottom = 22.0
+text = "/"
+
+[node name="LineEditProPos" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 330.0
+margin_right = 450.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 120, 0 )
+placeholder_text = "his, her, their"
+
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 68.0
-margin_right = 934.0
+margin_right = 494.0
 margin_bottom = 480.0
 rect_min_size = Vector2( 0, 30 )
 
@@ -82,10 +101,43 @@ margin_bottom = 213.0
 rect_min_size = Vector2( 70, 0 )
 text = "Suit Color: "
 
-[node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="ColorPickerSuit" type="ColorPicker" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
 margin_left = 74.0
 margin_right = 382.0
 margin_bottom = 412.0
 edit_alpha = false
 presets_enabled = false
 presets_visible = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchor_left = 0.296
+anchor_top = 0.5
+anchor_right = 0.296
+anchor_bottom = 0.5
+margin_left = 247.32
+margin_top = -288.0
+margin_right = 741.32
+margin_bottom = 289.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+margin_right = 494.0
+margin_bottom = 577.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
+margin_right = 494.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
+margin_right = 400.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 400, 0 )
+text = "This award for astroneering goes to <character_name> in recognition of <pronoun_subject> hard work. May <pronoun_subject> find success in <pronoun_possesive> future endeavors. "
+autowrap = true
+
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/LineEditName" to="." method="_on_LineEditName_text_changed"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProSub" to="." method="_on_LineEditProSub_text_changed"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProObj" to="." method="_on_LineEdit2ProObj_text_changed"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProObj" to="." method="_on_LineEditProObj_text_changed"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProPos" to="." method="_on_LineEdit2ProObj_text_changed"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProPos" to="." method="_on_LineEditProPos_text_changed"]
