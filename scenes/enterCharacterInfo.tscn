@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/enterCharacterInfo.gd" type="Script" id=1]
 [ext_resource path="res://clearAstro.png" type="Texture" id=2]
+[ext_resource path="res://scenes/pause/GUI.tscn" type="PackedScene" id=3]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -126,24 +127,24 @@ margin_bottom = 289.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
 margin_right = 500.0
-margin_bottom = 577.0
+margin_bottom = 586.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
 margin_right = 500.0
-margin_bottom = 65.0
+margin_bottom = 82.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
 margin_right = 400.0
-margin_bottom = 65.0
+margin_bottom = 82.0
 rect_min_size = Vector2( 400, 0 )
-text = "This award for astroneering goes to <character_name> in recognition of <pronoun_subject> hard work. May <pronoun_subject> find success in <pronoun_possesive> future endeavors. "
+text = "This award for astroneering goes to <character_name> in recognition of <pronoun_possessive> hard work. May <pronoun_subject> find success in all <pronoun_possessive> future endeavors. Surely good fortune will come to <pronoun_object>. "
 autowrap = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
-margin_top = 69.0
+margin_top = 86.0
 margin_right = 500.0
-margin_bottom = 569.0
+margin_bottom = 586.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/HBoxContainer2"]
 margin_right = 500.0
@@ -166,10 +167,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="GUI" parent="." instance=ExtResource( 3 )]
+
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/LineEditName" to="." method="_on_LineEditName_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProSub" to="." method="_on_LineEditProSub_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProObj" to="." method="_on_LineEditProObj_text_changed"]
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProObj" to="." method="_on_LineEdit2ProObj_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProPos" to="." method="_on_LineEditProPos_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProPos" to="." method="_on_LineEdit2ProObj_text_changed"]
 [connection signal="color_changed" from="MarginContainer/VBoxContainer/HBoxContainer3/ColorPickerSuit" to="." method="_on_ColorPickerSuit_color_changed"]

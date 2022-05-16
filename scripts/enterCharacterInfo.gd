@@ -10,7 +10,7 @@ var character_info: Dictionary = {
 	"character_name": "",
 	"pronoun_subject": "",
 	"pronoun_object": "",
-	"pronoun_possesive": "",
+	"pronoun_possessive": "",
 	"suit_color": "" 
 }
 
@@ -22,18 +22,20 @@ func get_new_label_text()->String:
 	for k in character_info:
 		var replace_string = character_info[k]
 		
-		if character_info[k] == "":
+		if typeof(character_info[k]) == TYPE_STRING && character_info[k] == "":
 			replace_string = underscore
 			
 		label_text = label_text.replacen("<"+k+">", replace_string)
 	
 	return label_text
-	
+
+
 func _ready():
 	
 	var label_text = get_new_label_text()
 	update_preview_label(label_text)
-	
+
+
 func update_preview_label(text: String):
 	preview_label.text = text
 
@@ -53,14 +55,14 @@ func _on_LineEditProSub_text_changed(new_text):
 
 
 func _on_LineEditProPos_text_changed(new_text):
-	character_info.pronoun_possesive = new_text
+	character_info.pronoun_possessive = new_text
 	
 	var label_text = get_new_label_text()
 	update_preview_label(label_text)
 
 
 func _on_LineEditProObj_text_changed(new_text):
-	character_info.pronoun_object
+	character_info.pronoun_object = new_text
 	
 	var label_text = get_new_label_text()
 	update_preview_label(label_text)
