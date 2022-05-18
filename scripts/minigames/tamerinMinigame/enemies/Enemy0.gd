@@ -11,10 +11,10 @@ var velocity = Vector2()
 var move_direction = Vector2.RIGHT
 
 var enemy_bullet = preload("res://scenes/minigames/tamerinMinigame/enemies/EnemyBullet.tscn")
-onready var tamerinMinigame = get_node("../../..") #get_node("../TamerinMinigame")
+# TODO: fix wonky pathing here. ../..?
+onready var minigame_root = get_node("../..") #get_node("../TamerinMinigame")
 
-signal score_changed
-#onready var health_display = $HealthDisplay
+# onready var health_display = $HealthDisplay
 
 func _ready():
 	max_hp = hp
@@ -38,28 +38,38 @@ func _ready():
 	
 	
 	# Init score related things
-	var score_label_path = String(tamerinMinigame.get_path()) + "/GUI/MarginContainer/HBoxContainer/VBoxContainer/Score"
+	var score_label_path = String(minigame_root.get_path()) + "/GUI/MarginContainer/HBoxContainer/VBoxContainer/Score"
 	var label = get_node(score_label_path)
 	var error = self.connect("score_changed", label, "update_score")
 	if error:
 		print("Error: ", error)
 	
+	error = self.connect("actor_exited",minigame_root, "on_actor_exited" )
+	
 	# overwrite default score value 
 	score_value = 10
 
 func _physics_process(delta):
-	velocity = position.direction_to(target_position) * move_speed * delta
 	
-	var _collision = move_and_collide(velocity)
+	var distance_to_target = Utility.get_distance_between_vectors(self.position, target_position)
+	# only move if far enough to avoid vibrating
+	if distance_to_target > 10 :
+	
+		velocity = position.direction_to(target_position) * move_speed * delta
+		
+		var _collision = move_and_collide(velocity)
 
 
 func _on_Hurtbox_area_entered(area):
-	_hit(area.get_groups()[0])
+	var groups = area.get_groups()
+	if len(groups) > 0:
+		_hit(groups[0])
 
 # override defult post hit function
 func _post_hit():
 	#health_display.update_healthbar(hp)
 	pass
+
 
 # thread that shoots then sleeps for fire_cooldown seconds
 func _fire_routine(_fire_cooldown: float = 5.0) -> void:
@@ -70,11 +80,7 @@ func _fire_routine(_fire_cooldown: float = 5.0) -> void:
 	bullet_instance.move_speed = bullet_speed
 	
 	get_tree().get_root().add_child(bullet_instance)
-	#can_fire = false
-	#yield(get_tree().create_timer(fire_rate),"timeout")
-	#can_fire = true
-	pass
-	
+
 
 # pick random point to move to inside a circle relative to parent node 
 func _pick_points_routine(radius: float = 30.0) -> void:
@@ -82,14 +88,5 @@ func _pick_points_routine(radius: float = 30.0) -> void:
 	var r = sqrt(rand_range(0.0, 1.0)) * radius
 	var t = rand_range(0.0, 1.0) * TAU
 	target_position = Vector2(r * cos(t), r * sin(t))
-	
-	
 
-# sleep for sleep_time seconds
-func my_sleep(sleep_time: float) -> void:
-	var timer = Timer.new()
-	timer.set_wait_time(sleep_time)
-	timer.set_one_shot(true)
-	add_child(timer)
-	timer.start()
-	yield(timer,"timeout")
+

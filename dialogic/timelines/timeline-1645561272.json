@@ -26,7 +26,7 @@
 			"character": "character-1645561288.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Minigame . Oh hey its you"
+			"text": "Oh hey its you"
 		},
 		{
 			"character": "character-1645561288.json",
@@ -48,7 +48,7 @@
 			"character": "character-1645561288.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Ok later  Minigame"
+			"text": "Ok later"
 		},
 		{
 			"change_scene": "res://scenes/mainMenu.tscn",
@@ -73,7 +73,7 @@
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "[minigame]"
+			"text": "Did I ever tell you I was a pilot... "
 		},
 		{
 			"event_id": "dialogic_013"
@@ -81,7 +81,7 @@
 		{
 			"background": "res://assets/placeHolders/bar.png",
 			"event_id": "dialogic_021",
-			"fade_duration": 3
+			"fade_duration": 2
 		},
 		{
 			"character": "character-1645561288.json",

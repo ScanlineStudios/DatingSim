@@ -52,7 +52,6 @@ func _ready():
 
 func _on_Hurtbox_area_entered(area):
 	_hit(area.get_groups()[0])
-	
 
 
 # Override base _post_hit function

@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/minigames/tamerinMinigame/Score.gd" type="Script" id=2]
-[ext_resource path="res://scripts/minigames/tamerinMinigame/Spawner.gd" type="Script" id=3]
-[ext_resource path="res://scenes/minigames/tamerinMinigame/enemies/EnemySquad.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/minigames/tamerinMinigame/DespawnArea.gd" type="Script" id=3]
 [ext_resource path="res://scenes/minigames/tamerinMinigame/player/TamerinMinigameShip.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/minigames/DamageTable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/minigames/tamerinMinigame/tamerinMinigameManager.gd" type="Script" id=7]
@@ -17,7 +16,7 @@ load_path = "res://.import/game bg.png-fe002bcb5d01994e353f08666c467144.stex"
 [sub_resource type="CanvasItemMaterial" id=3]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 27.8887, 995.578 )
+extents = Vector2( 620.66, 24.7472 )
 
 [sub_resource type="Shader" id=5]
 
@@ -32,7 +31,14 @@ font_data = ExtResource( 1 )
 size = 148
 font_data = ExtResource( 1 )
 
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 525.63, 37.7407 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 522, 205 )
+
 [node name="TamerinMinigame" type="Node2D"]
+position = Vector2( 0, 1 )
 script = ExtResource( 7 )
 
 [node name="TamerinMinigameShip" parent="." instance=ExtResource( 5 )]
@@ -51,7 +57,6 @@ stretch_mode = 2
 flip_v = true
 
 [node name="Walls" type="StaticBody2D" parent="." groups=["wall"]]
-visible = false
 scale = Vector2( 0.9, 0.9 )
 collision_mask = 2
 physics_material_override = SubResource( 2 )
@@ -59,35 +64,30 @@ physics_material_override = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
 material = SubResource( 3 )
 use_parent_material = true
-position = Vector2( -28.0299, 721.833 )
+position = Vector2( 593.716, 828.407 )
 shape = SubResource( 4 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
 material = SubResource( 6 )
-position = Vector2( 1229.01, 698.779 )
+position = Vector2( 593.716, -26.3867 )
 shape = SubResource( 4 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
 material = SubResource( 6 )
-position = Vector2( 980.002, -26.4268 )
+position = Vector2( 1229.01, 250.443 )
 rotation = 1.5708
 shape = SubResource( 4 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
 material = SubResource( 6 )
-position = Vector2( 807.799, 826.356 )
+position = Vector2( -26.3721, 403.905 )
 rotation = 1.5708
 shape = SubResource( 4 )
 
 [node name="DamageTable" parent="." groups=["DamageTable"] instance=ExtResource( 6 )]
 
-[node name="Spawner" type="Position2D" parent="."]
-position = Vector2( -125.011, 92.9356 )
-script = ExtResource( 3 )
-spawn_scene = ExtResource( 4 )
-
 [node name="GUI" type="CanvasLayer" parent="."]
-layer = 119
+layer = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="GUI"]
 margin_left = 771.0
@@ -194,3 +194,31 @@ grow_vertical = 2
 custom_fonts/font = SubResource( 8 )
 align = 1
 valign = 1
+
+[node name="SpawnArea" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="SpawnArea"]
+material = SubResource( 3 )
+use_parent_material = true
+position = Vector2( 534.344, -91.5514 )
+shape = SubResource( 9 )
+
+[node name="ActiveArea" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="ActiveArea"]
+visible = false
+position = Vector2( 539.871, 235.634 )
+shape = SubResource( 10 )
+disabled = true
+
+[node name="DespawnArea" type="Area2D" parent="."]
+collision_mask = 15
+script = ExtResource( 3 )
+
+[node name="Shape" type="CollisionShape2D" parent="DespawnArea"]
+material = SubResource( 3 )
+use_parent_material = true
+position = Vector2( 546.14, 844.023 )
+shape = SubResource( 9 )
+
+[connection signal="area_entered" from="DespawnArea" to="DespawnArea" method="_on_DespawnArea_area_entered"]

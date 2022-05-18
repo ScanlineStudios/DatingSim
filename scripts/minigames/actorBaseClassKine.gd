@@ -18,9 +18,13 @@ export var move_speed = 550 #250 # default move speed
 
 export (int) var hp # default hit point total 
 var max_hp = hp
+# Localized signal for when instace dies
+signal score_changed
+# Localized signal for when instace leves the scene
+signal actor_exited
 var score_value = 0
 # what this entity is targeting. ie, looking at, moving twards, attacking ect 
-var target
+var target:KinematicBody2D 
 # True to show healthbar. False to hide it. default false
 var show_health_bar = false
 
@@ -35,11 +39,13 @@ func _ready():
 # default death function
 func _die():
 	# always emmit signal? may not always be connected to anything
-	emit_signal("score_changed", score_value) 
+	
 	var explosion_instance = explosion.instance()
 	explosion_instance.position = get_global_position()
 	get_tree().get_root().add_child(explosion_instance)
 	queue_free()
+	# emmit signal that a thing died and the scor may need to be changed
+	emit_signal("score_changed", score_value) 
  
 
 # default on hit function
@@ -54,9 +60,9 @@ func _hit(group):
 	if hp <= 0:
 		_die()
 	
-	
+
+func _exit_tree():
+	emit_signal("actor_exited")
+
 func _post_hit():
 	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
