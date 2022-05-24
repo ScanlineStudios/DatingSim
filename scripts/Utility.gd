@@ -2,7 +2,7 @@ extends Node
 
 # This script contains a bundle of functions that are usefull in 
 # multiple places in the project.
-var save_location = null
+var save_slot_location = null
 
 
 
@@ -49,6 +49,35 @@ func get_random_point_in_area(shapeNode: CollisionShape2D)-> Vector2:
 	var y_rand = rand_range(y_min, y_min+y_range_size)
 	
 	return Vector2(x_rand,y_rand)
+
+
+# Returns dict of data in given file. Returns null on error or file not found
+func load_json(file_path: String):
+	var file = File.new()
+	if file.file_exists(file_path):
+		file.open(file_path, File.READ)
+		var data = parse_json(file.get_as_text())
+		file.close()
+		if typeof(data) == TYPE_DICTIONARY:
+			return data
+		else:
+			printerr("Corrupted data!")
+		
+	else:
+		printerr("No saved data!")
+	
+	return null
+
+
+func save_json(save_location: String, dict_to_save: Dictionary):
+	var file = File.new()
+	var err = file.open(Utility.save_location + save_location, File.WRITE) 
+	 
+	if err:
+		print_debug(err)
+		return err
+	file.store_string((to_json(dict_to_save)))
+	file.close
 
 
 func toggle_offspring_visible(node: Node)->void:
