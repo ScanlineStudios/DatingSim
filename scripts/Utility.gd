@@ -2,6 +2,9 @@ extends Node
 
 # This script contains a bundle of functions that are usefull in 
 # multiple places in the project.
+var save_location = null
+
+
 
 func freeze_node(node, freeze):
 	node.set_process(!freeze)

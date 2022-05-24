@@ -205,7 +205,7 @@ expand_icon = true
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/LineEditName" to="." method="_on_LineEditName_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProSub" to="." method="_on_LineEditProSub_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProObj" to="." method="_on_LineEditProObj_text_changed"]
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProPos" to="." method="_on_LineEditProPos_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProPos" to="." method="_on_LineEdit2ProObj_text_changed"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProPos" to="." method="_on_LineEditProPos_text_changed"]
 [connection signal="color_changed" from="MarginContainer/VBoxContainer/HBoxContainer3/ColorPickerSuit" to="." method="_on_ColorPickerSuit_color_changed"]
 [connection signal="pressed" from="MarginContainer3/Button" to="." method="_on_Button_pressed"]

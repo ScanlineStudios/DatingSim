@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var load_test_label: Label = get_node("MarginContainer/VBoxContainer/HBoxContainer/Label")
-var FILE_NAME: String = "gameData/character_info.json"
+var FILE_NAME: String = Utility.save_location+"/character_info.json"
 
 # Returns dict of data in given file. Returns null on error or file not found
 func load_json(file_path: String):
@@ -22,6 +22,7 @@ func load_json(file_path: String):
 
 
 func _ready():
+	print_debug(FILE_NAME)
 	var data: Dictionary = load_json(FILE_NAME)
 	var label_text: String = ""
 	
