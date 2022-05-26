@@ -96,7 +96,6 @@ func _on_Button_pressed():
 	# Save character info to file
 	var file = File.new()
 	var err = file.open(Utility.save_slot_location + "/character_info.json", File.WRITE) 
-	#var err = file.open("user://save_game.dat", File.WRITE) 
 	if err:
 		print_debug(err)
 	file.store_string((to_json(character_info)))
