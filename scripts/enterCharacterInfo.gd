@@ -8,7 +8,7 @@ onready var suit_color_rect: ColorRect = get_node("MarginContainer2/VBoxContaine
 
 onready var save_button: Button = get_node("MarginContainer3/Button")
 
-onready var NEXT_SCENE: String = "res://scenes/testScenes/characterInfoLoadTest.tscn"
+onready var NEXT_SCENE: String ="res://scenes/testScenes/GameManagementTest.tscn"
 
 var character_info: Dictionary = {
 	"character_name": "",
@@ -25,7 +25,7 @@ func check_info_filled()-> void:
 		if typeof(character_info[k]) == TYPE_STRING && character_info[k] == "":
 			all_filled = false
 	save_button.disabled = !all_filled
-	print_debug(all_filled)
+	#print_debug(all_filled)
 
 
 func get_new_label_text()->String:
@@ -95,6 +95,8 @@ func _on_ColorPickerSuit_color_changed(color):
 func _on_Button_pressed():
 	# Save character info to file
 	var file = File.new()
-	file.open("gameData/character_info.json", File.WRITE) 
+	var err = file.open(Utility.save_slot_location + "/character_info.json", File.WRITE) 
+	if err:
+		print_debug(err)
 	file.store_string((to_json(character_info)))
 	get_tree().change_scene(NEXT_SCENE)

@@ -92,7 +92,6 @@ Utility="*res://scripts/Utility.gd"
 
 [debug]
 
-settings/stdout/print_fps=true
 settings/stdout/verbose_stdout=true
 
 [display]
@@ -178,5 +177,4 @@ dialogic_default_action={
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
 threads/description="Al's Starlight "

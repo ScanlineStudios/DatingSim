@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/enterCharacterInfo.gd" type="Script" id=1]
-[ext_resource path="res://clearAstro.png" type="Texture" id=2]
+[ext_resource path="res://assets/placeHolders/clearAstro.png" type="Texture" id=2]
 [ext_resource path="res://scenes/pause/GUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/dialogic/Example Assets/History/HistoryButton-theme.tres" type="Theme" id=4]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.203922, 0.686275, 0.121569, 1 )
@@ -19,6 +20,7 @@ bg_color = Color( 0.396078, 0.72549, 0.0941176, 1 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 4 )
 script = ExtResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -109,20 +111,20 @@ placeholder_text = "his, her, their"
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 68.0
 margin_right = 494.0
-margin_bottom = 480.0
+margin_bottom = 489.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
-margin_top = 199.0
+margin_top = 203.0
 margin_right = 70.0
-margin_bottom = 213.0
+margin_bottom = 217.0
 rect_min_size = Vector2( 70, 0 )
 text = "Suit Color: "
 
 [node name="ColorPickerSuit" type="ColorPicker" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
 margin_left = 74.0
-margin_right = 382.0
-margin_bottom = 412.0
+margin_right = 387.0
+margin_bottom = 421.0
 edit_alpha = false
 presets_enabled = false
 presets_visible = false
@@ -206,6 +208,5 @@ expand_icon = true
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProSub" to="." method="_on_LineEditProSub_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProObj" to="." method="_on_LineEditProObj_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProPos" to="." method="_on_LineEditProPos_text_changed"]
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProPos" to="." method="_on_LineEdit2ProObj_text_changed"]
 [connection signal="color_changed" from="MarginContainer/VBoxContainer/HBoxContainer3/ColorPickerSuit" to="." method="_on_ColorPickerSuit_color_changed"]
 [connection signal="pressed" from="MarginContainer3/Button" to="." method="_on_Button_pressed"]
