@@ -1,0 +1,3 @@
+[submodule "Godot-Slot-Machine"]
+	path = Godot-Slot-Machine
+	url = https://github.com/ScanlineStudios/Godot-Slot-Machine.git
