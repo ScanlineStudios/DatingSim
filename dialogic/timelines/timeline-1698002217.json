@@ -1,0 +1,75 @@
+{
+	"events": [
+		{
+			"background": "res://assets/placeHolders/CrashLandSite.png",
+			"event_id": "dialogic_021"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1697998731.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1697998731.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You crash landed"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1698006282.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "slate_supprised",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1698006282.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Slate intro"
+		},
+		{
+			"character": "character-1698006282.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Slate intro"
+		},
+		{
+			"change_timeline": "timeline-1698007833.json",
+			"event_id": "dialogic_020"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1698002217.json",
+		"name": "CrashLandSlateIntro"
+	}
+}

@@ -8,13 +8,13 @@ onready var suit_color_rect: ColorRect = get_node("MarginContainer2/VBoxContaine
 
 onready var save_button: Button = get_node("MarginContainer3/Button")
 
-onready var NEXT_SCENE: String ="res://scenes/testScenes/GameManagementTest.tscn"
+export var NEXT_SCENE: PackedScene = preload("res://scenes/testScenes/GameManagementTest.tscn")
 
 var character_info: Dictionary = {
     "character_name": "",
-    "pronoun_subject": "",
-    "pronoun_object": "",
-    "pronoun_possessive": "",
+    #"pronoun_subject": "",
+    #"pronoun_object": "",
+    #"pronoun_possessive": "",
     "suit_color": "" 
 }
 
@@ -99,4 +99,4 @@ func _on_Button_pressed():
     if err:
         print_debug(err)
     file.store_string((to_json(character_info)))
-    get_tree().change_scene(NEXT_SCENE)
+    get_tree().change_scene(NEXT_SCENE.resource_path)

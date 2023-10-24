@@ -6,5 +6,6 @@
 [node name="DialogSkeleton" type="CanvasLayer"]
 layer = 120
 script = ExtResource( 1 )
+dialogicTimeline = "Intro"
 
 [node name="GUI" parent="." instance=ExtResource( 2 )]

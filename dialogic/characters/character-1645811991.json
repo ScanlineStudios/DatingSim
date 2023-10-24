@@ -20,5 +20,6 @@
 			"path": "res://assets/characterArt/Nancy_neutral.png"
 		}
 	],
-	"scale": 38
+	"scale": 38,
+	"theme": ""
 }

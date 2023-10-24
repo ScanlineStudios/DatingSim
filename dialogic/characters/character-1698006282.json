@@ -1,0 +1,45 @@
+{
+	"color": "#ffc5a219",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1698006282.json",
+	"mirror_portraits": false,
+	"name": "Slate",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 550,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://assets/characterArt/Slate_neutral.png"
+		},
+		{
+			"name": "slate_angry",
+			"path": "res://assets/characterArt/Slate Sprites/slate_angry.png"
+		},
+		{
+			"name": "slate_blushy",
+			"path": "res://assets/characterArt/Slate Sprites/slate_blushy.png"
+		},
+		{
+			"name": "slate_flirty",
+			"path": "res://assets/characterArt/Slate Sprites/slate_flirty.png"
+		},
+		{
+			"name": "slate_laughing",
+			"path": "res://assets/characterArt/Slate Sprites/slate_laughing.png"
+		},
+		{
+			"name": "slate_sad",
+			"path": "res://assets/characterArt/Slate Sprites/slate_sad.png"
+		},
+		{
+			"name": "slate_supprised",
+			"path": "res://assets/characterArt/Slate Sprites/slate_supprised.png"
+		}
+	],
+	"scale": 50,
+	"theme": ""
+}

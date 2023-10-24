@@ -92,7 +92,7 @@ Utility="*res://scripts/Utility.gd"
 
 [debug]
 
-settings/stdout/verbose_stdout=true
+settings/physics_interpolation/enable_warnings=false
 
 [display]
 
@@ -108,6 +108,10 @@ window/stretch/aspect="keep"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg" )
+
+[global]
+
+print=false
 
 [input]
 

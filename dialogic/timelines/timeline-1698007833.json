@@ -1,0 +1,23 @@
+{
+	"events": [
+		{
+			"background": "res://assets/placeHolders/Garage.png",
+			"event_id": "dialogic_021"
+		},
+		{
+			"character": "character-1697998731.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Garage intro"
+		},
+		{
+			"change_scene": "res://scenes/Map.tscn",
+			"event_id": "dialogic_041"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1698007833.json",
+		"name": "GarageIntro"
+	}
+}
