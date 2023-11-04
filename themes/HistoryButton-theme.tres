@@ -1,0 +1,46 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[ext_resource path="res://assets/fonts/new_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://addons/dialogic/Example Assets/backgrounds/background-2.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 1175, 263 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+modulate_color = Color( 1, 1, 1, 0.572549 )
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 1175, 263 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 1175, 263 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+modulate_color = Color( 0.113725, 0.105882, 0.105882, 0.764706 )
+
+[resource]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = ExtResource( 1 )
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = SubResource( 4 )
+Button/styles/normal = SubResource( 1 )
+Button/styles/pressed = SubResource( 3 )
+Label/fonts/font = ExtResource( 1 )
+LineEdit/fonts/font = ExtResource( 1 )
