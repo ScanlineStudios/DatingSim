@@ -15,6 +15,12 @@
 			"name": "tamarin_score",
 			"type": 0,
 			"value": "0"
+		},
+		{
+			"id": "1699644544-701",
+			"name": "player_location",
+			"type": 0,
+			"value": ""
 		}
 	]
 }

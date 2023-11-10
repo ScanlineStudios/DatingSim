@@ -95,8 +95,8 @@ func _on_ColorPickerSuit_color_changed(color):
 func _on_Button_pressed():
     # Save character info to file
     var file = File.new()
-    var err = file.open(Utility.save_slot_location + "/character_info.json", File.WRITE) 
+    var err = file.open(Utility.game_manager.save_slot_location + "/character_info.json", File.WRITE) 
     if err:
         print_debug(err)
     file.store_string((to_json(character_info)))
-    get_tree().change_scene(NEXT_SCENE.resource_path)
+    Utility.game_manager.change_active_scene(NEXT_SCENE)

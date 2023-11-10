@@ -1,6 +1,16 @@
 {
 	"events": [
 		{
+			"call_node": {
+				"arguments": [
+					"garage"
+				],
+				"method_name": "set_player_location",
+				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
 			"background": "res://assets/placeHolders/Garage.png",
 			"event_id": "dialogic_021"
 		},
@@ -11,8 +21,14 @@
 			"text": "Garage intro"
 		},
 		{
-			"change_scene": "res://scenes/Map.tscn",
-			"event_id": "dialogic_041"
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "show_map",
+				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
 		}
 	],
 	"metadata": {

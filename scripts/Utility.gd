@@ -2,8 +2,8 @@ extends Node
 
 # This script contains a bundle of functions that are usefull in 
 # multiple places in the project.
-var save_slot_location = null
 
+onready var game_manager: Node2D = get_node("/root/GameManager")
 
 
 func freeze_node(node, freeze):

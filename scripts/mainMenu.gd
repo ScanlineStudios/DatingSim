@@ -1,10 +1,13 @@
 extends Node2D
 
+export var test_scene: PackedScene
+export var save_slot_scene: PackedScene
 
+# TODO: Continue functionality
 
 func _on_buttonStart_pressed():
-    get_tree().change_scene("res://scenes/testScenes/GameManagementTest.tscn")
+    Utility.game_manager.change_active_scene(test_scene)
 
 
 func _on_buttonNew_pressed():
-    get_tree().change_scene("res://scenes/saveSlotSelect.tscn")
+    Utility.game_manager.change_active_scene(save_slot_scene)

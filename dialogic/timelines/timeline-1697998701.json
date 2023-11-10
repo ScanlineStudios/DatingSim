@@ -1,6 +1,16 @@
 {
 	"events": [
 		{
+			"call_node": {
+				"arguments": [
+					"player ship"
+				],
+				"method_name": "set_player_location",
+				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
 			"background": "res://assets/placeHolders/InteriorSpaceCraft.png",
 			"event_id": "dialogic_021"
 		},

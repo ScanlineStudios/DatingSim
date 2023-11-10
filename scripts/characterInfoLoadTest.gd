@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var load_test_label: Label = get_node("MarginContainer/VBoxContainer/HBoxContainer/Label")
-var FILE_NAME: String = Utility.save_slot_location+"/character_info.json"
+var FILE_NAME: String = Utility.game_manager.save_slot_location+"/character_info.json"
 
 
 func _ready():

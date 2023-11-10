@@ -1,4 +1,4 @@
 extends Button
 
 func _on_buttonStart_pressed():
-	get_tree().change_scene("res://scenes/testScenes/GameManagementTest.tscn")
+	Utility.game_manager.change_active_scene("res://scenes/testScenes/GameManagementTest.tscn")
