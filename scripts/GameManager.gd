@@ -6,9 +6,9 @@ extends Node2D
 export var active_scene: PackedScene = null
 
 var player_location: String = ""
-
 var active_node: Node = null
 var save_slot_location: String = ""
+var location_visit_counter: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,10 +28,30 @@ func change_active_scene(scene: PackedScene) -> void:
 func hide_map() -> void:
     $map.hide()
 
+
+func increment_location_visit(location: String) -> void:
+    if location_visit_counter.has(location):
+        location_visit_counter[location] += 1
+    else:
+        location_visit_counter[location] = 1
+
+
+# return status code?
+func load_data() -> void:
+    # load data from player save data location into variables
+    pass
+
+
+func save_data() -> void:
+    # save variable data to player save data location  
+    pass
+
+
 # TODO: location enum?
 func set_player_location(loacation: String) -> void:
     player_location = loacation
     print_debug("Player location: ", player_location)
+    
 
 func show_map() -> void:
     $map.show()

@@ -1,0 +1,287 @@
+{
+	"events": [
+		{
+			"background": "res://assets/placeHolders/bar.png",
+			"event_id": "dialogic_021"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The bar scene was never really your kind of place, not since your youth at least. You never saw the appeal to the bustle and hustle and constant chatter of a busy bar. Yet as soon as you walked in here, you felt a sense of familiarity.\nAs familiar as a shady bar on top of a moon rock in the middle of space can be. What are some of those liquids on the bar? Looks like lighter fluid, or maybe some kind of cleaning product? Scary stuff."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Order a drink?"
+		},
+		{
+			"choice": "Order Moons hyper-floss",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You get an approving nod from the barkeep as he slowly slinks away, returning a moment later with a bright purple drink. It’s so bright you feel like it’s almost glowing, it smells vaguely of a flower you can’t quite put your finger on but you swear you’ve smelled before.\nIt tastes of sweet berries, a hint of something tart but the bouquet is mostly of something sweet and flowery. It’s never been something you thought you’d like but now that you’ve had it, it might be your favorite flavor ever."
+		},
+		{
+			"choice": "Order Monzell Dust",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You get an approving nod from the barkeep as he slowly slinks away, returning a moment later with a blended beverage. Exotic shades of Blue, Purple, and Green. The likes of which you are not sure you’ve ever seen in such vibrancy.\nIt tastes of something akin to sour candy, fruit flavors sharp enough to make your face contort. The saving grace is the subtle sweet rim on the edge of your glass. Despite its pucker, you do like the drink after some getting used to it."
+		},
+		{
+			"choice": "Order Geodesic Zeynu",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You get an approving nod from the barkeep as he slowly slinks away, returning a moment later with a craft beer. You stare into the glass and admire the complex galaxy that is within this drink, watching as it moves and sways, changing colors\nIt’s taste is rich and flavorful, but hard to pin down. Multidimensional; many flavors and sensations on the palate.\nAt some points its well-aged ale with surprising, effusive fruit aroma and taste; with an intoxicating fragrance. A moment later it tastes of a dark, rich, and creamy Stout with complex grain flavors; a brew to chew.\nYou like it, or well, some of it at times. The green and pink shades are your favorite."
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You’d like to say you enjoyed that whole drink, but just as you’re getting into enjoying it, the contents of your glass is spilled out onto your suit by someone bumping into you as they pass you in this crowded bar."
+		},
+		{
+			"action": "join",
+			"character": "character-1645814295.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1645814295.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Watch where you’re standing, chump."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "The man just called you a chump! Are you going to stand for this? The guy just spilled your fruity elixir!"
+		},
+		{
+			"choice": "Speak Your Mind",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You try to formulate a well worded and concise argument for why this man is in the wrong and how he, in fact, owes you another drink. You perhaps suggest that his mother, bless her, would be ashamed of his actions.\nThis does not actually work, and he is thoroughly offended you would even speak on his mother. It’s looking like a fight is going to ensue, as punch is thrown your way.\nYou hold your own, but these guys are much bigger than you are, and it looks as if you will actually have a good walloping done to you as you're knocked off your feet. Until a voice cuts in."
+		},
+		{
+			"action": "join",
+			"character": "character-1645812743.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "Jerico_neutral",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1645812743.json",
+			"event_id": "dialogic_001",
+			"portrait": "Jerico_neutral",
+			"text": "“You boys sure know how to cause a scene. Hasn’t anyone ever taught you some manners?\nBecause I think it’s about time someone starts.”"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You watch as this scantily clad stranger defends your honor. You’ve been in a few scraps here and there in your time, but you’ve never seen someone fight so flawlessly as this guy.\nSoon enough that thug and his crew are tossed out, and a hand is offered to you, getting you back on your feet.\n"
+		},
+		{
+			"choice": "Just Move Aside",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"choice": "Throw A Punch",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"character": "character-1645812743.json",
+			"event_id": "dialogic_001",
+			"portrait": "Jerico_neutral",
+			"text": "By the stars, who in this galaxy taught you how to fight? You’re about as harmless as a qoduk in the Arcadis winter."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "What a hunk! But just who is this savior of the night? Can he really be trusted?"
+		},
+		{
+			"choice": "\"I didn’t need your help\"",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1645812743.json",
+			"event_id": "dialogic_001",
+			"portrait": "Jerico_neutral",
+			"text": "“No, what you needed was a miracle. You really thought you could talk your way out of that?”"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You’re intent on trying to argue, but before you even have a chance, the man speaks up again."
+		},
+		{
+			"character": "character-1645812743.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "Jerico_neutral",
+			"question": "“Let me buy you a drink, I have some questions for you.”"
+		},
+		{
+			"choice": "Insist you pay for the drinks",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1645812743.json",
+			"event_id": "dialogic_001",
+			"portrait": "Jerico_neutral",
+			"text": "“Fine. Suit yourself, kid. I’ll take a free drink any day.”\n“You’re really not from around here, and it shows. I like to make it my business to know everyone, separate the capable from the incompitant.\""
+		},
+		{
+			"character": "character-1645812743.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "Jerico_neutral",
+			"question": "\"So what’s your story, how’d you get here and what’s your business at Al’s?”"
+		},
+		{
+			"choice": "\"Tell me who you are first.\"",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"choice": "Lay it all out on the table",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"choice": "Thank him for the generous offer",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"choice": "Refuse the drink",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"choice": "\"Thanks for your help\"",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"choice": "Buy him a drink",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"bar"
+				],
+				"method_name": "increment_location_visit",
+				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1699645879.json",
+		"name": "BarIntro"
+	}
+}

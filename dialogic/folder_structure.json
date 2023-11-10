@@ -23,8 +23,7 @@
 		"Definitions": {
 			"files": [
 				"1645646172-648",
-				"1645646177-787",
-				"1699644544-701"
+				"1645646177-787"
 			],
 			"folders": {
 
@@ -54,6 +53,19 @@
 				"timeline-1698007833.json"
 			],
 			"folders": {
+				"Bar": {
+					"files": [
+						"timeline-1699645879.json",
+						"timeline-1699648326.json"
+					],
+					"folders": {
+
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				},
 				"Test": {
 					"files": [
 						"timeline-1645561272.json",
@@ -65,7 +77,7 @@
 					},
 					"metadata": {
 						"color": null,
-						"folded": true
+						"folded": false
 					}
 				}
 			},

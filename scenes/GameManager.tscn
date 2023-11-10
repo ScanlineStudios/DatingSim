@@ -13,3 +13,4 @@ active_scene = ExtResource( 3 )
 visible = false
 
 [node name="GUI" parent="." instance=ExtResource( 1 )]
+layer = 120
