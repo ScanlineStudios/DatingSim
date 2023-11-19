@@ -5,7 +5,7 @@
 				"arguments": [
 					"player ship"
 				],
-				"method_name": "set_player_location",
+				"method_name": "change_player_location",
 				"target_node_path": "GameManager"
 			},
 			"event_id": "dialogic_042"
@@ -21,8 +21,102 @@
 			"text": "This is the opening sequence. "
 		},
 		{
-			"change_timeline": "timeline-1698002217.json",
-			"event_id": "dialogic_020"
+			"background": "res://assets/placeHolders/CrashLandSite.png",
+			"event_id": "dialogic_021"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You crash landed"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1698006282.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "slate_supprised",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1698006282.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Slate intro"
+		},
+		{
+			"character": "character-1698006282.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Slate intro"
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"garage"
+				],
+				"method_name": "change_player_location",
+				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"background": "res://assets/placeHolders/Garage.png",
+			"event_id": "dialogic_021"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Garage intro"
+		},
+		{
+			"character": "character-1698006282.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Here is a map. Go look around."
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "enable_map",
+				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "show_map",
+				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "timeline_complete",
+				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
 		}
 	],
 	"metadata": {

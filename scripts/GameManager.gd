@@ -2,18 +2,26 @@ extends Node2D
 
 
 # TODO: Options/settings data
-#		
-export var active_scene: PackedScene = null
+#       Save/ load player data
+#       Objectives?
+export var initial_scene: PackedScene = null
 
+var active_scene: PackedScene = null
 var player_location: String = ""
 var active_node: Node = null
+var active_timeline: String = ""
 var save_slot_location: String = ""
 var location_visit_counter: Dictionary = {}
+var dialog: CanvasLayer = null
+var active_dialog_node =  null
+var map_enabled: bool = false
+var timelines_complete: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     # add initial active scene as a child of this node
-    change_active_scene(active_scene)
+    change_active_scene(initial_scene)
+
 
 # TODO: return status code?
 func change_active_scene(scene: PackedScene) -> void:
@@ -24,6 +32,38 @@ func change_active_scene(scene: PackedScene) -> void:
         active_node = new_node
         add_child(new_node)
 
+
+func change_player_location(new_location: String) -> void:
+    if new_location != player_location:
+        increment_location_visit(new_location)
+        player_location = new_location
+        print_debug("Player location: ", player_location)
+
+
+func change_timeline(new_timeline: String) -> void:
+    if !dialog:
+        print_debug("No Dialogic node active. Use start_dialogic().")
+        return
+    if Dialogic.timeline_exists(new_timeline):
+        Dialogic.change_timeline(new_timeline)
+        active_timeline = new_timeline
+
+func enable_map() -> void:
+    map_enabled = true
+
+
+# todo: go to function for each location?
+func go_to_bar()-> void:
+    change_player_location("bar")
+    if !timelines_complete.has("BarIntro"):
+        # play opening bar sequence timeline if it hasnt been completed
+        start_dialogic("BarIntro")
+        
+    else:
+        # Default bar options
+        start_dialogic("BarDefault")
+        
+        
 
 func hide_map() -> void:
     $map.hide()
@@ -45,13 +85,42 @@ func load_data() -> void:
 func save_data() -> void:
     # save variable data to player save data location  
     pass
-
-
-# TODO: location enum?
-func set_player_location(loacation: String) -> void:
-    player_location = loacation
-    print_debug("Player location: ", player_location)
     
 
 func show_map() -> void:
-    $map.show()
+    if map_enabled:
+        $map.show()
+    else:
+        print_debug("Map not avalible")
+
+
+func start_dialogic(timeline: String) -> void:
+    if active_dialog_node:
+        remove_child(active_dialog_node)
+        active_dialog_node =  null
+    
+    if !Dialogic.timeline_exists(timeline):
+        print_debug("Timeline with name: ", timeline, " does not exist.")
+        return
+        
+    dialog = Dialogic.start(timeline)
+    active_timeline = timeline
+    # Utility.game_manager.increment_location_visit(location_name)
+    active_dialog_node = dialog
+    add_child(dialog)
+    dialog.connect('dialogic_signal', self, '_on_dialogic_signal')
+    
+    
+func unload_active_scene() -> void:
+    if active_node:
+        remove_child(active_node)
+        active_node = null
+
+# add active timeline to list of complete timelines
+func timeline_complete() -> void:
+    if !timelines_complete.has(active_timeline):
+        timelines_complete.append(active_timeline)
+
+
+func _on_dialogic_signal(value) -> void:
+    SignalManager.emit_signal(value)

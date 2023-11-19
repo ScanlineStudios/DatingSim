@@ -17,8 +17,8 @@ font_data = ExtResource( 1 )
 size = 70
 font_data = ExtResource( 2 )
 
-[node name="map" type="Node2D"]
-position = Vector2( 1, 0 )
+[node name="map" type="CanvasLayer"]
+layer = 5
 script = ExtResource( 3 )
 bar_scene = ExtResource( 6 )
 
@@ -26,8 +26,8 @@ bar_scene = ExtResource( 6 )
 material = SubResource( 1 )
 anchor_right = 100.0
 margin_left = -2.0
-margin_right = 10962.0
-margin_bottom = 7341.0
+margin_right = -97242.0
+margin_bottom = 7210.0
 rect_scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 4 )
 stretch_mode = 1

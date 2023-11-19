@@ -8,7 +8,7 @@ onready var suit_color_rect: ColorRect = get_node("MarginContainer2/VBoxContaine
 
 onready var save_button: Button = get_node("MarginContainer3/Button")
 
-export var NEXT_SCENE: PackedScene = preload("res://scenes/testScenes/GameManagementTest.tscn")
+export var intro_timeline: String = "Intro"
 
 var character_info: Dictionary = {
     "character_name": "",
@@ -99,4 +99,5 @@ func _on_Button_pressed():
     if err:
         print_debug(err)
     file.store_string((to_json(character_info)))
-    Utility.game_manager.change_active_scene(NEXT_SCENE)
+    Utility.game_manager.start_dialogic(intro_timeline)
+    Utility.game_manager.unload_active_scene()

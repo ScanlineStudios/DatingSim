@@ -45,6 +45,10 @@
 		{
 			"change_timeline": "timeline-1698007833.json",
 			"event_id": "dialogic_020"
+		},
+		{
+			"emit_signal": "finished_timeline",
+			"event_id": "dialogic_040"
 		}
 	],
 	"metadata": {

@@ -5,7 +5,7 @@
 				"arguments": [
 					"garage"
 				],
-				"method_name": "set_player_location",
+				"method_name": "change_player_location",
 				"target_node_path": "GameManager"
 			},
 			"event_id": "dialogic_042"
@@ -21,12 +21,38 @@
 			"text": "Garage intro"
 		},
 		{
+			"character": "character-1698006282.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Here is a map. Go look around."
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "enable_map",
+				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
 			"call_node": {
 				"arguments": [
 
 				],
 				"method_name": "show_map",
 				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "",
+				"target_node_path": ""
 			},
 			"event_id": "dialogic_042"
 		}

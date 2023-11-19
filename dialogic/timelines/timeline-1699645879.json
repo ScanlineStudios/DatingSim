@@ -1,6 +1,16 @@
 {
 	"events": [
 		{
+			"call_node": {
+				"arguments": [
+					"bar"
+				],
+				"method_name": "change_player_location",
+				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
 			"background": "res://assets/placeHolders/bar.png",
 			"event_id": "dialogic_021"
 		},
@@ -78,7 +88,7 @@
 				"1": false,
 				"2": false,
 				"3": false,
-				"4": false
+				"4": true
 			}
 		},
 		{
@@ -271,9 +281,19 @@
 		{
 			"call_node": {
 				"arguments": [
-					"bar"
+
 				],
-				"method_name": "increment_location_visit",
+				"method_name": "timeline_complete",
+				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "go_to_bar",
 				"target_node_path": "GameManager"
 			},
 			"event_id": "dialogic_042"

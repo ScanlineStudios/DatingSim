@@ -13,7 +13,7 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://assets/characterArt/Jerico_neutral.png"
 		},
 		{
 			"name": "Jerico_neutral",

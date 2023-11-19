@@ -1,6 +1,10 @@
 {
 	"events": [
 		{
+			"background": "res://assets/placeHolders/bar.png",
+			"event_id": "dialogic_021"
+		},
+		{
 			"character": "",
 			"event_id": "dialogic_010",
 			"options": [
@@ -17,7 +21,7 @@
 			"value": ""
 		},
 		{
-			"choice": "Talk to bartender",
+			"choice": "Order drink",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",

@@ -29,18 +29,24 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+margin_left = 540.0
+margin_top = 720.0
+margin_right = 540.0
+margin_bottom = 720.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextBubble" parent="." instance=ExtResource( 1 )]
-margin_top = -207.0
-margin_bottom = -40.0
+margin_left = 85.0
+margin_top = 513.0
+margin_right = 995.0
+margin_bottom = 680.0
 
 [node name="Options" type="VBoxContainer" parent="."]
 visible = false
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1080.0
+margin_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -81,13 +87,11 @@ samples = [ ExtResource( 9 ) ]
 random_strategy = 2
 
 [node name="Hovering" type="AudioStreamPlayer" parent="FX/Audio"]
-pitch_scale = 0.0001
 script = ExtResource( 8 )
 samples = [ ExtResource( 9 ) ]
 random_strategy = 2
 
 [node name="Selecting" type="AudioStreamPlayer" parent="FX/Audio"]
-pitch_scale = 0.0001
 script = ExtResource( 8 )
 samples = [ ExtResource( 9 ) ]
 random_strategy = 2
