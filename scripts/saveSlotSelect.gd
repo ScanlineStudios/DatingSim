@@ -13,7 +13,7 @@ func post_save_slot_selected():
     err = dir.make_dir(Utility.game_manager.save_slot_location)
     if err:
         print_debug(err)
-    Utility.game_manager.change_active_scene(character_info_scene)
+    Utility.game_manager.set_active_node(character_info_scene.instance())
 
 
 func _on_Button1_pressed():

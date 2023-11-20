@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/enterCharacterInfo.gd" type="Script" id=1]
 [ext_resource path="res://assets/placeHolders/clearAstro.png" type="Texture" id=2]
-[ext_resource path="res://scenes/GUI/GUI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://themes/HistoryButton-theme.tres" type="Theme" id=4]
 [ext_resource path="res://scripts/LineEditName.gd" type="Script" id=5]
 
@@ -205,8 +204,6 @@ custom_styles/normal = SubResource( 1 )
 disabled = true
 text = "Save and Continue"
 expand_icon = true
-
-[node name="GUI" parent="." instance=ExtResource( 3 )]
 
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/LineEditName" to="." method="_on_LineEditName_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/LineEditProSub" to="." method="_on_LineEditProSub_text_changed"]

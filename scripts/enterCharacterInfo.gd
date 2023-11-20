@@ -100,4 +100,4 @@ func _on_Button_pressed():
         print_debug(err)
     file.store_string((to_json(character_info)))
     Utility.game_manager.start_dialogic(intro_timeline)
-    Utility.game_manager.unload_active_scene()
+    #Utility.game_manager.unload_active_scene()
