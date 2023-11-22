@@ -1,23 +1,23 @@
 {
-	"color": "#ff8e67cd",
+	"color": "#ffe2af78",
 	"description": "",
 	"display_name": "",
 	"display_name_bool": false,
-	"id": "character-1645812743.json",
+	"id": "character-1700676268.json",
 	"mirror_portraits": false,
-	"name": "Jerico",
+	"name": "Suitman",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
-	"offset_y": 380,
+	"offset_y": 300,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://assets/characterArt/Jerico_neutral.png"
+			"path": "res://assets/characterArt/Suitman_neutral.png"
 		},
 		{
-			"name": "Jerico_neutral",
-			"path": "res://assets/characterArt/Jerico_neutral.png"
+			"name": "suitman_neutral",
+			"path": "res://assets/characterArt/Suitman_neutral.png"
 		}
 	],
 	"scale": 35,

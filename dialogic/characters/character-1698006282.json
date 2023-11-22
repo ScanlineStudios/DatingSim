@@ -8,8 +8,8 @@
 	"name": "Slate",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 50,
-	"offset_y": 300,
+	"offset_x": 40,
+	"offset_y": 350,
 	"portraits": [
 		{
 			"name": "Default",

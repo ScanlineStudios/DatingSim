@@ -1,0 +1,25 @@
+{
+	"color": "#ff920a0a",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1700675060.json",
+	"mirror_portraits": false,
+	"name": "R.E.D",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 30,
+	"offset_y": 220,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://assets/characterArt/R.E.D_neutral.png"
+		},
+		{
+			"name": "R.E.D_neutral",
+			"path": "res://assets/characterArt/R.E.D_neutral.png"
+		}
+	],
+	"scale": 25,
+	"theme": ""
+}
