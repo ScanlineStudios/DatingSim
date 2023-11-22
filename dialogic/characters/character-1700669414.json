@@ -1,0 +1,49 @@
+{
+	"color": "#fff773c0",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1700669414.json",
+	"mirror_portraits": false,
+	"name": "Porchilla",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 50,
+	"offset_y": 300,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://assets/characterArt/Porchilla Sprites/Porchilla_neutral.png"
+		},
+		{
+			"name": "porchilla_angry",
+			"path": "res://assets/characterArt/Porchilla Sprites/porchilla_angry.png"
+		},
+		{
+			"name": "porchilla_blushy",
+			"path": "res://assets/characterArt/Porchilla Sprites/porchilla_blushy.png"
+		},
+		{
+			"name": "Porchilla_flirty",
+			"path": "res://assets/characterArt/Porchilla Sprites/Porchilla_flirty.png"
+		},
+		{
+			"name": "porchilla_laughing",
+			"path": "res://assets/characterArt/Porchilla Sprites/porchilla_laughing.png"
+		},
+		{
+			"name": "Porchilla_neutral",
+			"path": "res://assets/characterArt/Porchilla Sprites/Porchilla_neutral.png"
+		},
+		{
+			"name": "porchilla_sad",
+			"path": "res://assets/characterArt/Porchilla Sprites/porchilla_sad.png"
+		},
+		{
+			"name": "porchilla_supprised",
+			"path": "res://assets/characterArt/Porchilla Sprites/porchilla_supprised.png"
+		}
+	],
+	"scale": 35,
+	"theme": ""
+}

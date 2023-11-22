@@ -8,18 +8,18 @@
 	"name": "Nancy",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 180,
-	"offset_y": 390,
+	"offset_x": -50,
+	"offset_y": 400,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://assets/characterArt/Nancy_neutral.png"
 		},
 		{
 			"name": "Nancy_neutral",
 			"path": "res://assets/characterArt/Nancy_neutral.png"
 		}
 	],
-	"scale": 38,
+	"scale": 35,
 	"theme": ""
 }

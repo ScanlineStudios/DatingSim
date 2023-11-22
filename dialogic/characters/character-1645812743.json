@@ -8,8 +8,8 @@
 	"name": "Jerico",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 200,
-	"offset_y": 600,
+	"offset_x": 0,
+	"offset_y": 400,
 	"portraits": [
 		{
 			"name": "Default",
@@ -20,6 +20,6 @@
 			"path": "res://assets/characterArt/Jerico_neutral.png"
 		}
 	],
-	"scale": 45,
+	"scale": 35,
 	"theme": ""
 }

@@ -8,8 +8,8 @@
 	"name": "Tamarin",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 200,
-	"offset_y": 550,
+	"offset_x": 50,
+	"offset_y": 300,
 	"portraits": [
 		{
 			"name": "Default",
@@ -20,6 +20,6 @@
 			"path": "res://assets/characterArt/Tamarin_neutral.png"
 		}
 	],
-	"scale": 50,
+	"scale": 35,
 	"theme": ""
 }

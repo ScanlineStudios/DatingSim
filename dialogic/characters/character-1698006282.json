@@ -8,8 +8,8 @@
 	"name": "Slate",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 200,
-	"offset_y": 600,
+	"offset_x": 50,
+	"offset_y": 300,
 	"portraits": [
 		{
 			"name": "Default",
@@ -38,8 +38,12 @@
 		{
 			"name": "slate_supprised",
 			"path": "res://assets/characterArt/Slate Sprites/slate_supprised.png"
+		},
+		{
+			"name": "slate_neutral",
+			"path": "res://assets/characterArt/Slate_neutral.png"
 		}
 	],
-	"scale": 45,
+	"scale": 35,
 	"theme": ""
 }

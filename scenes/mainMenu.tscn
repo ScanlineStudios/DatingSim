@@ -36,9 +36,6 @@ margin_bottom = 7341.0
 rect_scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 4 )
 stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="margin" type="MarginContainer" parent="TextureRect"]
 margin_left = 43.0
@@ -106,12 +103,12 @@ margin_bottom = 595.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="buttonStart" type="Button" parent="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer"]
+[node name="buttonCharacterTest" type="Button" parent="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer"]
 margin_right = 612.0
 margin_bottom = 95.0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 4 )
-text = "START"
+text = "Character Test"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -160,5 +157,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer/buttonStart" to="." method="_on_buttonStart_pressed"]
+[connection signal="pressed" from="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer/buttonCharacterTest" to="." method="_on_buttonCharacterTest_pressed"]
 [connection signal="pressed" from="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer/buttonNew" to="." method="_on_buttonNew_pressed"]
