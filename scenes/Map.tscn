@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://fonts/unispace/unispace rg.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/map.gd" type="Script" id=3]
 [ext_resource path="res://assets/placeHolders/Map.png" type="Texture" id=4]
 [ext_resource path="res://themes/HistoryButton-theme.tres" type="Theme" id=5]
-[ext_resource path="res://scenes/locations/Bar.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -20,7 +19,6 @@ font_data = ExtResource( 2 )
 [node name="map" type="CanvasLayer"]
 layer = 5
 script = ExtResource( 3 )
-bar_scene = ExtResource( 6 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource( 1 )

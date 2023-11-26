@@ -27,6 +27,42 @@
 			"text": "Tamarin neutral position 1"
 		},
 		{
+			"character": "character-1645561288.json",
+			"event_id": "dialogic_001",
+			"portrait": "tamrin_blush",
+			"text": "Tamarin blush position 1"
+		},
+		{
+			"character": "character-1645561288.json",
+			"event_id": "dialogic_001",
+			"portrait": "tamrin_flirty",
+			"text": "Tamarin flirty position 1"
+		},
+		{
+			"character": "character-1645561288.json",
+			"event_id": "dialogic_001",
+			"portrait": "tamrin_laugh",
+			"text": "Tamarin laugh position 1"
+		},
+		{
+			"character": "character-1645561288.json",
+			"event_id": "dialogic_001",
+			"portrait": "tamrin_mad",
+			"text": "Tamarin mad position 1"
+		},
+		{
+			"character": "character-1645561288.json",
+			"event_id": "dialogic_001",
+			"portrait": "tamrin_sad",
+			"text": "Tamarin sad position 1"
+		},
+		{
+			"character": "character-1645561288.json",
+			"event_id": "dialogic_001",
+			"portrait": "tamrin_suprised",
+			"text": "Tamarin suprised position 1"
+		},
+		{
 			"animation": "[No Animation]",
 			"animation_length": 0,
 			"change_mirror_portrait": false,
@@ -50,7 +86,7 @@
 		{
 			"character": "character-1645561288.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "Tamarin_neutral",
 			"text": "Tamarin neutral position 2"
 		},
 		{
@@ -208,6 +244,30 @@
 			"text": "Nancy neutral position 1"
 		},
 		{
+			"character": "character-1645811991.json",
+			"event_id": "dialogic_001",
+			"portrait": "nancy_blush",
+			"text": "Nancy blush position 1"
+		},
+		{
+			"character": "character-1645811991.json",
+			"event_id": "dialogic_001",
+			"portrait": "nancy_laugh",
+			"text": "Nancy laugh position 1"
+		},
+		{
+			"character": "character-1645811991.json",
+			"event_id": "dialogic_001",
+			"portrait": "nancy_sad",
+			"text": "Nancy sad position 1"
+		},
+		{
+			"character": "character-1645811991.json",
+			"event_id": "dialogic_001",
+			"portrait": "nancy_suprise",
+			"text": "Nancy suprise position 1"
+		},
+		{
 			"animation": "[No Animation]",
 			"animation_length": 0,
 			"change_mirror_portrait": false,
@@ -231,7 +291,7 @@
 		{
 			"character": "character-1645811991.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "Nancy_neutral-1",
 			"text": "Nancy neutral position 2"
 		},
 		{
@@ -389,6 +449,42 @@
 			"text": "Jerico neutral position 1"
 		},
 		{
+			"character": "character-1645812743.json",
+			"event_id": "dialogic_001",
+			"portrait": "jerico_blush",
+			"text": "Jerico blush position 1"
+		},
+		{
+			"character": "character-1645812743.json",
+			"event_id": "dialogic_001",
+			"portrait": "jerico_flirty",
+			"text": "Jerico flirty position 1"
+		},
+		{
+			"character": "character-1645812743.json",
+			"event_id": "dialogic_001",
+			"portrait": "jerico_laughing",
+			"text": "Jerico laughing position 1"
+		},
+		{
+			"character": "character-1645812743.json",
+			"event_id": "dialogic_001",
+			"portrait": "jerico_mad",
+			"text": "Jerico mad position 1"
+		},
+		{
+			"character": "character-1645812743.json",
+			"event_id": "dialogic_001",
+			"portrait": "jerico_sad",
+			"text": "Jerico sad position 1"
+		},
+		{
+			"character": "character-1645812743.json",
+			"event_id": "dialogic_001",
+			"portrait": "jerico_suprised",
+			"text": "Jerico suprised position 1"
+		},
+		{
 			"animation": "[No Animation]",
 			"animation_length": 0,
 			"change_mirror_portrait": false,
@@ -412,7 +508,7 @@
 		{
 			"character": "character-1645812743.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "Jerico_neutral",
 			"text": "Jerico neutral position 2"
 		},
 		{

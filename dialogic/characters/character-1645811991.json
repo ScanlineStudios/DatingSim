@@ -13,11 +13,27 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://assets/characterArt/Nancy_neutral.png"
+			"path": "res://assets/characterArt/Nancy Sprites/Nancy_neutral-1.png"
 		},
 		{
-			"name": "Nancy_neutral",
-			"path": "res://assets/characterArt/Nancy_neutral.png"
+			"name": "nancy_blush",
+			"path": "res://assets/characterArt/Nancy Sprites/nancy_blush.png"
+		},
+		{
+			"name": "nancy_laugh",
+			"path": "res://assets/characterArt/Nancy Sprites/nancy_laugh.png"
+		},
+		{
+			"name": "Nancy_neutral-1",
+			"path": "res://assets/characterArt/Nancy Sprites/Nancy_neutral-1.png"
+		},
+		{
+			"name": "nancy_sad",
+			"path": "res://assets/characterArt/Nancy Sprites/nancy_sad.png"
+		},
+		{
+			"name": "nancy_suprise",
+			"path": "res://assets/characterArt/Nancy Sprites/nancy_suprise.png"
 		}
 	],
 	"scale": 35,

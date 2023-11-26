@@ -13,11 +13,35 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://assets/characterArt/Tamarin_neutral.png"
+			"path": "res://assets/characterArt/Tamrin Sprites/Tamarin_neutral.png"
+		},
+		{
+			"name": "tamrin_blush",
+			"path": "res://assets/characterArt/Tamrin Sprites/tamrin_blush.png"
+		},
+		{
+			"name": "tamrin_flirty",
+			"path": "res://assets/characterArt/Tamrin Sprites/tamrin_flirty.png"
+		},
+		{
+			"name": "tamrin_laugh",
+			"path": "res://assets/characterArt/Tamrin Sprites/tamrin_laugh.png"
+		},
+		{
+			"name": "tamrin_mad",
+			"path": "res://assets/characterArt/Tamrin Sprites/tamrin_mad.png"
+		},
+		{
+			"name": "tamrin_sad",
+			"path": "res://assets/characterArt/Tamrin Sprites/tamrin_sad.png"
+		},
+		{
+			"name": "tamrin_suprised",
+			"path": "res://assets/characterArt/Tamrin Sprites/tamrin_suprised.png"
 		},
 		{
 			"name": "Tamarin_neutral",
-			"path": "res://assets/characterArt/Tamarin_neutral.png"
+			"path": "res://assets/characterArt/Tamrin Sprites/Tamarin_neutral.png"
 		}
 	],
 	"scale": 35,

@@ -13,11 +13,35 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://assets/characterArt/Jerico_neutral.png"
+			"path": "res://assets/characterArt/Jerico Sprites/Jerico_neutral.png"
+		},
+		{
+			"name": "jerico_blush",
+			"path": "res://assets/characterArt/Jerico Sprites/jerico_blush.png"
+		},
+		{
+			"name": "jerico_flirty",
+			"path": "res://assets/characterArt/Jerico Sprites/jerico_flirty.png"
+		},
+		{
+			"name": "jerico_laughing",
+			"path": "res://assets/characterArt/Jerico Sprites/jerico_laughing.png"
+		},
+		{
+			"name": "jerico_mad",
+			"path": "res://assets/characterArt/Jerico Sprites/jerico_mad.png"
 		},
 		{
 			"name": "Jerico_neutral",
-			"path": "res://assets/characterArt/Jerico_neutral.png"
+			"path": "res://assets/characterArt/Jerico Sprites/Jerico_neutral.png"
+		},
+		{
+			"name": "jerico_sad",
+			"path": "res://assets/characterArt/Jerico Sprites/jerico_sad.png"
+		},
+		{
+			"name": "jerico_suprised",
+			"path": "res://assets/characterArt/Jerico Sprites/jerico_suprised.png"
 		}
 	],
 	"scale": 35,

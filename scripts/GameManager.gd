@@ -114,7 +114,6 @@ func toggle_map():
     else:
         show_map()
 
-        
 
 func start_dialogic(timeline: String) -> void:
     if !Dialogic.timeline_exists(timeline):
