@@ -97,24 +97,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="buttonB" type="Button" parent="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer"]
+[node name="DinerBtn" type="Button" parent="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer"]
 margin_top = 99.0
 margin_right = 440.0
 margin_bottom = 194.0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 4 )
-text = "Location B"
+text = "Diner"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="buttonC" type="Button" parent="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer"]
+[node name="GarageBtn" type="Button" parent="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer"]
 margin_top = 198.0
 margin_right = 440.0
 margin_bottom = 293.0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 4 )
-text = "Location C"
+text = "Garage"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -131,3 +131,5 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer/BarBtn" to="." method="_on_BarBtn_pressed"]
+[connection signal="pressed" from="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer/DinerBtn" to="." method="_on_DinerBtn_pressed"]
+[connection signal="pressed" from="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer/GarageBtn" to="." method="_on_GarageBtn_pressed"]

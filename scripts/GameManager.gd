@@ -70,6 +70,24 @@ func go_to_bar()-> void:
         start_dialogic("BarDefault")
         
 
+func go_to_diner() -> void:
+    change_player_location("diner")
+    if !timelines_complete.has("DinerIntro"):
+        start_dialogic("DinerIntro")
+    else:
+        start_dialogic("DinerDefault")
+        
+        
+func go_to_garage() -> void:
+    change_player_location("garage")
+    # Slate is busy until all location intros complete
+    if !(timelines_complete.has("BarIntro") &&
+        timelines_complete.has("DinerIntro")):
+        start_dialogic("SlateBusy")
+    else:
+        start_dialogic("GarageDefault")
+
+
 func hide_map() -> void:
     $map.hide()
 

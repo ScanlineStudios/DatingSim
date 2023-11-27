@@ -1,0 +1,55 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1698006282.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "slate_neutral",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1698006282.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I'm still busy looking at your ship. Go look around some while I put together a diagnostic "
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "show_map",
+				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "timeline_complete",
+				"target_node_path": "GameManager"
+			},
+			"event_id": "dialogic_042"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1701125387.json",
+		"name": "SlateBusy"
+	}
+}
