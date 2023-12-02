@@ -3,7 +3,7 @@
     "id": 1,
     "timeline_name": "Intro",
     "location": "garage",
-    "characteres":[
+    "characters":[
       "Slate"
     ],
     "pre_reqs": [],
@@ -26,5 +26,34 @@
     "req_for": [
       "GarageDefault"
     ]
+  },
+    "DinerIntro":{
+    "id": 3,
+    "timeline_name": "DinerIntro",
+    "location": "diner",
+    "characters": [
+      "Nancy",
+      "Other"
+    ],
+    "pre_reqs": [
+      "Intro"
+    ],
+    "req_for": [
+      "GarageDefault"
+    ]
+  },
+    "GarageDefault":{
+    "id": 3,
+    "timeline_name": "GarageDefault",
+    "location": "garage",
+    "characters": [
+      "Slate"
+    ],
+    "pre_reqs": [
+      "DinerIntro",
+	  "BarIntro"
+    ],
+    "req_for": []
   }
+  
 }

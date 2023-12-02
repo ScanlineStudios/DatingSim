@@ -17,6 +17,9 @@ var active_dialog_node =  null
 var map_enabled: bool = false
 var timelines_complete: Array = []
 
+# Key: timeline_name (String)
+# Value: TimelineNode
+var timeline_nodes: Dictionary = {}
 
 class TimelineNode:
     var id: int 
@@ -43,6 +46,7 @@ func _on_dialogic_signal(value) -> void:
 func _ready():
     # add initial active scene as a child of this node
     set_active_node(initial_scene.instance())
+    read_timeline_data()
 
 
 func change_player_location(new_location: String) -> void:
@@ -151,6 +155,32 @@ func start_dialogic(timeline: String) -> void:
     dialog.connect('dialogic_signal', self, '_on_dialogic_signal')
     set_active_node(dialog)
     
+    
+func read_timeline_data() -> void:
+    var read_data: Dictionary = Utility.load_json("res://gameData/timelineData.json")
+    for obj in read_data:
+        var new_timeline_node: TimelineNode = TimelineNode.new()
+        new_timeline_node.characters = read_data[obj]["characters"]
+        new_timeline_node.timeline_name = read_data[obj]["timeline_name"]
+        new_timeline_node.id = read_data[obj]["id"]
+        new_timeline_node.location = read_data[obj]["location"]
+        timeline_nodes[new_timeline_node.timeline_name] = new_timeline_node
+        
+    
+    for obj in read_data:
+        var timeline_name = read_data[obj]["timeline_name"]
+        # Conect pre reqs
+        for pre_reqs in read_data[obj]["pre_reqs"]:
+            
+
+            timeline_nodes[timeline_name].pre_reqs.append(timeline_nodes[pre_reqs])
+        # conect req fors
+        for req_for in read_data[obj]["req_for"]:
+
+            timeline_nodes[timeline_name].req_for.append(timeline_nodes[req_for])
+                
+    
+    print_debug(timeline_nodes)
     
 func unload_active_scene() -> void:
     if active_node:
