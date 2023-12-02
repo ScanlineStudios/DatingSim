@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://icon_old.png" type="Texture" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://scripts/minigames/slotMachine/Reel.gd" type="Script" id=2]
 [ext_resource path="res://scenes/minigames/slotMachine/Face.tscn" type="PackedScene" id=3]
 

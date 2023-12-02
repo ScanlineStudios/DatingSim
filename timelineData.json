@@ -1,0 +1,30 @@
+{
+  "Intro":{
+    "id": 1,
+    "timeline_name": "Intro",
+    "location": "garage",
+    "characteres":[
+      "Slate"
+    ],
+    "pre_reqs": [],
+    "req_for": [
+      "BarIntro",
+      "DinerIntro"
+    ]
+  },
+  "BarIntro":{
+    "id": 2,
+    "timeline_name": "BarIntro",
+    "location": "bar",
+    "characters": [
+      "Jerico",
+      "Other"
+    ],
+    "pre_reqs": [
+      "Intro"
+    ],
+    "req_for": [
+      "GarageDefault"
+    ]
+  }
+}

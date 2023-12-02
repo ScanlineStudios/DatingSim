@@ -18,6 +18,13 @@ var map_enabled: bool = false
 var timelines_complete: Array = []
 
 
+class TimelineNode:
+    var id: int 
+    var timeline_name: String
+    var location: String
+    var characters: Array
+    var pre_reqs: Array
+    var req_for: Array 
 
 func _input(event: InputEvent) -> void:
     if event.is_action_pressed("ui_map"):
