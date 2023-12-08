@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://fonts/unispace/unispace bd.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://fonts/unispace/unispace rg.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://themes/HistoryButton-theme.tres" type="Theme" id=5]
 [ext_resource path="res://scenes/testScenes/GameManagementTest.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/saveSlotSelect.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/TimelineGraphEditor.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -26,6 +27,7 @@ position = Vector2( 1, 0 )
 script = ExtResource( 3 )
 test_scene = ExtResource( 6 )
 save_slot_scene = ExtResource( 7 )
+timeline_graph_editor_scene = ExtResource( 8 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource( 1 )
@@ -80,31 +82,31 @@ text = "v0.1 - early dev"
 align = 2
 
 [node name="buttonMargin" type="MarginContainer" parent="TextureRect/margin"]
-margin_right = 612.0
+margin_right = 655.0
 margin_bottom = 700.0
 rect_min_size = Vector2( 0, 700 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="CenterContainer" type="CenterContainer" parent="TextureRect/margin/buttonMargin"]
-margin_right = 612.0
+margin_right = 655.0
 margin_bottom = 700.0
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/margin/buttonMargin/CenterContainer"]
-margin_left = 306.0
+margin_left = 327.0
 margin_top = 350.0
-margin_right = 306.0
+margin_right = 327.0
 margin_bottom = 350.0
 
 [node name="VBoxButtonsContainer" type="VBoxContainer" parent="TextureRect/margin/buttonMargin/CenterContainer"]
-margin_top = 104.0
-margin_right = 612.0
-margin_bottom = 595.0
+margin_top = 55.0
+margin_right = 655.0
+margin_bottom = 645.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
 [node name="buttonCharacterTest" type="Button" parent="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer"]
-margin_right = 612.0
+margin_right = 655.0
 margin_bottom = 95.0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 4 )
@@ -115,7 +117,7 @@ __meta__ = {
 
 [node name="buttonContinue" type="Button" parent="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer"]
 margin_top = 99.0
-margin_right = 612.0
+margin_right = 655.0
 margin_bottom = 194.0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 4 )
@@ -126,7 +128,7 @@ __meta__ = {
 
 [node name="buttonNew" type="Button" parent="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer"]
 margin_top = 198.0
-margin_right = 612.0
+margin_right = 655.0
 margin_bottom = 293.0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 4 )
@@ -137,7 +139,7 @@ __meta__ = {
 
 [node name="buttonQuit" type="Button" parent="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer"]
 margin_top = 297.0
-margin_right = 612.0
+margin_right = 655.0
 margin_bottom = 392.0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 4 )
@@ -148,7 +150,7 @@ __meta__ = {
 
 [node name="buttonOptions" type="Button" parent="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer"]
 margin_top = 396.0
-margin_right = 612.0
+margin_right = 655.0
 margin_bottom = 491.0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 4 )
@@ -157,5 +159,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="buttonTimelineGraphEditor" type="Button" parent="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer"]
+margin_top = 495.0
+margin_right = 655.0
+margin_bottom = 590.0
+theme = ExtResource( 5 )
+custom_fonts/font = SubResource( 4 )
+text = "Timeline Editor"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer/buttonCharacterTest" to="." method="_on_buttonCharacterTest_pressed"]
 [connection signal="pressed" from="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer/buttonNew" to="." method="_on_buttonNew_pressed"]
+[connection signal="pressed" from="TextureRect/margin/buttonMargin/CenterContainer/VBoxButtonsContainer/buttonTimelineGraphEditor" to="." method="_on_buttonTimelineGraphEditor_pressed"]

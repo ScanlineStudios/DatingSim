@@ -3,7 +3,7 @@ extends Node
 # This script contains a bundle of functions that are usefull in 
 # multiple places in the project.
 
-onready var game_manager: Node2D = get_node("/root/GameManager")
+onready var game_manager: Control = get_node("/root/GameManager")
 
 
 func freeze_node(node, freeze):

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/TimelineGraphNode.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/timelineNodeEditor.gd" type="Script" id=2]
+
+[node name="TimelineGraphEditor" type="Node2D"]
+
+[node name="GraphEdit" type="GraphEdit" parent="."]
+margin_right = 1074.0
+margin_bottom = 716.0
+right_disconnects = true
+scroll_offset = Vector2( -385, -119 )
+script = ExtResource( 2 )
+
+[node name="StartNode" parent="GraphEdit" instance=ExtResource( 1 )]
+margin_left = 385.0
+margin_top = 119.0
+margin_right = 446.0
+margin_bottom = 183.0
+mouse_filter = 1
+title = "Start"
+
+[node name="EndNode" parent="GraphEdit" instance=ExtResource( 1 )]
+margin_left = 385.0
+margin_top = 119.0
+margin_right = 447.0
+margin_bottom = 182.0
+mouse_filter = 1
+title = "End"
+
+[connection signal="connection_request" from="GraphEdit" to="GraphEdit" method="_on_GraphEdit_connection_request"]
