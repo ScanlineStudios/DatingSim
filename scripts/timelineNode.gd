@@ -1,5 +1,6 @@
 extends GraphNode
 
+class_name TimelineGraphNode
 
 # Corosponding Timeline Node
 var timelineNode = Utility.game_manager.TimelineNode.new() 

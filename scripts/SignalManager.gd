@@ -10,6 +10,7 @@ signal tamerin_minigame_player_destroyed
 # Emitted when Tamerin mini-game is finished. expect a score parameter
 signal tamerin_minigame_ended(score)
 
-
+# Emited when confirm button pressed in NewTimelineNodeMenu
+signal new_timeline_node_confirm_buton_pressed(timeline_name, location, character )
 
 
