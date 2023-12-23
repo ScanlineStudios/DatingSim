@@ -3,7 +3,7 @@ extends Node
 # This script contains a bundle of functions that are usefull in 
 # multiple places in the project.
 
-onready var game_manager: Control = get_node("/root/GameManager")
+onready var game_manager: GameManager = get_node("/root/GameManager")
 
 
 func freeze_node(node, freeze):
@@ -69,9 +69,9 @@ func load_json(file_path: String):
     return null
 
 
-func save_json(save_location: String, dict_to_save: Dictionary):
+func save_dict_as_json(save_location: String, dict_to_save: Dictionary):
     var file = File.new()
-    var err = file.open(Utility.save_location + save_location, File.WRITE) 
+    var err = file.open(Utility.game_manager.save_slot_location + save_location, File.WRITE) 
      
     if err:
         print_debug(err)

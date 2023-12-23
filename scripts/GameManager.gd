@@ -1,5 +1,6 @@
 extends Control
 
+class_name GameManager
 
 # TODO: Options/settings data
 #       Save/ load player data
@@ -21,13 +22,29 @@ var timelines_complete: Array = []
 # Value: TimelineNode
 var timeline_nodes: Dictionary = {}
 
+# TODO: Add disqualifyed by field?
 class TimelineNode:
     var id: int 
     var timeline_name: String
     var location: String
-    var characters: Array
+    var character: String
     var pre_reqs: Array
     var req_for: Array 
+    
+    func print():
+        print("timeline_name: ", timeline_name)
+        print("location: ", location)
+        print("character: ", character)
+        print("pre_reqs: ", pre_reqs)
+        print("req_for: ", req_for)
+        
+    func to_dict() -> Dictionary:
+        var _dict: Dictionary = {}
+        for i in self.get_property_list():
+            if i.name != "Reference" and i.name != "script" and i.name != "Script Variables":
+                _dict[i.name] = self[i.name]
+                
+        return _dict
 
 func _input(event: InputEvent) -> void:
     if event.is_action_pressed("ui_map"):
@@ -160,23 +177,19 @@ func read_timeline_data() -> void:
     var read_data: Dictionary = Utility.load_json("res://gameData/timelineData.json")
     for obj in read_data:
         var new_timeline_node: TimelineNode = TimelineNode.new()
-        new_timeline_node.characters = read_data[obj]["characters"]
+        new_timeline_node.character = read_data[obj]["characters"]
         new_timeline_node.timeline_name = read_data[obj]["timeline_name"]
         new_timeline_node.id = read_data[obj]["id"]
         new_timeline_node.location = read_data[obj]["location"]
         timeline_nodes[new_timeline_node.timeline_name] = new_timeline_node
         
-    
     for obj in read_data:
         var timeline_name = read_data[obj]["timeline_name"]
         # Conect pre reqs
         for pre_reqs in read_data[obj]["pre_reqs"]:
-            
-
             timeline_nodes[timeline_name].pre_reqs.append(timeline_nodes[pre_reqs])
         # conect req fors
         for req_for in read_data[obj]["req_for"]:
-
             timeline_nodes[timeline_name].req_for.append(timeline_nodes[req_for])
                 
     

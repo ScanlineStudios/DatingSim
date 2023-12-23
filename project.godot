@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "GraphNode",
+"class": "BasicGraphNode",
+"language": "GDScript",
+"path": "res://scripts/basicGraphNode.gd"
+}, {
 "base": "Reference",
 "class": "DTS",
 "language": "GDScript",
@@ -59,17 +64,28 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
+"base": "Control",
+"class": "GameManager",
+"language": "GDScript",
+"path": "res://scripts/GameManager.gd"
+}, {
 "base": "PanelContainer",
 "class": "HistoryRow",
 "language": "GDScript",
 "path": "res://addons/dialogic/Example Assets/History/HistoryRow.gd"
 }, {
-"base": "GraphNode",
+"base": "BasicGraphNode",
+"class": "LogicGraphNode",
+"language": "GDScript",
+"path": "res://scenes/LogicGraphNode.gd"
+}, {
+"base": "BasicGraphNode",
 "class": "TimelineGraphNode",
 "language": "GDScript",
-"path": "res://scripts/timelineNode.gd"
+"path": "res://scripts/timelineGraphNode.gd"
 } ]
 _global_script_class_icons={
+"BasicGraphNode": "",
 "DTS": "",
 "Dialogic": "",
 "DialogicAnimaPropertiesHelper": "",
@@ -80,7 +96,9 @@ _global_script_class_icons={
 "DialogicParser": "",
 "DialogicResources": "",
 "DialogicUtil": "",
+"GameManager": "",
 "HistoryRow": "",
+"LogicGraphNode": "",
 "TimelineGraphNode": ""
 }
 

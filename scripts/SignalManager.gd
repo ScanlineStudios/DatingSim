@@ -11,6 +11,11 @@ signal tamerin_minigame_player_destroyed
 signal tamerin_minigame_ended(score)
 
 # Emited when confirm button pressed in NewTimelineNodeMenu
-signal new_timeline_node_confirm_buton_pressed(timeline_name, location, character )
+signal new_timeline_node_confirm_buton_pressed(timeline_name, location, character)
 
+signal timeline_graph_editor_save_selected
+signal timeline_graph_editor_load_selected
+signal timeline_graph_editor_new_graph_selected
+
+signal timeline_graph_editor_new_operator_selected(operator)
 
