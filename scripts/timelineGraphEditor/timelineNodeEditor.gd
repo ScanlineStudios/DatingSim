@@ -89,6 +89,13 @@ func _on_ButtonNewNode_pressed() -> void:
     add_child(new_timeline_node_menu.instance())
 
 
+func _on_GraphEdit__end_node_move() -> void:
+    # save all graph node offsets
+    for child in get_children():
+        if child is GraphNode:
+            timeline_structure_data[child.title].offset = child.offset
+
+
 func _on_GraphEdit_connection_request(from: String, from_slot: int, to: String, to_slot: int) -> void:
     connect_node(from, from_slot, to, to_slot)
     
@@ -162,12 +169,10 @@ func _on_timeline_graph_editor_load_selected() -> void:
 
     clear()
     
-    # Repopulate start and end node? 
+    # Repopulate nodes 
     for key in _dict:
-        # how do I know what type of node to make? 
-        # from dict?
+        # Make new data node 
         var new_data_node = TimelineNodeDataFactory.from_dict(_dict[key])
-        #new_data_node.print()
         
         # add timeline nodes to data structure
         timeline_structure_data[key] = new_data_node
@@ -216,10 +221,8 @@ func _on_timeline_graph_editor_load_selected() -> void:
     for child in children:
         if child is GraphNode:
             var title = child.title
-            print(timeline_structure_data[title]["inputs"])
             for output in timeline_structure_data[title]["outputs"]:
                 connect_node(title, OUTPUT_SLOT, output, INPUT_SLOT) 
-    
     
 
 # TODO: Save as timeline structure data
@@ -232,9 +235,5 @@ func _on_timeline_graph_editor_save_selected() -> void:
     Utility.save_dict_as_json("res://gameData/timelineStructureDataTest.json", dict_to_save)
 
 
-func _on_GraphEdit__end_node_move() -> void:
-    # save all graph node offsets
-    for child in get_children():
-        if child is GraphNode:
-            timeline_structure_data[child.title].offset = child.offset
+
 

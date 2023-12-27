@@ -14,7 +14,6 @@ static func get_timeline_node_data_properties() -> Array:
         if TimelineNodeData.excluded_properties.find(prop.name) == -1:
             _array.append(prop.name)
     
-    
     return _array 
 
 static func get_timeline_node_timeline_data_properties() -> Array:
@@ -25,7 +24,6 @@ static func get_timeline_node_timeline_data_properties() -> Array:
     for prop in prop_dicts:
         if TimelineNodeData.excluded_properties.find(prop.name) == -1:
             _array.append(prop.name)
-    
     
     return _array
 
@@ -57,9 +55,6 @@ static func from_dict(_dict: Dictionary):
         return null
 
     for key in _dict.keys():
-#            var value_to_add = _dict[key]
-#            if "offset" == key:
-#                value_to_add = Utility.string_to_vecort2(value_to_add)
         data_node_to_return[key] = str2var(_dict[key])
     return data_node_to_return
 
