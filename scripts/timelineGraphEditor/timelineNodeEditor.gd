@@ -36,12 +36,12 @@ func clear() -> void:
     
     # clear data structure
     for key in timeline_structure_data:
-        timeline_structure_data.erase(key)
+        timeline_structure_data = {}
     
     # Delete all children
     for child in get_children():
         if child is GraphNode:
-            child.queue_free()
+            remove_child(child)
     
     
 func generate_end_node() -> BasicGraphNode:
@@ -159,9 +159,7 @@ func _on_timeline_graph_editor_new_operator_selected(operation: int):
 func _on_timeline_graph_editor_load_selected() -> void:
     # file explorer popup?
     var _dict: Dictionary = Utility.load_json("res://gameData/timelineStructureDataTest.json")
-    
-    #print_debug(_dict)
-    
+
     clear()
     
     # Repopulate start and end node? 
@@ -169,7 +167,7 @@ func _on_timeline_graph_editor_load_selected() -> void:
         # how do I know what type of node to make? 
         # from dict?
         var new_data_node = TimelineNodeDataFactory.from_dict(_dict[key])
-        new_data_node.print()
+        #new_data_node.print()
         
         # add timeline nodes to data structure
         timeline_structure_data[key] = new_data_node
@@ -181,37 +179,46 @@ func _on_timeline_graph_editor_load_selected() -> void:
         
         if START_NODE_NAME == key:
             node_to_add = generate_start_node()
+            add_child(node_to_add)
             name_overwrite = START_NODE_NAME
             
         elif END_NODE_NAME == key:
             node_to_add = generate_end_node()
+            add_child(node_to_add)
             name_overwrite = END_NODE_NAME
 
-        elif TimelineNodeTimelineData is new_data_node:
+        elif new_data_node is TimelineNodeTimelineData:
             node_to_add = new_timeline_node.instance()
             node_to_add.title = key
             name_overwrite = key
+            add_child(node_to_add)
+            node_to_add.set_timeline(new_data_node.timeline_name)
+            node_to_add.set_location(new_data_node.location)
+            node_to_add.set_character(new_data_node.character)
             node_to_add.show_close = true
             
-        elif TimelineNodeData is new_data_node:
+        elif new_data_node is TimelineNodeData:
             node_to_add = new_operator_node.instance()
+            add_child(node_to_add)
             node_to_add.title = key
             name_overwrite = key
-            node_to_add.set_timeline(new_data_node["timeline"])
-            node_to_add.set_location(new_data_node["location"])
-            node_to_add.set_character(new_data_node["character"])
             node_to_add.show_close = true
             
         if node_to_add:
             node_to_add.id = new_data_node["id"]
-            print_debug(node_to_add.name, " ", node_to_add.title)
-            add_child(node_to_add)
-            print_debug(node_to_add.name, " ", node_to_add.title)
+            node_to_add.offset = new_data_node["offset"]
+            
             if name_overwrite:
                 node_to_add.name = name_overwrite
-            print_debug(node_to_add.name, " ", node_to_add.title)
+
     # connect nodes in data structure and in graph edit
-    
+    var children = get_children()
+    for child in children:
+        if child is GraphNode:
+            var title = child.title
+            print(timeline_structure_data[title]["inputs"])
+            for output in timeline_structure_data[title]["outputs"]:
+                connect_node(title, OUTPUT_SLOT, output, INPUT_SLOT) 
     
     
 
@@ -223,3 +230,11 @@ func _on_timeline_graph_editor_save_selected() -> void:
         dict_to_save[timeline_name] = timeline_node.to_dict()
 
     Utility.save_dict_as_json("res://gameData/timelineStructureDataTest.json", dict_to_save)
+
+
+func _on_GraphEdit__end_node_move() -> void:
+    # save all graph node offsets
+    for child in get_children():
+        if child is GraphNode:
+            timeline_structure_data[child.title].offset = child.offset
+

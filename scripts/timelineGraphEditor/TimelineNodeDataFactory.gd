@@ -44,20 +44,24 @@ static func create_tl_node_tl_data(_id: int, _tl_name: String, _character: Strin
     return new_timeline_node_timeline_data
 
 static func from_dict(_dict: Dictionary):
-    if _dict.has_all(get_timeline_node_data_properties()):
-        var new_timeline_node_data: TimelineNodeData = timeline_node_data.new()
-        for key in _dict.keys():
-            new_timeline_node_data[key] = _dict[key]
-        return new_timeline_node_data
-        
-    elif _dict.has_all(get_timeline_node_timeline_data_properties()):
-        var new_timeline_node_timeline_data: TimelineNodeTimelineData = timeline_node_timeline_data.new()
-        for key in _dict.keys():
-            new_timeline_node_timeline_data[key] = _dict[key]
-        return new_timeline_node_timeline_data
+    var data_node_to_return = null
+    
+    if _dict.has_all(get_timeline_node_timeline_data_properties()):
+        data_node_to_return = timeline_node_timeline_data.new()
+
+    elif _dict.has_all(get_timeline_node_data_properties()):
+        data_node_to_return = timeline_node_data.new()
+
     else:
         printerr("Unknown node data")
         return null
+
+    for key in _dict.keys():
+#            var value_to_add = _dict[key]
+#            if "offset" == key:
+#                value_to_add = Utility.string_to_vecort2(value_to_add)
+        data_node_to_return[key] = str2var(_dict[key])
+    return data_node_to_return
 
 static func match_exclued_properties(property: String) -> bool:
     return TimelineNodeData.excluded_properties.has(property)

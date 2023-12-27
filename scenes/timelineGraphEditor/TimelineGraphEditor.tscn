@@ -68,5 +68,6 @@ new_timeline_node = ExtResource( 1 )
 new_operator_node = ExtResource( 3 )
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxMenu/ButtonNewNode" to="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" method="_on_ButtonNewNode_pressed"]
+[connection signal="_end_node_move" from="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" to="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" method="_on_GraphEdit__end_node_move"]
 [connection signal="connection_request" from="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" to="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" method="_on_GraphEdit_connection_request"]
 [connection signal="disconnection_request" from="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" to="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" method="_on_GraphEdit_disconnection_request"]

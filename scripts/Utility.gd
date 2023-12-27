@@ -79,6 +79,10 @@ func save_dict_as_json(save_location: String, dict_to_save: Dictionary):
     file.store_string((to_json(dict_to_save)))
     file.close()
 
+# Expects input in the fomr '(x, y
+#func string_to_vecort2(coords_str: String) -> Vector2:
+#    var2str()
+#    return Vector2(0,0)
 
 func toggle_offspring_visible(node: Node)->void:
     var all_decendant_nodes = get_all_nodes(node)
