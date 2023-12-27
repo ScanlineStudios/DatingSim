@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/TimelineOptionButton.gd" type="Script" id=1]
-[ext_resource path="res://scripts/CharacterOptionButton.gd" type="Script" id=2]
-[ext_resource path="res://scripts/NewTimelineNodeMenu.gd" type="Script" id=3]
+[ext_resource path="res://scripts/timelineGraphEditor/TimelineOptionButton.gd" type="Script" id=1]
+[ext_resource path="res://scripts/timelineGraphEditor/CharacterOptionButton.gd" type="Script" id=2]
+[ext_resource path="res://scripts/timelineGraphEditor/NewTimelineNodeMenu.gd" type="Script" id=3]
 
 [node name="NewTimelineNodeMenu" type="Control"]
 anchor_right = 1.0

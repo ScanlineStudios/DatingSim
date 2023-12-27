@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "GraphNode",
 "class": "BasicGraphNode",
 "language": "GDScript",
-"path": "res://scripts/basicGraphNode.gd"
+"path": "res://scripts/timelineGraphEditor/basicGraphNode.gd"
 }, {
 "base": "Reference",
 "class": "DTS",
@@ -77,12 +77,27 @@ _global_script_classes=[ {
 "base": "BasicGraphNode",
 "class": "LogicGraphNode",
 "language": "GDScript",
-"path": "res://scenes/LogicGraphNode.gd"
+"path": "res://scripts/timelineGraphEditor/LogicGraphNode.gd"
 }, {
 "base": "BasicGraphNode",
 "class": "TimelineGraphNode",
 "language": "GDScript",
-"path": "res://scripts/timelineGraphNode.gd"
+"path": "res://scripts/timelineGraphEditor/timelineGraphNode.gd"
+}, {
+"base": "Resource",
+"class": "TimelineNodeData",
+"language": "GDScript",
+"path": "res://scripts/timelineGraphEditor/TimelineNodeData.gd"
+}, {
+"base": "Resource",
+"class": "TimelineNodeDataFactory",
+"language": "GDScript",
+"path": "res://scripts/timelineGraphEditor/TimelineNodeDataFactory.gd"
+}, {
+"base": "TimelineNodeData",
+"class": "TimelineNodeTimelineData",
+"language": "GDScript",
+"path": "res://scripts/timelineGraphEditor/TimelineNodeTimelineData.gd"
 } ]
 _global_script_class_icons={
 "BasicGraphNode": "",
@@ -99,7 +114,10 @@ _global_script_class_icons={
 "GameManager": "",
 "HistoryRow": "",
 "LogicGraphNode": "",
-"TimelineGraphNode": ""
+"TimelineGraphNode": "",
+"TimelineNodeData": "",
+"TimelineNodeDataFactory": "",
+"TimelineNodeTimelineData": ""
 }
 
 [application]

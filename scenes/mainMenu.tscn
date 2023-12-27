@@ -7,7 +7,7 @@
 [ext_resource path="res://themes/HistoryButton-theme.tres" type="Theme" id=5]
 [ext_resource path="res://scenes/testScenes/GameManagementTest.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/saveSlotSelect.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/TimelineGraphEditor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/timelineGraphEditor/TimelineGraphEditor.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scripts/basicGraphNode.gd" type="Script" id=1]
+[ext_resource path="res://scripts/timelineGraphEditor/LogicGraphNode.gd" type="Script" id=1]
 
-[node name="BasicGraphNode" type="GraphNode"]
+[node name="LogicGraphNode" type="GraphNode"]
 margin_right = 128.0
 margin_bottom = 88.0
 slot/0/left_enabled = true

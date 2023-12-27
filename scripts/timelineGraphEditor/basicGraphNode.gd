@@ -2,6 +2,7 @@ extends GraphNode
 
 class_name BasicGraphNode
 
+var id: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

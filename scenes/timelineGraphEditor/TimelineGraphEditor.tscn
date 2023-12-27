@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scenes/TimelineGraphNode.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/timelineNodeEditor.gd" type="Script" id=2]
-[ext_resource path="res://themes/HistoryButton-theme.tres" type="Theme" id=3]
-[ext_resource path="res://scenes/GUI/NewTimelineNodeMenu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scripts/MenuButtonFile.gd" type="Script" id=5]
-[ext_resource path="res://scripts/MenuButtonNewOperation.gd" type="Script" id=6]
+[ext_resource path="res://scenes/timelineGraphEditor/TimelineGraphNode.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/GUI/NewTimelineNodeMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/timelineGraphEditor/LogicGraphNode.tscn" type="PackedScene" id=3]
+[ext_resource path="res://themes/HistoryButton-theme.tres" type="Theme" id=4]
+[ext_resource path="res://scripts/timelineGraphEditor/MenuButtonNewOperation.gd" type="Script" id=5]
+[ext_resource path="res://scripts/timelineGraphEditor/timelineNodeEditor.gd" type="Script" id=6]
+[ext_resource path="res://scripts/timelineGraphEditor/MenuButtonFile.gd" type="Script" id=7]
 
 [node name="TimelineGraphEditor" type="Node2D"]
 
@@ -28,7 +29,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "File"
 items = [ "New Graph", null, 0, false, false, 0, 0, null, "", false, "Save", null, 0, false, false, 1, 0, null, "", false, "Load", null, 0, false, false, 2, 0, null, "", false ]
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="ButtonNewNode" type="Button" parent="MarginContainer/VBoxContainer/HBoxMenu"]
 margin_left = 362.0
@@ -45,7 +46,7 @@ margin_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "New Operation Node"
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 24.0
@@ -58,32 +59,13 @@ margin_bottom = 700.0
 rect_min_size = Vector2( 1000, 700 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 3 )
+theme = ExtResource( 4 )
 right_disconnects = true
 scroll_offset = Vector2( -100, -100 )
-script = ExtResource( 2 )
-new_timeline_node_menu = ExtResource( 4 )
+script = ExtResource( 6 )
+new_timeline_node_menu = ExtResource( 2 )
 new_timeline_node = ExtResource( 1 )
-
-[node name="StartNode" parent="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" instance=ExtResource( 1 )]
-margin_left = 100.0
-margin_top = 100.0
-margin_right = 215.0
-margin_bottom = 164.0
-mouse_filter = 1
-title = "Start"
-slot/0/left_enabled = false
-slot/0/left_color = Color( 0, 0, 0, 1 )
-
-[node name="EndNode" parent="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" instance=ExtResource( 1 )]
-margin_left = 200.0
-margin_top = 100.0
-margin_right = 315.0
-margin_bottom = 163.0
-mouse_filter = 1
-title = "End"
-offset = Vector2( 100, 0 )
-slot/0/right_enabled = false
+new_operator_node = ExtResource( 3 )
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxMenu/ButtonNewNode" to="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" method="_on_ButtonNewNode_pressed"]
 [connection signal="connection_request" from="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" to="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" method="_on_GraphEdit_connection_request"]
