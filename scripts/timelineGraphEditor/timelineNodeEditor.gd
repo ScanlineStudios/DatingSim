@@ -9,12 +9,16 @@ const INPUT_SLOT: int = 0
 const START_NODE_NAME: String = "StartNode"
 const END_NODE_NAME: String = "EndNode"
 
+onready var preview_mode_dimmer: ColorRect = get_node("PreviewModeDimmer")
+
 # Timelein node graph datastructure
 # Key: title, Value: TimelineNodeData
 var timeline_structure_data: Dictionary = {}
 
 # increment every time graph node child added
 var next_node_id: int = 0
+
+var preview_mode: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,6 +48,37 @@ func clear() -> void:
             remove_child(child)
     
     
+func disable_preview_mode()-> void:
+    preview_mode = false
+    #preview_mode_dimmer.visible = false
+    #lighten background
+    preview_mode_dimmer.color = Color(0, 0, 0, 0)
+    
+    # clear graphNode states
+    for child in get_children():
+        if child is BasicGraphNode:
+            child.set_preview_mode_state(BasicGraphNode.PreviewModeStates.PENDING)
+
+    
+func enable_preview_mode()-> void:
+    preview_mode = true
+    
+    # darken backdround
+    #preview_mode_dimmer.
+    preview_mode_dimmer.color = Color(0, 0, 0, .5)
+    # set nodes to initital state. StartNode complete. All outputs of StartNode
+    # pending. All other nodes locked 
+    for child in get_children():
+        if child is BasicGraphNode:
+            child.set_preview_mode_state(BasicGraphNode.PreviewModeStates.LOCKED)
+
+    get_node(START_NODE_NAME).set_preview_mode_state(BasicGraphNode.PreviewModeStates.COMPLETE)
+
+    for node_name in timeline_structure_data[START_NODE_NAME].outputs:
+        get_node(node_name).set_preview_mode_state(BasicGraphNode.PreviewModeStates.PENDING)
+
+
+
 func generate_end_node() -> BasicGraphNode:
     var new_timeline_node_instance: BasicGraphNode = new_timeline_node.instance()
     new_timeline_node_instance.name = END_NODE_NAME
@@ -89,6 +124,13 @@ func _on_ButtonNewNode_pressed() -> void:
     add_child(new_timeline_node_menu.instance())
 
 
+func _on_CheckButtonPreviewMode_toggled(button_pressed: bool) -> void:
+    if button_pressed:
+        enable_preview_mode()
+    else:
+        disable_preview_mode()
+
+
 func _on_GraphEdit__end_node_move() -> void:
     # save all graph node offsets
     for child in get_children():
@@ -115,7 +157,29 @@ func _on_GraphEdit_disconnection_request(from: String, from_slot: int, to: Strin
         timeline_structure_data[to_title].inputs.erase(from_title)
 
 
+func _on_GraphEdit_node_selected(node: Node) -> void:
+    if !preview_mode:
+        return
+        
+    #
+    if node.preview_mode_state == BasicGraphNode.PreviewModeStates.PENDING:
+        node.set_preview_mode_state(BasicGraphNode.PreviewModeStates.COMPLETE)
+        for output in timeline_structure_data[node.name].outputs:
+            var nod_to_set = get_node(output)
+            # TODO check all inputs complete. logic for operation nodes
+            if nod_to_set.preview_mode_state == BasicGraphNode.PreviewModeStates.LOCKED:
+                nod_to_set.set_preview_mode_state(BasicGraphNode.PreviewModeStates.PENDING)
+
+
 func _on_new_timeline_node_confirm_buton_pressed(timeline: String, location: String, character: String):
+    if preview_mode:
+        print_debug("Cannot create new nodes in Preview Mode")
+        return
+    
+    if get_node(timeline):
+        print_debug("TimelineNode with name ", timeline, " already exists")
+        return
+        
     var new_timeline_node_instance: TimelineGraphNode = new_timeline_node.instance() 
     add_child(new_timeline_node_instance)
 
@@ -147,7 +211,17 @@ func _on_timeline_graph_editor_new_graph_selected() -> void:
 
 
 func _on_timeline_graph_editor_new_operator_selected(operation: int):
+
+    if preview_mode:
+        print_debug("Cannot create new nodes in Preview Mode")
+        return
+
     var op_str: String = LogicGraphNode.Operation.keys()[operation]
+    var node_name: String = op_str + "_" + String(next_node_id)
+    
+    if get_node(node_name):
+        print_debug("LogicNode with name ", node_name, " already exits")
+        return
     
     # create an new logic node with unique id and op_str as title
     var new_operator_node_instance: LogicGraphNode = new_operator_node.instance()
@@ -166,7 +240,9 @@ func _on_timeline_graph_editor_new_operator_selected(operation: int):
 func _on_timeline_graph_editor_load_selected() -> void:
     # file explorer popup?
     var _dict: Dictionary = Utility.load_json("res://gameData/timelineStructureDataTest.json")
-
+    
+    var highest_id: int = -1
+    
     clear()
     
     # Repopulate nodes 
@@ -211,11 +287,14 @@ func _on_timeline_graph_editor_load_selected() -> void:
             
         if node_to_add:
             node_to_add.id = new_data_node["id"]
+            if node_to_add.id > highest_id:
+                highest_id = node_to_add.id
+                
             node_to_add.offset = new_data_node["offset"]
             
             if name_overwrite:
                 node_to_add.name = name_overwrite
-
+        
     # connect nodes in data structure and in graph edit
     var children = get_children()
     for child in children:
@@ -224,7 +303,10 @@ func _on_timeline_graph_editor_load_selected() -> void:
             for output in timeline_structure_data[title]["outputs"]:
                 connect_node(title, OUTPUT_SLOT, output, INPUT_SLOT) 
     
-
+    # update next id
+    next_node_id = highest_id + 1
+    
+    
 # TODO: Save as timeline structure data
 func _on_timeline_graph_editor_save_selected() -> void:
     var dict_to_save: Dictionary = {}
@@ -233,6 +315,12 @@ func _on_timeline_graph_editor_save_selected() -> void:
         dict_to_save[timeline_name] = timeline_node.to_dict()
 
     Utility.save_dict_as_json("res://gameData/timelineStructureDataTest.json", dict_to_save)
+
+
+
+
+
+
 
 
 
