@@ -9,7 +9,7 @@ enum Operation {
     OR,
 }
 
-var openration = Operation.NONE
+var operation = Operation.NONE
 
 
-
+func get_class(): return "LogicGraphNode"

@@ -33,6 +33,22 @@ func _ready() -> void:
     popualte_start_and_end()
     
 
+func all_nodes_complete(names: Array) -> bool:
+    var all_complete: bool = true
+    for _name in names:
+        var node_to_check: BasicGraphNode = get_node(_name)
+        all_complete = all_complete && (node_to_check.preview_mode_state == BasicGraphNode.PreviewModeStates.COMPLETE)
+    return all_complete
+    
+
+func any_nodes_complete(names: Array) -> bool:
+    var any_complete: bool = false
+    for _name in names:
+        var node_to_check: BasicGraphNode = get_node(_name)
+        any_complete = any_complete || (node_to_check.preview_mode_state == BasicGraphNode.PreviewModeStates.COMPLETE)
+    return any_complete
+
+
 func clear() -> void:
     
     next_node_id = 0
@@ -77,6 +93,7 @@ func enable_preview_mode()-> void:
     for node_name in timeline_structure_data[START_NODE_NAME].outputs:
         get_node(node_name).set_preview_mode_state(BasicGraphNode.PreviewModeStates.PENDING)
 
+    update_preview_mode()
 
 
 func generate_end_node() -> BasicGraphNode:
@@ -101,9 +118,9 @@ func generate_start_node() -> BasicGraphNode:
 
 func popualte_start_and_end() -> void:
     # Add as graph edit children
-    var start_node = generate_start_node()
+    var start_node: BasicGraphNode= generate_start_node()
     add_child(start_node)
-    var end_node = generate_end_node()
+    var end_node: BasicGraphNode= generate_end_node()
     add_child(end_node)
     
     # Add to data structure    
@@ -118,6 +135,47 @@ func popualte_start_and_end() -> void:
 
     timeline_structure_data[start_node.title] = start_node_data
     timeline_structure_data[end_node.title] = end_node_data
+
+
+func update_preview_mode() -> void:
+    if !preview_mode:
+        return
+        
+    # iterate from start to finish
+    for node_name in timeline_structure_data:
+        var node_to_set = get_node(node_name)
+        # check if operation node
+        if node_to_set.get_class() == "LogicGraphNode":
+            var inputs: Array = timeline_structure_data[node_to_set.name]["inputs"]
+            match node_to_set.operation:
+                LogicGraphNode.Operation.AND:
+                    if all_nodes_complete(inputs):
+                        node_to_set.set_preview_mode_state(BasicGraphNode.PreviewModeStates.COMPLETE)
+                    else:
+                        node_to_set.set_preview_mode_state(BasicGraphNode.PreviewModeStates.LOCKED)
+
+                LogicGraphNode.Operation.NOT:
+                    if all_nodes_complete(inputs):
+                        node_to_set.set_preview_mode_state( BasicGraphNode.PreviewModeStates.LOCKED)
+                    else:
+                        node_to_set.set_preview_mode_state(BasicGraphNode.PreviewModeStates.COMPLETE)
+                        
+                LogicGraphNode.Operation.OR:
+                    if any_nodes_complete(inputs):
+                        node_to_set.set_preview_mode_state(BasicGraphNode.PreviewModeStates.COMPLETE)
+                    else:
+                        node_to_set.set_preview_mode_state(BasicGraphNode.PreviewModeStates.LOCKED)
+                        
+        elif node_to_set.preview_mode_state == BasicGraphNode.PreviewModeStates.COMPLETE:
+            # Skip if node already marked complete
+            continue
+        # check all inputs complete
+        elif all_nodes_complete(timeline_structure_data[node_to_set.name]["inputs"]):
+            node_to_set.set_preview_mode_state(BasicGraphNode.PreviewModeStates.PENDING)
+            
+        else:
+            node_to_set.set_preview_mode_state(BasicGraphNode.PreviewModeStates.LOCKED)
+
 
 func _on_ButtonNewNode_pressed() -> void:
     # Open a menu with fields to fill in for timeline node
@@ -157,18 +215,16 @@ func _on_GraphEdit_disconnection_request(from: String, from_slot: int, to: Strin
         timeline_structure_data[to_title].inputs.erase(from_title)
 
 
-func _on_GraphEdit_node_selected(node: Node) -> void:
+func _on_GraphEdit_node_selected(node: BasicGraphNode) -> void:
     if !preview_mode:
         return
         
     #
     if node.preview_mode_state == BasicGraphNode.PreviewModeStates.PENDING:
         node.set_preview_mode_state(BasicGraphNode.PreviewModeStates.COMPLETE)
-        for output in timeline_structure_data[node.name].outputs:
-            var nod_to_set = get_node(output)
-            # TODO check all inputs complete. logic for operation nodes
-            if nod_to_set.preview_mode_state == BasicGraphNode.PreviewModeStates.LOCKED:
-                nod_to_set.set_preview_mode_state(BasicGraphNode.PreviewModeStates.PENDING)
+        # update other nodes
+        update_preview_mode()
+        
 
 
 func _on_new_timeline_node_confirm_buton_pressed(timeline: String, location: String, character: String):
@@ -176,7 +232,7 @@ func _on_new_timeline_node_confirm_buton_pressed(timeline: String, location: Str
         print_debug("Cannot create new nodes in Preview Mode")
         return
     
-    if get_node(timeline):
+    if get_node_or_null(timeline):
         print_debug("TimelineNode with name ", timeline, " already exists")
         return
         
@@ -219,7 +275,7 @@ func _on_timeline_graph_editor_new_operator_selected(operation: int):
     var op_str: String = LogicGraphNode.Operation.keys()[operation]
     var node_name: String = op_str + "_" + String(next_node_id)
     
-    if get_node(node_name):
+    if get_node_or_null(node_name):
         print_debug("LogicNode with name ", node_name, " already exits")
         return
     
@@ -283,6 +339,12 @@ func _on_timeline_graph_editor_load_selected() -> void:
             add_child(node_to_add)
             node_to_add.title = key
             name_overwrite = key
+            if key.begins_with("NOT"):
+                node_to_add.operation = LogicGraphNode.Operation.NOT
+            elif key.begins_with("AND"):
+                node_to_add.operation = LogicGraphNode.Operation.AND
+            elif key.begins_with("OR"):
+                node_to_add.operation = LogicGraphNode.Operation.OR
             node_to_add.show_close = true
             
         if node_to_add:

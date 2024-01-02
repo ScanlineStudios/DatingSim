@@ -31,6 +31,7 @@ func set_preview_mode_state(state: int) -> void:
             set_slot_color_right(0, locked_color)
             set_slot_color_left(0, locked_color)
 
+func get_class(): return "BasicGraphNode"
 
 func _on_TimelineGraphNode_focus_entered() -> void:
     selected = true
