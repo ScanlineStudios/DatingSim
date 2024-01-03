@@ -91,7 +91,9 @@ func enable_preview_mode()-> void:
     get_node(START_NODE_NAME).set_preview_mode_state(BasicGraphNode.PreviewModeStates.COMPLETE)
 
     for node_name in timeline_structure_data[START_NODE_NAME].outputs:
-        get_node(node_name).set_preview_mode_state(BasicGraphNode.PreviewModeStates.PENDING)
+        var node_to_change = get_node(node_name)
+        if node_to_change.get_class() != "LogicGraphNode":
+            node_to_change.set_preview_mode_state(BasicGraphNode.PreviewModeStates.PENDING)
 
     update_preview_mode()
 
@@ -142,7 +144,8 @@ func update_preview_mode() -> void:
         return
         
     # iterate from start to finish
-    for node_name in timeline_structure_data:
+    var nodes_to_check: Array = timeline_structure_data[START_NODE_NAME].outputs
+    for node_name in nodes_to_check:
         var node_to_set = get_node(node_name)
         # check if operation node
         if node_to_set.get_class() == "LogicGraphNode":
@@ -175,9 +178,18 @@ func update_preview_mode() -> void:
             
         else:
             node_to_set.set_preview_mode_state(BasicGraphNode.PreviewModeStates.LOCKED)
-
+            
+        # Add node's inputs to nodes_to_check
+        nodes_to_check.append_array(timeline_structure_data[node_name].outputs)
+        # Remove checked node
+        #while nodes_to_check.has(node_name):
+        #    nodes_to_check.erase(node_name)
 
 func _on_ButtonNewNode_pressed() -> void:
+    if preview_mode:
+        print_debug("Cannot create new nodes in Preview Mode")
+        return
+        
     # Open a menu with fields to fill in for timeline node
     add_child(new_timeline_node_menu.instance())
 
@@ -197,22 +209,34 @@ func _on_GraphEdit__end_node_move() -> void:
 
 
 func _on_GraphEdit_connection_request(from: String, from_slot: int, to: String, to_slot: int) -> void:
+    if preview_mode:
+        print_debug("Cannot change connections in Preview Mode")
+        return
+    
     connect_node(from, from_slot, to, to_slot)
     
     var from_title = get_node(from).title
     var to_title = get_node(to).title
     # update prereq lists
-    timeline_structure_data[from_title].outputs.append(to_title)
-    timeline_structure_data[to_title].inputs.append(from_title)
+    if !timeline_structure_data[from_title].outputs.has(to_title):
+        timeline_structure_data[from_title].outputs.append(to_title)
+    if !timeline_structure_data[to_title].inputs.has(from_title):
+        timeline_structure_data[to_title].inputs.append(from_title)
 
 
 func _on_GraphEdit_disconnection_request(from: String, from_slot: int, to: String, to_slot: int) -> void:
+    if preview_mode:
+        print_debug("Cannot change connections in Preview ode")
+        return
+        
     if get_node(from).selected:
         disconnect_node(from, from_slot, to, to_slot)
         var from_title = get_node(from).title
         var to_title = get_node(to).title
-        timeline_structure_data[from_title].outputs.erase(to_title)
-        timeline_structure_data[to_title].inputs.erase(from_title)
+        while timeline_structure_data[from_title].outputs.has(to_title):
+            timeline_structure_data[from_title].outputs.erase(to_title)
+        while timeline_structure_data[to_title].inputs.has(from_title):
+            timeline_structure_data[to_title].inputs.erase(from_title)
 
 
 func _on_GraphEdit_node_selected(node: BasicGraphNode) -> void:
@@ -258,6 +282,9 @@ func _on_new_timeline_node_confirm_buton_pressed(timeline: String, location: Str
 
 
 func _on_timeline_graph_editor_new_graph_selected() -> void:
+    if preview_mode:
+        print_debug("Cannot create new nodes in Preview Mode")
+        return
     # TODO: Popup saying all unsaved work will be lost
     
     clear()
@@ -306,11 +333,22 @@ func _on_timeline_graph_editor_load_selected() -> void:
         # Make new data node 
         var new_data_node = TimelineNodeDataFactory.from_dict(_dict[key])
         
+        # Remove duplicates from input and output arrays
+        var inputs_dict: Dictionary = {}
+        for input in new_data_node.inputs:
+            inputs_dict[input] = 0
+        new_data_node.inputs =  inputs_dict.keys() 
+        
+        var output_dict: Dictionary = {}
+        for output in new_data_node.outputs:
+            output_dict[output] = 0
+        new_data_node.outputs = output_dict.keys()
+        
         # add timeline nodes to data structure
         timeline_structure_data[key] = new_data_node
         
         # add nodes to graph edit. position based on connections
-        #create new graph node
+        # create new graph node
         var node_to_add: BasicGraphNode = null
         var name_overwrite = null
         
