@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/timelineGraphEditor/SaveTimelineStructureAsMenu.gd" type="Script" id=1]
+
+[node name="SaveTimelineStructureAsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 1080.0
+margin_bottom = 720.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+margin_left = 454.0
+margin_top = 327.0
+margin_right = 625.0
+margin_bottom = 393.0
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/MarginContainer"]
+margin_right = 171.0
+margin_bottom = 66.0
+color = Color( 0.290196, 0.290196, 0.290196, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+margin_right = 171.0
+margin_bottom = 66.0
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+margin_right = 171.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+margin_right = 171.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Save Timeline Structure As"
+align = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 171.0
+margin_bottom = 42.0
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_top = 5.0
+margin_right = 58.0
+margin_bottom = 19.0
+size_flags_horizontal = 0
+text = "Location:"
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 62.0
+margin_right = 136.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Enter Location"
+
+[node name="Label2" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 140.0
+margin_top = 5.0
+margin_right = 171.0
+margin_bottom = 19.0
+size_flags_horizontal = 0
+text = ".json"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 171.0
+margin_bottom = 66.0
+
+[node name="ButtonCancel" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+margin_right = 83.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Cancel"
+
+[node name="ButtonConfirm" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+margin_left = 87.0
+margin_right = 171.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Confirm"
+
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4/ButtonCancel" to="." method="_on_ButtonCancel_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4/ButtonConfirm" to="." method="_on_ButtonConfirm_pressed"]

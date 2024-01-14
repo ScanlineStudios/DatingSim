@@ -16,3 +16,6 @@ func _on_MenuButtonFile_item_selected(id: int) -> void:
         2:
             #print_debug("Load Selected")
             SignalManager.emit_signal("timeline_graph_editor_load_selected")
+        3:
+            # Save As
+            SignalManager.emit_signal("timeline_graph_editor_save_as_selected")

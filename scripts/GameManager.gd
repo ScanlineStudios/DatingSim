@@ -7,6 +7,10 @@ class_name GameManager
 #       Objectives?
 export var initial_scene: PackedScene = null
 
+
+const TL_STRUCTURE_DATA_LOCATION: String = "res://gameData/timelineStructureData/"
+
+
 var active_scene: PackedScene = null
 var player_location: String = ""
 var active_node: Node = null

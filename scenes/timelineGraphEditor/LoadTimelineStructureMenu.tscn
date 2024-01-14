@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/timelineGraphEditor/TimelineStructureDataOptionButton.gd" type="Script" id=1]
+[ext_resource path="res://scripts/timelineGraphEditor/LoadTimelineStructureMenu.gd" type="Script" id=2]
+
+[node name="LoadTimelineStructureMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -141.0
+margin_top = -31.0
+margin_right = 141.0
+margin_bottom = 31.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+margin_right = 282.0
+margin_bottom = 62.0
+rect_pivot_offset = Vector2( -918, -461 )
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/MarginContainer"]
+margin_right = 282.0
+margin_bottom = 62.0
+color = Color( 0.290196, 0.290196, 0.290196, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+margin_right = 282.0
+margin_bottom = 62.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+margin_right = 282.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 282.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Load Timeline Structure Data"
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 282.0
+margin_bottom = 38.0
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_top = 3.0
+margin_right = 249.0
+margin_bottom = 17.0
+text = "res://gameData/timelineStructureData/"
+
+[node name="TimelineStructureDataOptionButton" type="OptionButton" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 253.0
+margin_right = 282.0
+margin_bottom = 20.0
+script = ExtResource( 1 )
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+margin_top = 42.0
+margin_right = 282.0
+margin_bottom = 62.0
+
+[node name="ButtonCancel" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+margin_right = 139.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Cancel"
+
+[node name="ButtonConfirm" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+margin_left = 143.0
+margin_right = 282.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Confirm"
+
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4/ButtonCancel" to="." method="_on_ButtonCancel_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer4/ButtonConfirm" to="." method="_on_ButtonConfirm_pressed"]

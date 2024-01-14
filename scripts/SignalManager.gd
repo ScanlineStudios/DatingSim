@@ -14,8 +14,11 @@ signal tamerin_minigame_ended(score)
 signal new_timeline_node_confirm_buton_pressed(timeline_name, location, character)
 
 signal timeline_graph_editor_save_selected
+signal timeline_graph_editor_save_as_selected
 signal timeline_graph_editor_load_selected
 signal timeline_graph_editor_new_graph_selected
 
 signal timeline_graph_editor_new_operator_selected(operator)
 
+signal save_timeline_structure_as_confirm_button_pressed(structure_name)
+signal load_timeline_structure_as_confirm_button_pressed(structure_name)

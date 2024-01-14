@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/timelineGraphEditor/TimelineGraphNode.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/GUI/NewTimelineNodeMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/timelineGraphEditor/NewTimelineNodeMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/timelineGraphEditor/LogicGraphNode.tscn" type="PackedScene" id=3]
 [ext_resource path="res://themes/HistoryButton-theme.tres" type="Theme" id=4]
 [ext_resource path="res://scripts/timelineGraphEditor/MenuButtonNewOperation.gd" type="Script" id=5]
 [ext_resource path="res://scripts/timelineGraphEditor/timelineNodeEditor.gd" type="Script" id=6]
 [ext_resource path="res://scripts/timelineGraphEditor/MenuButtonFile.gd" type="Script" id=7]
+[ext_resource path="res://scenes/timelineGraphEditor/LoadTimelineStructureMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/timelineGraphEditor/SaveTimelineStructureAsMenu.tscn" type="PackedScene" id=9]
 
 [node name="TimelineGraphEditor" type="Node2D"]
 
@@ -28,7 +30,7 @@ margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "File"
-items = [ "New Graph", null, 0, false, false, 0, 0, null, "", false, "Save", null, 0, false, false, 1, 0, null, "", false, "Load", null, 0, false, false, 2, 0, null, "", false ]
+items = [ "New Graph", null, 0, false, false, 0, 0, null, "", false, "Save", null, 0, false, false, 1, 0, null, "", false, "Load", null, 0, false, false, 2, 0, null, "", false, "Save As", null, 0, false, false, 3, 0, null, "", false ]
 script = ExtResource( 7 )
 
 [node name="ButtonNewNode" type="Button" parent="MarginContainer/VBoxContainer/HBoxMenu"]
@@ -58,6 +60,8 @@ text = "Preview Mode"
 margin_top = 44.0
 margin_right = 1083.0
 margin_bottom = 744.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="GraphEdit" type="GraphEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 1083.0
@@ -72,6 +76,8 @@ script = ExtResource( 6 )
 new_timeline_node_menu = ExtResource( 2 )
 new_timeline_node = ExtResource( 1 )
 new_operator_node = ExtResource( 3 )
+load_timeline_structure_menu = ExtResource( 8 )
+save_timeline_structure_as_menu = ExtResource( 9 )
 
 [node name="PreviewModeDimmer" type="ColorRect" parent="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit"]
 anchor_right = 1.0
@@ -80,6 +86,18 @@ mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0, 0, 0, 0 )
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit"]
+anchor_right = 1.0
+margin_top = 10.0
+margin_bottom = 14.0
+
+[node name="LabelTimelineStructureName" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit/MarginContainer"]
+margin_right = 1083.0
+margin_bottom = 14.0
+text = "UNNAMED"
+align = 1
+valign = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxMenu/ButtonNewNode" to="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" method="_on_ButtonNewNode_pressed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxMenu/CheckButtonPreviewMode" to="MarginContainer/VBoxContainer/HBoxContainer/GraphEdit" method="_on_CheckButtonPreviewMode_toggled"]

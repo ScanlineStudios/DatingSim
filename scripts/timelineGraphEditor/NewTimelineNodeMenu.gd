@@ -5,11 +5,6 @@ onready var location_line_edit = get_node("CenterContainer/MarginContainer/VBoxC
 onready var character_option = get_node("CenterContainer/MarginContainer/VBoxContainer/HBoxContainer3/CharacterOptionButton")
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-    pass # Replace with function body.
-
-
 func _on_ButtonCancel_pressed() -> void:
     queue_free()
 
