@@ -131,6 +131,8 @@ func generate_start_node() -> BasicGraphNode:
 
 
 func load_timeline_structure(structure_name: String) -> void:
+    timeline_structure_name = structure_name.substr(0, structure_name.find("."))
+    update_structre_name_label()
     var _dict: Dictionary = Utility.load_json(Utility.game_manager.TL_STRUCTURE_DATA_LOCATION+structure_name)
     
     var highest_id: int = -1
@@ -284,6 +286,10 @@ func update_preview_mode() -> void:
         #    nodes_to_check.erase(node_name)
 
 
+func update_structre_name_label() -> void:
+    timeline_structure_name_lable.text = timeline_structure_name
+
+
 func save_timeline_structure() -> void:
     var dict_to_save: Dictionary = {}
     for timeline_name in timeline_structure_data:
@@ -403,6 +409,7 @@ func _on_new_timeline_node_confirm_buton_pressed(timeline: String, location: Str
 
 func _on_save_timeline_structure_as_confirm_button_pressed(structure_name: String) -> void:
     timeline_structure_name = structure_name
+    update_structre_name_label()
     save_timeline_structure()
 
 
