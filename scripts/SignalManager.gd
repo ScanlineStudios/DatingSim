@@ -22,3 +22,5 @@ signal timeline_graph_editor_new_operator_selected(operator)
 
 signal save_timeline_structure_as_confirm_button_pressed(structure_name)
 signal load_timeline_structure_as_confirm_button_pressed(structure_name)
+
+signal graphNode_close_request(node_name)

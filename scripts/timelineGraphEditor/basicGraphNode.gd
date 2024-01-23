@@ -43,3 +43,8 @@ func _on_TimelineGraphNode_focus_exited() -> void:
     # close window to edit fields
     
 
+
+
+func _on_BasicGraphNode_close_request() -> void:
+    print_debug("Request close ", name)
+    SignalManager.emit_signal("graphNode_close_request", name)

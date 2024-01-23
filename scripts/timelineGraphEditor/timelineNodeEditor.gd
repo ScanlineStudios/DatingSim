@@ -25,7 +25,8 @@ var next_node_id: int = 0
 var preview_mode: bool = false
 # Name that timeline structre is saved as
 var timeline_structure_name: String = DEFAULT_TL_STRUCTURE_NAME
-
+# true if active delete request
+var delete_request: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -39,7 +40,7 @@ func _ready() -> void:
     error = SignalManager.connect("timeline_graph_editor_new_graph_selected", self, "_on_timeline_graph_editor_new_graph_selected")
     error = SignalManager.connect("save_timeline_structure_as_confirm_button_pressed", self, "_on_save_timeline_structure_as_confirm_button_pressed")
     error = SignalManager.connect("load_timeline_structure_as_confirm_button_pressed", self, "_on_load_timeline_structure_as_confirm_button_pressed" )
-    
+    error = SignalManager.connect("graphNode_close_request", self, "_on_GraphNode_close_request")
     # Init start and end nodes. Same behavior as new graph?
     popualte_start_and_end()
     
@@ -346,13 +347,36 @@ func _on_GraphEdit_connection_request(from: String, from_slot: int, to: String, 
     if !timeline_structure_data[to_title].inputs.has(from_title):
         timeline_structure_data[to_title].inputs.append(from_title)
 
+#
+#func _on_GraphEdit_child_entered_tree(node: Node) -> void:
+#
+#    if node is GraphNode:
+#        node.connect("close_request",self, "_on_GraphNode_close_request")
+#
+
+func _on_GraphEdit_delete_nodes_request(nodes: Array) -> void:
+    print_debug("Deleting nodes ", nodes)
+    # remove connections
+    # remove from inputs and outputs
+    delete_request = true
+    for node_name in nodes:
+        
+        var inputs: Array = timeline_structure_data[node_name].inputs.duplicate()
+        for input in inputs:
+            _on_GraphEdit_disconnection_request(input, OUTPUT_SLOT, node_name,INPUT_SLOT)
+        var outputs: Array = timeline_structure_data[node_name].outputs.duplicate()
+        for output in outputs:
+            _on_GraphEdit_disconnection_request(node_name, INPUT_SLOT, output, OUTPUT_SLOT)
+        timeline_structure_data.erase(node_name)
+        get_node(node_name).queue_free()
+    delete_request = false
 
 func _on_GraphEdit_disconnection_request(from: String, from_slot: int, to: String, to_slot: int) -> void:
     if preview_mode:
-        print_debug("Cannot change connections in Preview ode")
+        print_debug("Cannot change connections in Preview mode")
         return
         
-    if get_node(from).selected:
+    if get_node(from).selected or delete_request:
         disconnect_node(from, from_slot, to, to_slot)
         var from_title = get_node(from).title
         var to_title = get_node(to).title
@@ -372,6 +396,10 @@ func _on_GraphEdit_node_selected(node: BasicGraphNode) -> void:
         # update other nodes
         update_preview_mode()
         
+
+func _on_GraphNode_close_request(node_name: String):
+    print_debug("Close Request on ", node_name)
+    _on_GraphEdit_delete_nodes_request([node_name])
 
 
 func _on_load_timeline_structure_as_confirm_button_pressed(structure_name: String) -> void:
@@ -473,9 +501,6 @@ func _on_timeline_graph_editor_save_selected() -> void:
 func _on_timeline_graph_editor_save_as_selected() -> void:
     # Popup asking for file name to save as
     save_timeline_structure_as()
-
-
-
 
 
 
