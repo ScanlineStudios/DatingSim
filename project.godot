@@ -98,6 +98,11 @@ _global_script_classes=[ {
 "class": "TimelineNodeTimelineData",
 "language": "GDScript",
 "path": "res://scripts/timelineGraphEditor/TimelineNodeTimelineData.gd"
+}, {
+"base": "Node",
+"class": "TimelineStructureProcessor",
+"language": "GDScript",
+"path": "res://scripts/TimelineStructureProcessor.gd"
 } ]
 _global_script_class_icons={
 "BasicGraphNode": "",
@@ -117,7 +122,8 @@ _global_script_class_icons={
 "TimelineGraphNode": "",
 "TimelineNodeData": "",
 "TimelineNodeDataFactory": "",
-"TimelineNodeTimelineData": ""
+"TimelineNodeTimelineData": "",
+"TimelineStructureProcessor": ""
 }
 
 [application]
